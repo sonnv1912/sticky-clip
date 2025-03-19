@@ -9,15 +9,14 @@ import {
    nativeImage,
    screen,
 } from 'electron';
-import started from 'electron-squirrel-startup';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { appEvent } from './configs/constants';
+import Store from 'electron-store';
+import type { StoreState } from './types/store';
 
 import './events/app';
 import './events/clipboard';
-import type { StoreState } from './types/store';
-import Store from 'electron-store';
 
 export const store = new Store<StoreState>();
 
@@ -39,10 +38,6 @@ const icon = nativeImage.createFromPath(
            '../../src/assets/icons/FluentColorClipboard16.png',
         ),
 );
-
-if (started) {
-   app.quit();
-}
 
 const show = () => {
    window.show();
@@ -66,7 +61,7 @@ export const createWindow = () => {
       icon,
       width: windowWidth,
       height: windowHeight,
-      frame: !app.isPackaged,
+      frame: false,
       center: true,
       roundedCorners: true,
       resizable: false,
@@ -100,7 +95,7 @@ export const createWindow = () => {
    }
 
    if (app.isPackaged) {
-      app.dock.hide();
+      // app.dock.hide();
    }
 };
 
