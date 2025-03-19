@@ -10,20 +10,26 @@ import {
    screen,
 } from 'electron';
 import started from 'electron-squirrel-startup';
-import Store from 'electron-store';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
-import type { StoreState } from './types/store';
 import { appEvent } from './configs/constants';
 
-import './events/clipboard';
 import './events/app';
+import './events/clipboard';
+import type { StoreState } from './types/store';
+import Store from 'electron-store';
+
+export const store = new Store<StoreState>();
+
+export const SETTING = store.get('setting', {
+   maxItem: 100,
+   shortcut: 'Control+Shift+V',
+});
+
+export const CLIPBOARD = store.get('clipboardHistory', []);
 
 let lastClipboardText = '';
 let window: BrowserWindow;
-
-export const store = new Store<StoreState>();
-const MAX = 100;
 
 const icon = nativeImage.createFromPath(
    app.isPackaged
@@ -47,7 +53,7 @@ const hide = () => {
    window.hide();
 };
 
-const createWindow = () => {
+export const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
    const windowWidth = 600;
    const windowHeight = 600;
@@ -60,7 +66,7 @@ const createWindow = () => {
       icon,
       width: windowWidth,
       height: windowHeight,
-      frame: false,
+      frame: !app.isPackaged,
       center: true,
       roundedCorners: true,
       resizable: false,
@@ -68,7 +74,11 @@ const createWindow = () => {
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },
-   }).on('blur', hide);
+   }).on('blur', () => {
+      if (app.isPackaged) {
+         hide();
+      }
+   });
 
    app.dock.setIcon(icon);
 
@@ -85,9 +95,13 @@ const createWindow = () => {
 
    if (!app.isPackaged) {
       window.webContents.openDevTools();
+      window.setAlwaysOnTop(false);
+      window.setResizable(true);
    }
 
-   app.dock.hide();
+   if (app.isPackaged) {
+      app.dock.hide();
+   }
 };
 
 const createTrackIcon = () => {
@@ -113,21 +127,20 @@ const createTrackIcon = () => {
 const watchClipboard = () => {
    setInterval(() => {
       const text = clipboard.readText();
-      const history = store.get('clipboardHistory', []);
 
       if (text && text !== lastClipboardText) {
          lastClipboardText = text;
 
-         if (history.length === MAX) {
-            history.pop();
+         if (CLIPBOARD.length === SETTING.maxItem) {
+            CLIPBOARD.pop();
          }
 
-         history.unshift({
+         CLIPBOARD.unshift({
             id: randomUUID(),
             value: text,
          });
 
-         store.set('clipboardHistory', history);
+         store.set('clipboardHistory', CLIPBOARD);
       }
    }, 1000);
 };
@@ -137,7 +150,7 @@ const initEvent = () => {
 
    ipcMain.handle(appEvent.show, show);
 
-   globalShortcut.register('Shift+Control+V', () => {
+   globalShortcut.register(SETTING.shortcut, () => {
       if (window.isVisible()) {
          hide();
 
@@ -146,12 +159,10 @@ const initEvent = () => {
 
       show();
    });
-
-   store.set('dirname', __dirname);
 };
 
 app.on('quit', () => {
-   // globalShortcut.unregisterAll();
+   globalShortcut.unregisterAll();
 });
 
 app.whenReady()

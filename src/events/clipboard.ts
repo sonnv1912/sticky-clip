@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron';
-import { store } from '../main';
 import { clipboardEvent } from '../configs/constants';
 import type { ClipboardEventParams } from '../types/event';
+import { store } from '../main';
 
 ipcMain.handle(clipboardEvent.get, () => {
    return store.get('clipboardHistory', []);

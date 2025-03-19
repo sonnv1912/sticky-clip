@@ -1,4 +1,8 @@
 export const colors = {
+   black: '#000',
+   white: '#fff',
+   text: '#fff',
+
    red50: 'oklch(0.971 0.013 17.38)',
    red100: 'oklch(0.936 0.032 17.717)',
    red200: 'oklch(0.885 0.062 18.334)',
@@ -241,6 +245,4 @@ export const colors = {
    stone800: 'oklch(0.268 0.007 34.298)',
    stone900: 'oklch(0.216 0.006 56.043)',
    stone950: 'oklch(0.147 0.004 49.25)',
-   black: '#000',
-   white: '#fff',
 };

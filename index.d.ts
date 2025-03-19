@@ -4,10 +4,17 @@ interface ClipboardAPI {
    removeItem: (index: number) => void;
 }
 
+interface Setting {
+   dirname: string;
+   maxItem: number;
+   shortcut: string;
+}
+
 interface AppAPI {
    exit: () => void;
    hide: () => void;
-   info: () => Promise<{ dirname: string }>;
+   setting: () => Promise<Setting>;
+   updateSetting: (payload: Partial<Setting>) => void;
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>

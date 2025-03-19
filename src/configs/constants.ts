@@ -2,7 +2,8 @@ export const appEvent = {
    exit: 'exit',
    hide: 'hide',
    show: 'show',
-   info: 'info',
+   setting: 'setting',
+   updateSetting: 'updateSetting',
 };
 
 export const clipboardEvent = {
