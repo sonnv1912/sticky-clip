@@ -5,14 +5,17 @@ import { Icon } from './components/icon';
 import { AnimatePresence, motion, useMotionValue } from 'motion/react';
 import NoDataClipboard from '../src/assets/images/no-data-clipboard.png';
 
-const root = createRoot(document.body);
-
 const App = () => {
    const [history, setHistory] = useState<{ id: string; value: string }[]>([]);
+   const [loading, setLoading] = useState(false);
    const x = useMotionValue(0);
 
    const fetchHistory = async () => {
+      setLoading(true);
+
       const data = await window.clipboard.get();
+
+      setLoading(false);
 
       setHistory(data);
    };
@@ -40,7 +43,7 @@ const App = () => {
                <Icon name='MaterialSymbolsCloseRounded' />
             </div>
 
-            <p>My Clipboard</p>
+            <p>Clipboard</p>
 
             <div
                className='cursor-pointer'
@@ -66,7 +69,7 @@ const App = () => {
             )}
          >
             <AnimatePresence mode='popLayout'>
-               {history.length === 0 && (
+               {history.length === 0 && !loading && (
                   <motion.img
                      alt=''
                      layout={true}
@@ -104,6 +107,7 @@ const App = () => {
                      }}
                      onClick={() => {
                         navigator.clipboard.writeText(item.value);
+                        fetchHistory();
                      }}
                   >
                      {item.value}
@@ -115,4 +119,5 @@ const App = () => {
    );
 };
 
+const root = createRoot(document.body);
 root.render(<App />);

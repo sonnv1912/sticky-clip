@@ -1,8 +1,8 @@
 {
-   "name": "my-clipboard",
-   "productName": "my-clipboard",
+   "name": "clipboard",
+   "productName": "clipboard",
    "version": "0.0.1",
-   "description": "My clipboard manager",
+   "description": "Clipboard manager",
    "main": ".vite/build/main.js",
    "engines": {
       "node": ">=18"
@@ -10,6 +10,7 @@
    "scripts": {
       "start": "electron-forge start",
       "package": "electron-forge package",
+      "premake": "rm -rf out",
       "make": "electron-forge make",
       "publish": "electron-forge publish",
       "css": "npx @tailwindcss/cli -i ./src/tailwind/input.css -o ./src/tailwind/output.css --watch"
@@ -23,7 +24,6 @@
    "dependencies": {
       "@tailwindcss/cli": "^4.0.14",
       "@tailwindcss/vite": "^4.0.14",
-      "clipboard-listener": "^0.2.3",
       "clsx": "^2.1.1",
       "electron-squirrel-startup": "^1.0.1",
       "electron-store": "^10.0.1",

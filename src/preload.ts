@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('clipboard', {
 });
 
 contextBridge.exposeInMainWorld('app', {
+   info: () => ipcRenderer.invoke(appEvent.info),
    exit: () => ipcRenderer.invoke(appEvent.exit),
    hide: () => ipcRenderer.invoke(appEvent.hide),
 });

@@ -4,6 +4,7 @@ import {
    Tray,
    app,
    clipboard,
+   globalShortcut,
    ipcMain,
    nativeImage,
    screen,
@@ -24,14 +25,14 @@ let window: BrowserWindow;
 export const store = new Store<StoreState>();
 const MAX = 10;
 
-const icon = nativeImage
-   .createFromPath(
-      path.join(__dirname, '../../src/assets/icons/FluentColorClipboard16.png'),
-   )
-   .resize({
-      height: 20,
-      width: 20,
-   });
+const icon = nativeImage.createFromPath(
+   app.isPackaged
+      ? path.join(__dirname, '../../../FluentColorClipboard16.png')
+      : path.join(
+           __dirname,
+           '../../src/assets/icons/FluentColorClipboard16.png',
+        ),
+);
 
 if (started) {
    app.quit();
@@ -54,20 +55,22 @@ const createWindow = () => {
    const y = height - windowHeight;
 
    window = new BrowserWindow({
-      width: windowWidth,
-      height: windowHeight,
       x,
       y,
+      icon,
+      width: windowWidth,
+      height: windowHeight,
       frame: false,
       center: true,
       roundedCorners: true,
       resizable: false,
       alwaysOnTop: true,
-      icon,
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },
    }).on('blur', hide);
+
+   app.dock.setIcon(icon);
 
    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
       window.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
@@ -80,31 +83,15 @@ const createWindow = () => {
       );
    }
 
-   // window.webContents.openDevTools();
+   if (!app.isPackaged) {
+      window.webContents.openDevTools();
+   }
 
-   // app.dock.hide();
+   app.dock.hide();
 };
 
 const createTrackIcon = () => {
-   const icon = nativeImage
-      .createFromPath(
-         app.isPackaged
-            ? path.join(
-                 process.resourcesPath,
-                 'icons',
-                 'FluentColorClipboard16.png',
-              )
-            : path.join(
-                 __dirname,
-                 '../../src/assets/icons/FluentColorClipboard16.png',
-              ),
-      )
-      .resize({
-         height: 20,
-         width: 20,
-      });
-
-   const tray = new Tray(icon);
+   const tray = new Tray(icon.resize({ height: 20, width: 20 }));
 
    const contextMenu = Menu.buildFromTemplate([
       {
@@ -145,20 +132,30 @@ const watchClipboard = () => {
    }, 1000);
 };
 
-const event = () => {
+const initEvent = () => {
    ipcMain.handle(appEvent.hide, hide);
 
    ipcMain.handle(appEvent.show, show);
+
+   globalShortcut.register('Shift+Control+V', () => {
+      if (window.isVisible()) {
+         hide();
+
+         return;
+      }
+
+      show();
+   });
+
+   store.set('dirname', __dirname);
 };
 
-app.on('window-all-closed', () => {
-   if (process.platform !== 'darwin') {
-      app.quit();
-   }
+app.on('quit', () => {
+   // globalShortcut.unregisterAll();
 });
 
 app.whenReady()
    .then(createWindow)
    .then(createTrackIcon)
    .then(watchClipboard)
-   .then(event);
+   .then(initEvent);

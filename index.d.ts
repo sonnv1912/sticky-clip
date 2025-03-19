@@ -7,6 +7,7 @@ interface ClipboardAPI {
 interface AppAPI {
    exit: () => void;
    hide: () => void;
+   info: () => Promise<{ dirname: string }>;
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>

@@ -6,31 +6,34 @@ import { MakerRpm } from '@electron-forge/maker-rpm';
 import { VitePlugin } from '@electron-forge/plugin-vite';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
+import { MakerDMG } from '@electron-forge/maker-dmg';
 
 const config: ForgeConfig = {
    packagerConfig: {
       asar: true,
-      icon: './src/assets/icons/FluentColorClipboard16.png',
+      icon: './src/assets/icons/FluentColorClipboard16.icns',
+      name: 'Clipboard',
+      appVersion: '0.0.1',
+      buildVersion: '1',
+      extraResource: ['./src/assets/icons/FluentColorClipboard16.png'],
    },
    rebuildConfig: {},
    makers: [
       new MakerSquirrel({
-         setupIcon: './src/assets/icons/FluentColorClipboard16.ico', // Windows
+         setupIcon: './src/assets/icons/FluentColorClipboard16.icns', // Windows
       }),
       new MakerZIP({}, ['darwin']),
       new MakerRpm({
-         options: { icon: './src/assets/icons/FluentColorClipboard16.png' },
+         options: { icon: './src/assets/icons/FluentColorClipboard16.icns' },
       }),
       new MakerDeb({
-         options: { icon: './src/assets/icons/FluentColorClipboard16.png' }, // Linux .deb
+         options: { icon: './src/assets/icons/FluentColorClipboard16.icns' }, // Linux .deb
       }),
-      {
-         name: '@electron-forge/maker-dmg',
-         config: {
-            icon: './src/assets/icons/FluentColorClipboard16.png', // macOS
-            format: 'ULFO',
-         },
-      },
+      new MakerDMG({
+         icon: './src/assets/icons/FluentColorClipboard16.icns',
+         format: 'ULFO',
+         name: 'Clipboard',
+      }),
    ],
    plugins: [
       new VitePlugin({

@@ -2,6 +2,7 @@ export const appEvent = {
    exit: 'exit',
    hide: 'hide',
    show: 'show',
+   info: 'info',
 };
 
 export const clipboardEvent = {
