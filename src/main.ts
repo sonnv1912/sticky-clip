@@ -23,7 +23,7 @@ let lastClipboardText = '';
 let window: BrowserWindow;
 
 export const store = new Store<StoreState>();
-const MAX = 10;
+const MAX = 100;
 
 const icon = nativeImage.createFromPath(
    app.isPackaged
