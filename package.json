@@ -1,9 +1,11 @@
 {
-   "name": "clipboard",
+   "name": "@sonnv1912/clipboard",
    "productName": "clipboard",
    "version": "0.0.1",
    "description": "Clipboard manager",
    "main": ".vite/build/main.js",
+   "license": "MIT",
+   "keywords": ["clipboard"],
    "engines": {
       "node": ">=18"
    },
@@ -12,15 +14,12 @@
       "package": "electron-forge package",
       "premake": "rm -rf out",
       "make": "electron-forge make",
-      "publish": "electron-forge publish",
       "css": "npx @tailwindcss/cli -i ./src/tailwind/input.css -o ./src/tailwind/output.css --watch"
    },
-   "keywords": [],
    "author": {
       "name": "sonnv1912",
       "email": "sonnv1912@gmail.com"
    },
-   "license": "MIT",
    "dependencies": {
       "@tailwindcss/cli": "^4.0.14",
       "@tailwindcss/vite": "^4.0.14",
