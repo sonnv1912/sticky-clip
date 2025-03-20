@@ -51,7 +51,7 @@ const hide = () => {
 export const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
    const windowWidth = 600;
-   const windowHeight = 600;
+   const windowHeight = height;
    const x = Math.round((width - windowWidth) / 2);
    const y = height - windowHeight;
 
@@ -101,11 +101,13 @@ export const createWindow = () => {
 
 const createTrackIcon = () => {
    const tray = new Tray(icon.resize({ height: 20, width: 20 }));
+   const SETTING = store.get('setting', defaultSetting);
 
    const contextMenu = Menu.buildFromTemplate([
       {
          label: 'Hiện cửa sổ',
          click: show,
+         accelerator: SETTING.shortcut,
       },
       {
          label: 'Thoát',
