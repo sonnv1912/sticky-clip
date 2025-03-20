@@ -1,9 +1,11 @@
 import { app, ipcMain } from 'electron';
 import { appEvent } from '../configs/constants';
-import { CLIPBOARD, SETTING, store } from '../main';
+import { store } from '../main';
 import type { Setting } from '../types/store';
 
 ipcMain.handle(appEvent.setting, () => {
+   const SETTING = store.get('setting');
+
    return {
       dirname: __dirname,
       ...SETTING,
@@ -15,6 +17,9 @@ ipcMain.handle(appEvent.exit, () => {
 });
 
 ipcMain.handle(appEvent.updateSetting, (_e, arg: Setting) => {
+   const CLIPBOARD = store.get('clipboardHistory');
+   const SETTING = store.get('setting');
+
    store.set('setting', {
       ...SETTING,
       ...arg,

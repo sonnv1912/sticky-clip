@@ -1,7 +1,8 @@
 interface ClipboardAPI {
-   get: () => Promise<{ id: string; value: string }[]>;
+   get: () => Promise<ClipboardHistory[]>;
    clear: () => void;
-   removeItem: (index: number) => void;
+   removeItem: (index: ClipboardEventParams['removeItem']) => void;
+   copyItem: (index: ClipboardEventParams['copyItem']) => void;
 }
 
 interface Setting {

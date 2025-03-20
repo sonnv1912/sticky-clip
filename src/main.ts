@@ -9,25 +9,25 @@ import {
    nativeImage,
    screen,
 } from 'electron';
+import Store from 'electron-store';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { appEvent } from './configs/constants';
-import Store from 'electron-store';
-import type { StoreState } from './types/store';
 
 import './events/app';
 import './events/clipboard';
+import { uniqBy } from 'lodash';
 
 export const store = new Store<StoreState>();
 
-export const SETTING = store.get('setting', {
+const defaultSetting = {
    maxItem: 100,
    shortcut: 'Control+Shift+V',
-});
-
-export const CLIPBOARD = store.get('clipboardHistory', []);
+   dirname: __dirname,
+};
 
 let lastClipboardText = '';
+let lastClipboardImage = '';
 let window: BrowserWindow;
 
 const icon = nativeImage.createFromPath(
@@ -95,7 +95,7 @@ export const createWindow = () => {
    }
 
    if (app.isPackaged) {
-      // app.dock.hide();
+      app.dock.hide();
    }
 };
 
@@ -121,7 +121,10 @@ const createTrackIcon = () => {
 
 const watchClipboard = () => {
    setInterval(() => {
+      const SETTING = store.get('setting', defaultSetting);
+      const CLIPBOARD = store.get('clipboardHistory', []);
       const text = clipboard.readText();
+      const image = clipboard.readImage();
 
       if (text && text !== lastClipboardText) {
          lastClipboardText = text;
@@ -133,14 +136,33 @@ const watchClipboard = () => {
          CLIPBOARD.unshift({
             id: randomUUID(),
             value: text,
+            isImage: false,
          });
 
-         store.set('clipboardHistory', CLIPBOARD);
+         store.set('clipboardHistory', uniqBy(CLIPBOARD, 'value'));
+      }
+
+      if (!image.isEmpty() && image.toDataURL() !== lastClipboardImage) {
+         lastClipboardImage = image.toDataURL();
+
+         if (CLIPBOARD.length === SETTING.maxItem) {
+            CLIPBOARD.pop();
+         }
+
+         CLIPBOARD.unshift({
+            id: randomUUID(),
+            value: image.toDataURL(),
+            isImage: true,
+         });
+
+         store.set('clipboardHistory', uniqBy(CLIPBOARD, 'value'));
       }
    }, 1000);
 };
 
 const initEvent = () => {
+   const SETTING = store.get('setting', defaultSetting);
+
    ipcMain.handle(appEvent.hide, hide);
 
    ipcMain.handle(appEvent.show, show);

@@ -4,9 +4,10 @@ import { createRoot } from 'react-dom/client';
 import { Header } from './components/layout/header';
 import { List } from './components/ui/list';
 import { SettingModal } from './modals/setting-modal';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
-   const [history, setHistory] = useState<{ id: string; value: string }[]>([]);
+   const [history, setHistory] = useState<ClipboardHistory[]>([]);
    const [loading, setLoading] = useState(false);
    const [openSetting, setOpenSetting] = useState(false);
 
@@ -48,6 +49,12 @@ const App = () => {
 
                setOpenSetting(false);
             }}
+         />
+
+         <ToastContainer
+            position='bottom-center'
+            autoClose={1000}
+            newestOnTop={true}
          />
       </div>
    );

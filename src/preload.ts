@@ -1,14 +1,16 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import type { ClipboardEventParams } from './types/event';
 import { appEvent, clipboardEvent } from './configs/constants';
-import type { Setting } from './types/store';
 
 contextBridge.exposeInMainWorld('clipboard', {
    get: () => ipcRenderer.invoke(clipboardEvent.get),
    clear: () => ipcRenderer.invoke(clipboardEvent.clear),
 
-   removeItem: (index: ClipboardEventParams['removeItem']) =>
-      ipcRenderer.invoke(clipboardEvent.removeItem, index),
+   copyItem: (payload: ClipboardEventParams['copyItem']) =>
+      ipcRenderer.invoke(clipboardEvent.copyItem, payload),
+
+   removeItem: (payload: ClipboardEventParams['removeItem']) =>
+      ipcRenderer.invoke(clipboardEvent.removeItem, payload),
 });
 
 contextBridge.exposeInMainWorld('app', {

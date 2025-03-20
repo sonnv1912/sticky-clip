@@ -1,17 +1,17 @@
 import clsx from 'clsx';
-import { motion, AnimatePresence, useMotionValue } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { toast } from 'react-toastify';
 import NoDataClipboard from '../../assets/images/no-data-clipboard.png';
-import type { History } from '../../types/data/history';
 import { colors } from '../../assets/themes/colors';
 
 type Props = {
    loading: boolean;
-   items: History[];
+   items: ClipboardHistory[];
    fetchHistory: () => void;
 };
 
 export const List = ({ loading, items, fetchHistory }: Props) => {
-   const x = useMotionValue(0);
+   // const x = useMotionValue(0);
 
    return (
       <motion.div
@@ -26,7 +26,7 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
          )}
       >
          <AnimatePresence mode='popLayout'>
-            {history.length === 0 && !loading && (
+            {items.length === 0 && !loading && (
                <motion.img
                   alt=''
                   layout={true}
@@ -41,37 +41,41 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
                />
             )}
 
-            {items.map((item, index) => (
+            {items.map((item) => (
                <motion.div
                   key={item.id}
                   layout={true}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, transform: `translateX(-${x}px)` }}
-                  transition={{ type: 'tween' }}
-                  drag='x'
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.6}
-                  style={{ transform: `translateX(${x})` }}
+                  exit={{ opacity: 0 }}
+                  className={clsx(
+                     'p-4 bg-gray-700 rounded-2xl cursor-pointer break-all select-none',
+                  )}
+                  // drag='x'
+                  // dragConstraints={{ left: 0, right: 0 }}
+                  // dragElastic={0.6}
+                  // style={{ transform: `translateX(${x})` }}
                   whileHover={{
                      backgroundColor: colors.slate600,
-                     scale: 1.05,
+                     scale: 1.02,
                   }}
                   whileTap={{
                      scale: 1,
                   }}
-                  className={clsx(
-                     'p-4 bg-gray-700 rounded-2xl cursor-pointer break-all select-none',
-                  )}
-                  onPanEnd={() => {
-                     window.clipboard.removeItem(index);
-                     fetchHistory();
-                  }}
+                  // onPanEnd={() => {
+                  //    window.clipboard.removeItem(index);
+                  //    fetchHistory();
+                  // }}
                   onClick={() => {
-                     navigator.clipboard.writeText(item.value);
+                     window.clipboard.copyItem(item);
+
                      fetchHistory();
+
+                     toast.success('Copied to clipboard');
                   }}
                >
-                  {index + 1} - {item.value}
+                  {item.isImage && <img alt='' src={item.value} />}
+
+                  {!item.isImage && <p>{item.value}</p>}
                </motion.div>
             ))}
          </AnimatePresence>

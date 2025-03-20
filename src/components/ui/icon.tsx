@@ -3,7 +3,6 @@ import { MaterialSymbolsCloseRounded } from '../../assets/icons/MaterialSymbolsC
 import { MaterialSymbolsDelete } from '../../assets/icons/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from '../../assets/icons/MaterialSymbolsSettingsRounded';
 import { colors } from '../../assets/themes/colors';
-import type { IconProps } from '../../types/icon';
 
 export const icons = {
    MaterialSymbolsDelete,
