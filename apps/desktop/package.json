@@ -1,6 +1,6 @@
 {
    "name": "desktop",
-   "description": "Clipboard manager",
+   "description": "StickyClip - Your clipboard manager",
    "main": ".vite/build/main.js",
    "version": "1.0.0",
    "license": "MIT",

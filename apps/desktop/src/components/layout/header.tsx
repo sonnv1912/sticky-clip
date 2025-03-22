@@ -11,9 +11,7 @@ export const Header = ({ fetchHistory, onClickSetting }: Props) => {
          <div className='flex items-center gap-1'>
             <Icon name='FluentColorClipboard16' />
 
-            <p className='select-none font-semibold text-sky-500'>
-               Clipboard Manager
-            </p>
+            <p className='select-none font-semibold text-sky-500'>StickyClip</p>
          </div>
 
          <div className='flex items-center gap-4'>

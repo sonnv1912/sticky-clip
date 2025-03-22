@@ -113,7 +113,7 @@ const createTrackIcon = () => {
       },
    ]);
 
-   tray.setToolTip('Clipboard Manager');
+   tray.setToolTip('StickyClip');
    tray.setContextMenu(contextMenu);
 };
 
