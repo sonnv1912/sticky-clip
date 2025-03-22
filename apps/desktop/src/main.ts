@@ -101,12 +101,12 @@ const createTrackIcon = () => {
 
    const contextMenu = Menu.buildFromTemplate([
       {
-         label: 'Hiện cửa sổ',
+         label: 'Open',
          click: show,
          accelerator: SETTING.shortcut,
       },
       {
-         label: 'Thoát',
+         label: 'Quit',
          click: () => {
             app.quit();
          },
