@@ -6,6 +6,7 @@ import { Input } from '../components/ui/input';
 import { TextPair } from '../components/ui/text-pair';
 import { settingSchema } from '../schemas/setting-schema';
 import { Modal } from '../components/layout/modal';
+import { DEFAULT_SETTING } from '../configs/constants';
 
 type Props = {
    open: boolean;
@@ -16,10 +17,7 @@ type Props = {
 const SettingModalBody = ({ onSuccess }: Props) => {
    const { control, reset, formState, handleSubmit } = useForm({
       resolver: zodResolver(settingSchema),
-      defaultValues: {
-         maxItem: 100,
-         shortcut: 'Control+Shift+V',
-      },
+      defaultValues: DEFAULT_SETTING,
    });
 
    const onSubmit = handleSubmit((data) => {

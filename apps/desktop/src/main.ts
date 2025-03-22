@@ -12,7 +12,7 @@ import {
 import Store from 'electron-store';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
-import { appEvent } from './configs/constants';
+import { appEvent, DEFAULT_SETTING } from './configs/constants';
 
 import './events/app';
 import './events/clipboard';
@@ -20,12 +20,6 @@ import { uniqBy } from 'lodash';
 import { colors } from './assets/themes/colors';
 
 export const store = new Store<StoreState>();
-
-const defaultSetting = {
-   maxItem: 100,
-   shortcut: '',
-   dirname: __dirname,
-};
 
 let lastClipboardText = '';
 let lastClipboardImage = '';
@@ -103,7 +97,7 @@ export const createWindow = () => {
 
 const createTrackIcon = () => {
    const tray = new Tray(icon.resize({ height: 20, width: 20 }));
-   const SETTING = store.get('setting', defaultSetting);
+   const SETTING = store.get('setting', DEFAULT_SETTING);
 
    const contextMenu = Menu.buildFromTemplate([
       {
@@ -125,7 +119,7 @@ const createTrackIcon = () => {
 
 const watchClipboard = () => {
    setInterval(() => {
-      const SETTING = store.get('setting', defaultSetting);
+      const SETTING = store.get('setting', DEFAULT_SETTING);
       const CLIPBOARD = store.get('clipboardHistory', []);
       const text = clipboard.readText();
       const image = clipboard.readImage();
@@ -165,7 +159,7 @@ const watchClipboard = () => {
 };
 
 const initEvent = () => {
-   const SETTING = store.get('setting', defaultSetting);
+   const SETTING = store.get('setting', DEFAULT_SETTING);
 
    ipcMain.handle(appEvent.hide, hide);
 
