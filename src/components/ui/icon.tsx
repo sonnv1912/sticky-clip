@@ -1,4 +1,5 @@
 import { EosIconsBubbleLoading } from '../../assets/icons/EosIconsBubbleLoading';
+import { FluentColorClipboard16 } from '../../assets/icons/FluentColorClipboard16';
 import { MaterialSymbolsCloseRounded } from '../../assets/icons/MaterialSymbolsCloseRounded';
 import { MaterialSymbolsDelete } from '../../assets/icons/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from '../../assets/icons/MaterialSymbolsSettingsRounded';
@@ -9,6 +10,7 @@ export const icons = {
    MaterialSymbolsCloseRounded,
    MaterialSymbolsSettingsRounded,
    EosIconsBubbleLoading,
+   FluentColorClipboard16,
 };
 
 type Props = IconProps & {

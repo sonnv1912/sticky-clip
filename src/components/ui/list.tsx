@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
-import NoDataClipboard from '../../assets/images/no-data-clipboard.png';
 import { colors } from '../../assets/themes/colors';
+import { images } from './image';
 
 type Props = {
    loading: boolean;
@@ -30,7 +30,7 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
                <motion.img
                   alt=''
                   layout={true}
-                  src={NoDataClipboard}
+                  src={images.NoDataClipboard}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className='mx-auto mt-12'

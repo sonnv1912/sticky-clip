@@ -23,7 +23,7 @@ export const store = new Store<StoreState>();
 
 const defaultSetting = {
    maxItem: 100,
-   shortcut: 'Control+Shift+V',
+   shortcut: '',
    dirname: __dirname,
 };
 
@@ -51,7 +51,7 @@ const hide = () => {
 
 export const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-   const windowWidth = 600;
+   const windowWidth = app.isPackaged ? 600 : 1200;
    const windowHeight = height;
    const x = Math.round((width - windowWidth) / 2);
    const y = height - windowHeight;
@@ -171,15 +171,17 @@ const initEvent = () => {
 
    ipcMain.handle(appEvent.show, show);
 
-   globalShortcut.register(SETTING.shortcut, () => {
-      if (window.isVisible()) {
-         hide();
+   if (SETTING.shortcut) {
+      globalShortcut.register(SETTING.shortcut, () => {
+         if (window.isVisible()) {
+            hide();
 
-         return;
-      }
+            return;
+         }
 
-      show();
-   });
+         show();
+      });
+   }
 };
 
 app.on('quit', () => {
