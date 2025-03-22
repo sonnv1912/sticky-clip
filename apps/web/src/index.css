@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "ibm-plex-mono";
+  font-weight: 400;
+  src: url(./assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf);
+}
+@font-face {
+  font-family: "semi-b-ibm-plex-mono";
+  font-weight: 500;
+  src: url(./assets/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.ttf);
+}
+@font-face {
+  font-family: "b-ibm-plex-mono";
+  src: url(./assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.ttf);
+}
+
+@font-face {
+  font-family: "raleway";
+  src: url(./assets/fonts/raleway/Raleway-Regular.ttf);
+}
+
+@font-face {
+  font-family: "eb-raleway";
+  src: url(./assets/fonts/raleway/Raleway-ExtraBold.ttf);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2457a8;
+  cursor: pointer;
+}

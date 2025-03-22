@@ -1,0 +1,70 @@
+{
+	"name": "Ngo Van Son",
+	"shortDesc": "A <span class='font-semibold rounded-md' style='background: #3b82f6; padding: 4px 8px'>React Native Developer</span> with 2 years of experience specializing in React Native, and Expo. Passionate about building responsive, high-performance web and mobile applications. Skilled in JavaScript, TypeScript, and modern front-end tools. Dedicated to delivering clean, maintainable, and scalable code.",
+	"experiences": {
+		"kochan": {
+			"position": "React Native Developer",
+			"app_description": "Kochan is a unique e-commerce platform tailored for the Aerobic community, combining online shopping and community engagement. Key features include affiliate marketing opportunities, and community connections, allowing users to share interests and attend events.",
+			"responsibilities": {
+				"fcm": {
+					"label": "Configured Notifications with Firebase Cloud Messaging",
+					"content": "Set up and managed both the sending and receiving of notifications, ensuring that users are informed about key updates or events in the app."
+				},
+				"collaborated": {
+					"label": "Collaborated with Product Owner",
+					"content": "Engaged in discussions with the Product Owner to address project limitations and challenges, identifying solutions to enhance product functionality and user experience."
+				},
+				"env": {
+					"label": "Configured Multi-Environment Source Setup",
+					"content": "Established configurations for multiple environments to streamline testing and deployment processes."
+				},
+				"music": {
+					"label": "Managed Music Playback and Events",
+					"content": "Oversaw the playlist management and handled various audio controls, including play, pause, and repeat functions, ensuring a seamless listening experience."
+				},
+				"debug": {
+					"label": "Debugging and Issue Resolution",
+					"content": "Identified and fixed bugs, enhancing app stability and functionality."
+				},
+				"design": {
+					"label": "Design Collaboration",
+					"content": "Worked closely with the designer to review and discuss design elements, providing input on feasible and optimal design choices for the project’s goals and constraints."
+				},
+				"otp": {
+					"label": "Implemented OTP Confirmation Using Native Code",
+					"content": "Developed a native function to send OTP confirmation messages to users, enhancing security and user verification within the app."
+				},
+				"automated": {
+					"label": "Scripted Automated Test Releases with Fastlane",
+					"content": "Developed a Fastlane script to automate the release of test versions, ensuring an efficient and reliable delivery of updates to testers, reducing manual workload and improving the consistency of test releases."
+				}
+			}
+		},
+		"kolel": {
+			"position": "React Native Developer",
+			"app_description": "The Kolel App offers the largest video library of Torah lessons, Halacha, ethics, and perspectives from top rabbis, lecturers, and organizations in Israel and worldwide. The app allows you to: Stay updated with the newest videos; Follow your favorite rabbis and organizations Enjoy a fast, convenient, and user-friendly viewing experience; Search for videos by popular topics (Faith and Trust, Success and Business, Kabbalah and Mysticism, and more...); Comment on and share videos; Quickly access previously watched videos for continued viewing; The sole purpose of the app is to spread Torah knowledge and benefit the public.",
+			"responsibilities": {
+				"maintain": {
+					"label": "Collaborated with Product Wwner",
+					"content": "Maintained and supported mobile applications using React Native to enhance user experience."
+				},
+				"release": {
+					"label": "Debugging and issue resolution",
+					"content": "Release app with Google Play Console, Apple Store Connect."
+				},
+				"sentry": {
+					"label": "Designer collaboration",
+					"content": "Monitored Sentry for error tracking and fixed bugs to improve application stability."
+				}
+			}
+		}
+	},
+	"education": {
+		"huit": {
+			"label": "Ho Chi Minh City University of Industry and Trade",
+			"time": "Step 2020 - May 2024",
+			"location": "Viet Nam",
+			"content": "Bachelor's degree in Information Technology."
+		}
+	}
+}

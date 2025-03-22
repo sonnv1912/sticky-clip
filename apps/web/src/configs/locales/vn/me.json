@@ -1,0 +1,80 @@
+{
+	"name": "Ngô Văn Sơn",
+	"shortDesc": "Là một <span class='font-semibold rounded-md' style='background: #3b82f6; padding: 4px 8px'>React Native Developer</span> với hai năm kinh nghiệm trong việc xây dựng các ứng dụng di động. Có kiến thức về JavaScript, Typescript, cùng kinh nghiệm thực tiễn trong việc sử dụng React Native và Expo.",
+	"experiences": {
+		"kochan": {
+			"app_description": "Kochan là một nền tảng thương mại điện tử độc đáo được thiết kế riêng cho cộng đồng Aerobic, kết hợp mua sắm trực tuyến và gắn kết cộng đồng. Các tính năng chính bao gồm tiếp thị liên kết và kết nối cộng đồng, cho phép người dùng chia sẻ sở thích và tham gia các sự kiện.",
+			"responsibilities": {
+				"fcm": {
+					"label": "Cấu hình thông báo với Firebase Cloud Messaging",
+					"content": "Thiết lập và quản lý cả việc gửi và nhận thông báo, đảm bảo người dùng được thông báo về các cập nhật hoặc sự kiện quan trọng trong ứng dụng."
+				},
+				"collaborated": {
+					"label": "Cùng làm việc với Product Owner",
+					"content": "Tham gia thảo luận với Product Owner để giải quyết các hạn chế và thách thức trong dự án, xác định các giải pháp nhằm cải thiện tính năng sản phẩm và tối ưu hóa trải nghiệm người dùng."
+				},
+				"env": {
+					"label": "Cấu hình đa môi trường",
+					"content": "Thiết lập cấu hình cho nhiều môi trường để tối ưu hóa quy trình kiểm thử và triển khai."
+				},
+				"music": {
+					"label": "Quản lý phát nhạc và sự kiện",
+					"content": "Giám sát việc quản lý danh sách phát và xử lý các điều khiển âm thanh khác nhau, bao gồm các chức năng phát, tạm dừng và lặp lại, đảm bảo trải nghiệm nghe mượt mà."
+				},
+				"debug": {
+					"label": "Gỡ lỗi và giải quyết sự cố",
+					"content": "Xác định và sửa lỗi, cải thiện sự ổn định và tính năng của ứng dụng."
+				},
+				"design": {
+					"label": "Làm việc với Designer",
+					"content": "Làm việc chặt chẽ với Designer để xem xét và thảo luận các yếu tố thiết kế, đưa ra ý kiến về các lựa chọn thiết kế khả thi và tối ưu nhằm đáp ứng mục tiêu và giới hạn của dự án."
+				},
+				"otp": {
+					"label": "Triển khai xác nhận OTP bằng Native Code",
+					"content": "Phát triển một chức năng bằng Native Code để gửi tin nhắn xác nhận OTP cho người dùng, nâng cao bảo mật và xác minh người dùng trong ứng dụng."
+				},
+				"automated": {
+					"label": "Viết script để phát hành các phiên bản test 1 cách tự động với Fastlane",
+					"content": "Phát triển một đoạn script bằng Fastlane để tự động hóa quy trình phát hành các phiên bản kiểm thử, đảm bảo việc cập nhật phiên bản cho người kiểm thử diễn ra hiệu quả và tin cậy, giảm thiểu công việc thủ công và nâng cao tính nhất quán của các bản phát hành kiểm thử."
+				}
+			}
+		},
+		"kochan_staff": {
+			"app_description": "Ứng dụng nội bộ dành cho các huấn luyện viên quản lý các vé dịch vụ, buổi tập của khách hành tại các phòng tập",
+			"responsibilities": {
+				"fcm": {
+					"label": "Cấu hình thông báo với Firebase Cloud Messaging",
+					"content": "Thiết lập và quản lý cả việc gửi và nhận thông báo, đảm bảo người dùng được thông báo về các cập nhật hoặc sự kiện quan trọng trong ứng dụng."
+				},
+				"collaborated": {
+					"label": "Cùng làm việc với Product Owner",
+					"content": "Tham gia thảo luận với Product Owner để giải quyết các hạn chế và thách thức trong dự án, xác định các giải pháp nhằm cải thiện tính năng sản phẩm và tối ưu hóa trải nghiệm người dùng."
+				},
+				"env": {
+					"label": "Cấu hình đa môi trường",
+					"content": "Thiết lập cấu hình cho nhiều môi trường để tối ưu hóa quy trình kiểm thử và triển khai."
+				},
+				"debug": {
+					"label": "Gỡ lỗi và giải quyết sự cố",
+					"content": "Xác định và sửa lỗi, cải thiện sự ổn định và tính năng của ứng dụng."
+				},
+				"design": {
+					"label": "Làm việc với Designer",
+					"content": "Làm việc chặt chẽ với Designer để xem xét và thảo luận các yếu tố thiết kế, đưa ra ý kiến về các lựa chọn thiết kế khả thi và tối ưu nhằm đáp ứng mục tiêu và giới hạn của dự án."
+				},
+				"automated": {
+					"label": "Viết script để phát hành các phiên bản test 1 cách tự động với Fastlane",
+					"content": "Phát triển một đoạn script bằng Fastlane để tự động hóa quy trình phát hành các phiên bản kiểm thử, đảm bảo việc cập nhật phiên bản cho người kiểm thử diễn ra hiệu quả và tin cậy, giảm thiểu công việc thủ công và nâng cao tính nhất quán của các bản phát hành kiểm thử."
+				}
+			}
+		}
+	},
+	"education": {
+		"huit": {
+			"label": "Trường Đại học Công Thương TP. Hồ Chí Minh",
+			"time": "Tháng 9, 2020 - Tháng 5, 2024",
+			"location": "Viet Nam",
+			"content": "Bằng cử nhân Công Nghệ Thông Tin"
+		}
+	}
+}
