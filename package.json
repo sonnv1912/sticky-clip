@@ -1,66 +1,17 @@
 {
-   "name": "@sonnv1912/clipboard",
-   "productName": "clipboard",
-   "version": "0.0.1",
-   "description": "Clipboard manager",
-   "main": ".vite/build/main.js",
-   "license": "MIT",
-   "keywords": [
-      "clipboard"
-   ],
-   "engines": {
-      "node": ">=18"
-   },
-   "scripts": {
-      "start": "electron-forge start",
-      "package": "electron-forge package",
-      "premake": "rm -rf out",
-      "make": "electron-forge make",
-      "css": "npx @tailwindcss/cli -i ./src/tailwind/input.css -o ./src/tailwind/output.css --watch"
-   },
-   "author": {
-      "name": "sonnv1912",
-      "email": "sonnv1912@gmail.com"
-   },
-   "dependencies": {
-      "@hookform/resolvers": "^4.1.3",
-      "@tailwindcss/cli": "^4.0.14",
-      "@tailwindcss/vite": "^4.0.14",
-      "clsx": "^2.1.1",
-      "electron-squirrel-startup": "^1.0.1",
-      "electron-store": "^10.0.1",
-      "lodash": "^4.17.21",
-      "motion": "^12.5.0",
-      "react": "^19.0.0",
-      "react-dom": "^19.0.0",
-      "react-hook-form": "^7.54.2",
-      "react-toastify": "^11.0.5",
-      "tailwindcss": "^4.0.14",
-      "uuid": "^11.1.0",
-      "zod": "^3.24.2"
-   },
-   "devDependencies": {
-      "@electron-forge/cli": "^7.7.0",
-      "@electron-forge/maker-deb": "^7.7.0",
-      "@electron-forge/maker-dmg": "^7.7.0",
-      "@electron-forge/maker-rpm": "^7.7.0",
-      "@electron-forge/maker-squirrel": "^7.7.0",
-      "@electron-forge/maker-zip": "^7.7.0",
-      "@electron-forge/plugin-auto-unpack-natives": "^7.7.0",
-      "@electron-forge/plugin-fuses": "^7.7.0",
-      "@electron-forge/plugin-vite": "^7.7.0",
-      "@electron/fuses": "^1.8.0",
-      "@types/electron-squirrel-startup": "^1.0.2",
-      "@types/lodash": "^4.17.16",
-      "@types/react": "^19.0.10",
-      "@types/react-dom": "^19.0.4",
-      "@typescript-eslint/eslint-plugin": "^5.62.0",
-      "@typescript-eslint/parser": "^5.62.0",
-      "electron": "35.0.2",
-      "eslint": "^8.57.1",
-      "eslint-plugin-import": "^2.31.0",
-      "ts-node": "^10.9.2",
-      "typescript": "~4.5.4",
-      "vite": "^5.4.14"
-   }
+	"name": "clipboard",
+	"private": true,
+	"scripts": {
+		"desktop": "turbo run desktop --filter=desktop"
+	},
+	"devDependencies": {
+		"prettier": "^3.5.3",
+		"turbo": "^2.4.4",
+		"typescript": "5.8.2"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"packageManager": "yarn@1.22.22",
+	"workspaces": ["apps/*", "packages/*"]
 }
