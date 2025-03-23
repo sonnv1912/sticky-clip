@@ -9,7 +9,13 @@ export const Header = ({ fetchHistory, onClickSetting }: Props) => {
    return (
       <div className='flex items-center justify-between fixed top-0 left-0 right-0 z-10 bg-gray-800 p-4'>
          <div className='flex items-center gap-1'>
-            <Icon name='FluentColorClipboard16' />
+            <Icon
+               name={
+                  window.app.isDev
+                     ? 'FluentColorClipboardTextEdit20'
+                     : 'FluentColorClipboard16'
+               }
+            />
 
             <p className='select-none font-[b-ibm-plex-mono] text-sky-500'>
                StickyClip

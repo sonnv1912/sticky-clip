@@ -30,7 +30,7 @@ const icon = nativeImage.createFromPath(
       ? path.join(__dirname, '../../../FluentColorClipboard16.png')
       : path.join(
            __dirname,
-           '../../src/assets/icons/FluentColorClipboard16.png',
+           '../../src/assets/icons/FluentColorClipboardTextEdit20.png',
         ),
 );
 

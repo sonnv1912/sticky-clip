@@ -1,5 +1,4 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { ClipboardEventParams } from './types/event';
 import { appEvent, clipboardEvent } from './configs/constants';
 
 contextBridge.exposeInMainWorld('clipboard', {
@@ -14,6 +13,8 @@ contextBridge.exposeInMainWorld('clipboard', {
 });
 
 contextBridge.exposeInMainWorld('app', {
+   isDev: process.env.NODE_ENV === 'development',
+
    exit: () => ipcRenderer.invoke(appEvent.exit),
    hide: () => ipcRenderer.invoke(appEvent.hide),
    setting: () => ipcRenderer.invoke(appEvent.setting),

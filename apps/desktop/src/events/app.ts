@@ -5,10 +5,7 @@ import { store } from '../main';
 ipcMain.handle(appEvent.setting, () => {
    const SETTING = store.get('setting');
 
-   return {
-      dirname: __dirname,
-      ...SETTING,
-   };
+   return SETTING;
 });
 
 ipcMain.handle(appEvent.exit, () => {
