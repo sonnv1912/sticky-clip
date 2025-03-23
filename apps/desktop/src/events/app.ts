@@ -1,7 +1,6 @@
 import { app, ipcMain } from 'electron';
 import { appEvent } from '../configs/constants';
 import { store } from '../main';
-import type { Setting } from '../types/store';
 
 ipcMain.handle(appEvent.setting, () => {
    const SETTING = store.get('setting');

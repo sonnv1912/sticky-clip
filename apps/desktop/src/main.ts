@@ -1,3 +1,6 @@
+import './events/app';
+import './events/clipboard';
+
 import {
    BrowserWindow,
    Menu,
@@ -13,9 +16,6 @@ import Store from 'electron-store';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { appEvent, DEFAULT_SETTING } from './configs/constants';
-
-import './events/app';
-import './events/clipboard';
 import { uniqBy } from 'lodash';
 import { colors } from './assets/themes/colors';
 
