@@ -6,6 +6,8 @@ import { List } from './components/ui/list';
 import { SettingModal } from './modals/setting-modal';
 import { ToastContainer } from 'react-toastify';
 
+import 'assets/styles/tailwind.css';
+
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
    const [loading, setLoading] = useState(false);

@@ -14,6 +14,7 @@ export const colors = {
    red800: 'oklch(0.444 0.177 26.899)',
    red900: 'oklch(0.396 0.141 25.723)',
    red950: 'oklch(0.258 0.092 26.042)',
+
    orange50: 'oklch(0.98 0.016 73.684)',
    orange100: 'oklch(0.954 0.038 75.164)',
    orange200: 'oklch(0.901 0.076 70.697)',
@@ -25,6 +26,7 @@ export const colors = {
    orange800: 'oklch(0.47 0.157 37.304)',
    orange900: 'oklch(0.408 0.123 38.172)',
    orange950: 'oklch(0.266 0.079 36.259)',
+
    amber50: 'oklch(0.987 0.022 95.277)',
    amber100: 'oklch(0.962 0.059 95.617)',
    amber200: 'oklch(0.924 0.12 95.746)',
@@ -36,6 +38,7 @@ export const colors = {
    amber800: 'oklch(0.473 0.137 46.201)',
    amber900: 'oklch(0.414 0.112 45.904)',
    amber950: 'oklch(0.279 0.077 45.635)',
+
    yellow50: 'oklch(0.987 0.026 102.212)',
    yellow100: 'oklch(0.973 0.071 103.193)',
    yellow200: 'oklch(0.945 0.129 101.54)',
@@ -47,6 +50,7 @@ export const colors = {
    yellow800: 'oklch(0.476 0.114 61.907)',
    yellow900: 'oklch(0.421 0.095 57.708)',
    yellow950: 'oklch(0.286 0.066 53.813)',
+
    lime50: 'oklch(0.986 0.031 120.757)',
    lime100: 'oklch(0.967 0.067 122.328)',
    lime200: 'oklch(0.938 0.127 124.321)',
@@ -58,6 +62,7 @@ export const colors = {
    lime800: 'oklch(0.453 0.124 130.933)',
    lime900: 'oklch(0.405 0.101 131.063)',
    lime950: 'oklch(0.274 0.072 132.109)',
+
    green50: 'oklch(0.982 0.018 155.826)',
    green100: 'oklch(0.962 0.044 156.743)',
    green200: 'oklch(0.925 0.084 155.995)',
@@ -69,6 +74,7 @@ export const colors = {
    green800: 'oklch(0.448 0.119 151.328)',
    green900: 'oklch(0.393 0.095 152.535)',
    green950: 'oklch(0.266 0.065 152.934)',
+
    emerald50: 'oklch(0.979 0.021 166.113)',
    emerald100: 'oklch(0.95 0.052 163.051)',
    emerald200: 'oklch(0.905 0.093 164.15)',
@@ -80,6 +86,7 @@ export const colors = {
    emerald800: 'oklch(0.432 0.095 166.913)',
    emerald900: 'oklch(0.378 0.077 168.94)',
    emerald950: 'oklch(0.262 0.051 172.552)',
+
    teal50: 'oklch(0.984 0.014 180.72)',
    teal100: 'oklch(0.953 0.051 180.801)',
    teal200: 'oklch(0.91 0.096 180.426)',
@@ -91,6 +98,7 @@ export const colors = {
    teal800: 'oklch(0.437 0.078 188.216)',
    teal900: 'oklch(0.386 0.063 188.416)',
    teal950: 'oklch(0.277 0.046 192.524)',
+
    cyan50: 'oklch(0.984 0.019 200.873)',
    cyan100: 'oklch(0.956 0.045 203.388)',
    cyan200: 'oklch(0.917 0.08 205.041)',
@@ -102,6 +110,7 @@ export const colors = {
    cyan800: 'oklch(0.45 0.085 224.283)',
    cyan900: 'oklch(0.398 0.07 227.392)',
    cyan950: 'oklch(0.302 0.056 229.695)',
+
    sky50: 'oklch(0.977 0.013 236.62)',
    sky100: 'oklch(0.951 0.026 236.824)',
    sky200: 'oklch(0.901 0.058 230.902)',
@@ -113,6 +122,7 @@ export const colors = {
    sky800: 'oklch(0.443 0.11 240.79)',
    sky900: 'oklch(0.391 0.09 240.876)',
    sky950: 'oklch(0.293 0.066 243.157)',
+
    blue50: 'oklch(0.97 0.014 254.604)',
    blue100: 'oklch(0.932 0.032 255.585)',
    blue200: 'oklch(0.882 0.059 254.128)',
@@ -124,6 +134,7 @@ export const colors = {
    blue800: 'oklch(0.424 0.199 265.638)',
    blue900: 'oklch(0.379 0.146 265.522)',
    blue950: 'oklch(0.282 0.091 267.935)',
+
    indigo50: 'oklch(0.962 0.018 272.314)',
    indigo100: 'oklch(0.93 0.034 272.788)',
    indigo200: 'oklch(0.87 0.065 274.039)',
@@ -135,6 +146,7 @@ export const colors = {
    indigo800: 'oklch(0.398 0.195 277.366)',
    indigo900: 'oklch(0.359 0.144 278.697)',
    indigo950: 'oklch(0.257 0.09 281.288)',
+
    violet50: 'oklch(0.969 0.016 293.756)',
    violet100: 'oklch(0.943 0.029 294.588)',
    violet200: 'oklch(0.894 0.057 293.283)',
@@ -146,6 +158,7 @@ export const colors = {
    violet800: 'oklch(0.432 0.232 292.759)',
    violet900: 'oklch(0.38 0.189 293.745)',
    violet950: 'oklch(0.283 0.141 291.089)',
+
    purple50: 'oklch(0.977 0.014 308.299)',
    purple100: 'oklch(0.946 0.033 307.174)',
    purple200: 'oklch(0.902 0.063 306.703)',
@@ -157,6 +170,7 @@ export const colors = {
    purple800: 'oklch(0.438 0.218 303.724)',
    purple900: 'oklch(0.381 0.176 304.987)',
    purple950: 'oklch(0.291 0.149 302.717)',
+
    fuchsia50: 'oklch(0.977 0.017 320.058)',
    fuchsia100: 'oklch(0.952 0.037 318.852)',
    fuchsia200: 'oklch(0.903 0.076 319.62)',
@@ -168,6 +182,7 @@ export const colors = {
    fuchsia800: 'oklch(0.452 0.211 324.591)',
    fuchsia900: 'oklch(0.401 0.17 325.612)',
    fuchsia950: 'oklch(0.293 0.136 325.661)',
+
    pink50: 'oklch(0.971 0.014 343.198)',
    pink100: 'oklch(0.948 0.028 342.258)',
    pink200: 'oklch(0.899 0.061 343.231)',
@@ -179,6 +194,7 @@ export const colors = {
    pink800: 'oklch(0.459 0.187 3.815)',
    pink900: 'oklch(0.408 0.153 2.432)',
    pink950: 'oklch(0.284 0.109 3.907)',
+
    rose50: 'oklch(0.969 0.015 12.422)',
    rose100: 'oklch(0.941 0.03 12.58)',
    rose200: 'oklch(0.892 0.058 10.001)',
@@ -190,6 +206,7 @@ export const colors = {
    rose800: 'oklch(0.455 0.188 13.697)',
    rose900: 'oklch(0.41 0.159 10.272)',
    rose950: 'oklch(0.271 0.105 12.094)',
+
    slate50: 'oklch(0.984 0.003 247.858)',
    slate100: 'oklch(0.968 0.007 247.896)',
    slate200: 'oklch(0.929 0.013 255.508)',
@@ -201,6 +218,7 @@ export const colors = {
    slate800: 'oklch(0.279 0.041 260.031)',
    slate900: 'oklch(0.208 0.042 265.755)',
    slate950: 'oklch(0.129 0.042 264.695)',
+
    gray50: 'oklch(0.985 0.002 247.839)',
    gray100: 'oklch(0.967 0.003 264.542)',
    gray200: 'oklch(0.928 0.006 264.531)',
@@ -212,6 +230,7 @@ export const colors = {
    gray800: 'oklch(0.278 0.033 256.848)',
    gray900: 'oklch(0.21 0.034 264.665)',
    gray950: 'oklch(0.13 0.028 261.692)',
+
    zinc50: 'oklch(0.985 0 0)',
    zinc100: 'oklch(0.967 0.001 286.375)',
    zinc200: 'oklch(0.92 0.004 286.32)',
@@ -223,6 +242,7 @@ export const colors = {
    zinc800: 'oklch(0.274 0.006 286.033)',
    zinc900: 'oklch(0.21 0.006 285.885)',
    zinc950: 'oklch(0.141 0.005 285.823)',
+
    neutral50: 'oklch(0.985 0 0)',
    neutral100: 'oklch(0.97 0 0)',
    neutral200: 'oklch(0.922 0 0)',
@@ -234,6 +254,7 @@ export const colors = {
    neutral800: 'oklch(0.269 0 0)',
    neutral900: 'oklch(0.205 0 0)',
    neutral950: 'oklch(0.145 0 0)',
+
    stone50: 'oklch(0.985 0.001 106.423)',
    stone100: 'oklch(0.97 0.001 106.424)',
    stone200: 'oklch(0.923 0.003 48.717)',
