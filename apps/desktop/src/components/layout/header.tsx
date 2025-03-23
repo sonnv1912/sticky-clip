@@ -19,6 +19,8 @@ export const Header = ({ fetchHistory, onClickSetting }: Props) => {
          <div className='flex items-center gap-4'>
             <div
                className='cursor-pointer hover:opacity-80'
+               data-tooltip-id='tooltip'
+               data-tooltip-content='Setting'
                onClick={onClickSetting}
             >
                <Icon name='MaterialSymbolsSettingsRounded' />
@@ -26,6 +28,9 @@ export const Header = ({ fetchHistory, onClickSetting }: Props) => {
 
             <div
                className='cursor-pointer hover:opacity-80'
+               data-tooltip-id='tooltip'
+               data-tooltip-content='Clear all'
+               data-tooltip-place='bottom-end'
                onClick={() => {
                   window.clipboard.clear();
 

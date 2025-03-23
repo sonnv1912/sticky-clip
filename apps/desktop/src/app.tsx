@@ -7,6 +7,7 @@ import { SettingModal } from './modals/setting-modal';
 import { ToastContainer } from 'react-toastify';
 
 import 'assets/styles/tailwind.css';
+import { Tooltip } from 'react-tooltip';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
@@ -57,6 +58,13 @@ const App = () => {
             position='bottom-center'
             autoClose={1000}
             newestOnTop={true}
+         />
+
+         <Tooltip
+            id='tooltip'
+            style={{
+               zIndex: 90,
+            }}
          />
       </div>
    );
