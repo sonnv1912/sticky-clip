@@ -8,8 +8,7 @@
    "exports": {
       "./styles/*": {
          "import": "./dist/styles/*",
-         "require": "./dist/styles/*",
-         "types": "./dist/styles/*"
+         "require": "./dist/styles/*"
       }
    },
    "devDependencies": {

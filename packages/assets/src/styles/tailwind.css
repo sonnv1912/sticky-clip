@@ -25,6 +25,10 @@
   src: url(../fonts/raleway/Raleway-ExtraBold.ttf);
 }
 
+html {
+  font-family: "ibm-plex-mono", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

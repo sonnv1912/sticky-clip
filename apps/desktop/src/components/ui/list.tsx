@@ -11,19 +11,13 @@ type Props = {
 };
 
 export const List = ({ loading, items, fetchHistory }: Props) => {
-   // const x = useMotionValue(0);
-
    return (
       <motion.div
          animate={{ scale: 1, opacity: 1 }}
          style={{
-            height: 'calc(100vh - 56px)',
+            height: 'calc(100vh - 58px)',
          }}
-         className={clsx(
-            'mt-14 flex flex-col gap-6 p-4 overflow-auto',
-            '[&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-gray-800',
-            '[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-md',
-         )}
+         className={clsx('mt-14 flex flex-col gap-6 p-4 overflow-auto')}
       >
          <AnimatePresence mode='popLayout'>
             {items.length === 0 && !loading && (
