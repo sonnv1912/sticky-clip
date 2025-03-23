@@ -1,17 +1,18 @@
 {
-	"name": "clipboard",
-	"private": true,
-	"scripts": {
-		"desktop": "turbo run desktop --filter=desktop"
-	},
-	"devDependencies": {
-		"prettier": "^3.5.3",
-		"turbo": "^2.4.4",
-		"typescript": "5.8.2"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "yarn@1.22.22",
-	"workspaces": ["apps/*", "packages/*"]
+   "name": "clipboard",
+   "private": true,
+   "scripts": {
+      "desktop": "turbo watch desktop --filter=desktop",
+      "web": "turbo watch web --filter=web"
+   },
+   "devDependencies": {
+      "prettier": "^3.5.3",
+      "turbo": "^2.4.4",
+      "typescript": "5.8.2"
+   },
+   "engines": {
+      "node": ">=18"
+   },
+   "packageManager": "yarn@1.22.22",
+   "workspaces": ["apps/*", "packages/*"]
 }

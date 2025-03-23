@@ -16,4 +16,9 @@ export default defineConfig({
       },
    },
    plugins: [react(), tailwindcss()],
+   server: {
+      fs: {
+         strict: false,
+      },
+   },
 });

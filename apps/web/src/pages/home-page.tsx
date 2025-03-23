@@ -1,3 +1,3 @@
 export const HomePage = () => {
-   return <div>home page</div>;
+   return <div className='font-[b-ibm-plex-mono]'>home page</div>;
 };

@@ -1,0 +1,23 @@
+{
+   "name": "assets",
+   "version": "1.0.0",
+   "scripts": {
+      "build": "tsup",
+      "watch-package": "tsup --watch"
+   },
+   "exports": {
+      "./styles/*": {
+         "import": "./dist/styles/*",
+         "require": "./dist/styles/*",
+         "types": "./dist/styles/*"
+      }
+   },
+   "devDependencies": {
+      "tsup": "^8.4.0"
+   },
+   "peerDependencies": {
+      "i18next": "*",
+      "react-i18next": "*",
+      "tailwindcss": "*"
+   }
+}

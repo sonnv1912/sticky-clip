@@ -1,10 +1,17 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"ui": "tui",
-	"tasks": {
-		"desktop": {
-			"cache": false,
-			"persistent": true
-		}
-	}
+   "$schema": "https://turbo.build/schema.json",
+   "ui": "tui",
+   "tasks": {
+      "desktop": {
+         "cache": false,
+         "persistent": true,
+         "dependsOn": ["^watch-package"]
+      },
+      "web": {
+         "cache": false,
+         "persistent": true,
+         "dependsOn": ["^watch-package"]
+      },
+      "watch-package": {}
+   }
 }
