@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig((options) => {
    return {
-      entry: ['src/fonts/**/*', 'src/styles/**/*'], // Dùng mảng thay vì object
+      entry: ['src/**/*'],
       minify: !options.watch,
       clean: true,
       loader: {
