@@ -1,3 +1,5 @@
+import 'assets/styles/tailwind.css';
+
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -5,8 +7,6 @@ import { Header } from './components/layout/header';
 import { List } from './components/ui/list';
 import { SettingModal } from './modals/setting-modal';
 import { ToastContainer } from 'react-toastify';
-
-import 'assets/styles/tailwind.css';
 import { Tooltip } from 'react-tooltip';
 
 const App = () => {

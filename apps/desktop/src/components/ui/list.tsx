@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
-import { colors } from '../../assets/themes/colors';
 import { images } from './image';
+import { colors } from 'shared-configs/theme';
 
 type Props = {
    loading: boolean;

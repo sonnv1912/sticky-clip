@@ -1,14 +1,14 @@
 {
-   "name": "assets",
+   "name": "shared-configs",
    "version": "1.0.0",
    "scripts": {
       "build": "tsup",
       "watch-package": "tsup --watch"
    },
    "exports": {
-      "./styles/*": {
-         "import": "./dist/styles/*",
-         "require": "./dist/styles/*"
+      "./theme": {
+         "import": "./dist/theme/index.js",
+         "require": "./dist/theme/index.js"
       }
    },
    "devDependencies": {

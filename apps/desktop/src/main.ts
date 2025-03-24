@@ -17,7 +17,6 @@ import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { appEvent, DEFAULT_SETTING } from './configs/constants';
 import { uniqBy } from 'lodash';
-import { colors } from './assets/themes/colors';
 
 export const store = new Store<StoreState>();
 
@@ -61,7 +60,6 @@ export const createWindow = () => {
       roundedCorners: true,
       resizable: false,
       alwaysOnTop: true,
-      backgroundColor: colors.gray800,
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },

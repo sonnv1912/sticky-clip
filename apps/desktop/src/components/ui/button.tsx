@@ -1,8 +1,8 @@
 import type { CSSProperties, PropsWithChildren } from 'react';
 import { Icon, type icons } from './icon';
-import { colors } from '../../assets/themes/colors';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
+import { colors } from 'shared-configs/theme';
 
 type Props = {
    content?: string;
