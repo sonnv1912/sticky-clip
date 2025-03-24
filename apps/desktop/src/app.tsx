@@ -1,5 +1,3 @@
-import 'assets/styles/tailwind.css';
-
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';

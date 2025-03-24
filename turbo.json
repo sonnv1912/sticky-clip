@@ -2,16 +2,20 @@
    "$schema": "https://turbo.build/schema.json",
    "ui": "tui",
    "tasks": {
-      "desktop": {
+      "dev": {
          "cache": false,
          "persistent": true,
          "dependsOn": ["^watch-package"]
       },
-      "web": {
-         "cache": false,
-         "persistent": true,
-         "dependsOn": ["^watch-package"]
+      "build": {
+         "outputs": ["out"],
+         "dependsOn": ["^build-package"]
       },
-      "watch-package": {}
+      "watch-package": {
+         "outputs": ["dist"]
+      },
+      "build-package": {
+         "outputs": ["dist"]
+      }
    }
 }

@@ -2,8 +2,13 @@
    "name": "clipboard",
    "private": true,
    "scripts": {
-      "desktop": "turbo watch desktop --filter=desktop",
-      "web": "turbo watch web --filter=web"
+      "-------------------------------- DESKTOP --------------------------------": "",
+      "desktop": "turbo watch dev --filter=desktop",
+      "build-desktop": "turbo run build --filter=desktop",
+      "-------------------------------- WEBSITE --------------------------------": "",
+      "web": "turbo watch web --filter=web",
+      "-------------------------------- CLEAN --------------------------------": "",
+      "clean-modules": "rm -rf node_modules && rm -rf **/node_modules && rm -f yarn.lock && yarn cache clean && yarn"
    },
    "devDependencies": {
       "prettier": "^3.5.3",

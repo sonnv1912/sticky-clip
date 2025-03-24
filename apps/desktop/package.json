@@ -5,10 +5,13 @@
    "version": "1.0.0",
    "license": "MIT",
    "private": true,
+   "workspaces": {
+      "nohoist": ["**/assets", "**/shared-configs"]
+   },
    "scripts": {
-      "desktop": "electron-forge start",
-      "premake": "rm -rf out",
-      "make": "electron-forge make"
+      "dev": "electron-forge start",
+      "prebuild": "rm -rf out",
+      "build": "electron-forge make"
    },
    "author": {
       "name": "sonnv1912",

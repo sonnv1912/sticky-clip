@@ -2,7 +2,7 @@
    "name": "assets",
    "version": "1.0.0",
    "scripts": {
-      "build": "tsup",
+      "build-package": "tsup",
       "watch-package": "tsup --watch"
    },
    "exports": {
