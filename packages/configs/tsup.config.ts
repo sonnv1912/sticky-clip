@@ -2,13 +2,9 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig((options) => {
    return {
-      entry: {
-         'theme/index': 'src/theme/index.ts',
-      },
-      outDir: 'dist',
-      dts: true,
-      sourcemap: false,
+      entry: ['src/theme/**/*', 'src/i18n/**/*'],
       minify: !options.watch,
       clean: true,
+      dts: true,
    };
 });

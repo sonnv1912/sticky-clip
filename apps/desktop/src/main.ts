@@ -18,11 +18,11 @@ import path from 'node:path';
 import { appEvent, DEFAULT_SETTING } from './configs/constants';
 import { uniqBy } from 'lodash';
 
-export const store = new Store<StoreState>();
-
 let lastClipboardText = '';
 let lastClipboardImage = '';
 let window: BrowserWindow;
+
+export const store = new Store<StoreState>();
 
 const icon = nativeImage.createFromPath(
    app.isPackaged
