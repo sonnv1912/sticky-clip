@@ -8,7 +8,7 @@
       "-------------------------------- WEBSITE --------------------------------": "",
       "web": "turbo watch web --filter=web",
       "-------------------------------- CLEAN --------------------------------": "",
-      "clean-modules": "rm -rf node_modules && rm -rf **/node_modules && rm -f yarn.lock && yarn cache clean && yarn"
+      "clear-modules": "chmod +x ./scripts/clear-modules.sh && sh ./scripts/clear-modules.sh"
    },
    "devDependencies": {
       "prettier": "^3.5.3",
