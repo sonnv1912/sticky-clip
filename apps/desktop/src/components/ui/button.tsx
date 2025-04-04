@@ -2,7 +2,7 @@ import type { CSSProperties, PropsWithChildren } from 'react';
 import { Icon, type icons } from './icon';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
-import { colors } from 'shared-configs/theme';
+import { colors } from '../../configs/theme/colors';
 
 type Props = {
    content?: string;

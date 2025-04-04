@@ -1,10 +1,10 @@
-import { colors } from 'shared-configs/theme';
 import { EosIconsBubbleLoading } from '../../assets/icons/EosIconsBubbleLoading';
 import { FluentColorClipboard16 } from '../../assets/icons/FluentColorClipboard16';
 import { FluentColorClipboardTextEdit20 } from '../../assets/icons/FluentColorClipboardTextEdit20';
 import { MaterialSymbolsCloseRounded } from '../../assets/icons/MaterialSymbolsCloseRounded';
 import { MaterialSymbolsDelete } from '../../assets/icons/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from '../../assets/icons/MaterialSymbolsSettingsRounded';
+import { colors } from '../../configs/theme/colors';
 
 export const icons = {
    MaterialSymbolsDelete,

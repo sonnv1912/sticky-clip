@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
 import { images } from './image';
-import { colors } from 'shared-configs/theme';
+import { colors } from '../../configs/theme/colors';
 
 type Props = {
    loading: boolean;

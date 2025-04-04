@@ -1,5 +1,3 @@
-import type { IconProps } from '../../types/icon';
-
 export function EosIconsBubbleLoading(props: IconProps) {
    return (
       <svg

@@ -1,15 +1,14 @@
+import 'assets/styles/tailwind.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
 import { App } from './app';
-import 'assets/styles/tailwind.css';
 
-const root = document.body;
+const root = document.getElementById('root');
 
-createRoot(root).render(
-   <StrictMode>
-      <BrowserRouter>
+if (root) {
+   createRoot(root).render(
+      <StrictMode>
          <App />
-      </BrowserRouter>
-   </StrictMode>,
-);
+      </StrictMode>,
+   );
+}

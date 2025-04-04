@@ -1,5 +1,3 @@
-import type { IconProps } from '../../types/icon';
-
 export function MaterialSymbolsSettingsRounded(props: IconProps) {
    return (
       <svg

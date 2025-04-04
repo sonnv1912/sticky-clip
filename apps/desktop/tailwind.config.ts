@@ -1,11 +1,10 @@
-import { colors, fontFamily } from 'shared-configs/theme';
+import { fontFamily } from './src/configs/theme/font-family';
 
 module.exports = {
    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
    theme: {
       extend: {
          fontFamily,
-         colors,
       },
    },
    plugins: [],
