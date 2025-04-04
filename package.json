@@ -6,7 +6,7 @@
       "desktop": "turbo watch dev --filter=desktop",
       "build-desktop": "turbo run build --filter=desktop",
       "-------------------------------- WEBSITE --------------------------------": "",
-      "web": "turbo watch web --filter=web",
+      "web": "turbo watch dev --filter=web",
       "-------------------------------- CLEAN --------------------------------": "",
       "clear-modules": "chmod +x ./scripts/clear-modules.sh && sh ./scripts/clear-modules.sh"
    },
