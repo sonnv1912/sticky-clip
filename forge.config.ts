@@ -16,6 +16,14 @@ const config: ForgeConfig = {
       appVersion: '1.0.0',
       buildVersion: '1',
       extraResource: ['./src/assets/icons/FluentColorClipboard16.png'],
+      ignore: [
+         /\/tests?/,
+         /\/docs?/,
+         /\.map$/,
+         /\/\.git/,
+         /\/node_modules\/.*(\/test|\/__tests__)/,
+         /\/\.vscode/,
+      ],
    },
    rebuildConfig: {},
    makers: [
