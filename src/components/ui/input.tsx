@@ -6,6 +6,7 @@ type Props = {
    className?: string;
    errClassName?: string;
    errMsg?: string;
+   placeholder?: string;
    onChange?: (value: string) => void;
 };
 
@@ -28,15 +29,17 @@ export const Input = ({
    errClassName,
    className,
    errMsg,
+   placeholder,
    onChange,
 }: Props) => {
    return (
-      <div className={containerClassName}>
+      <div className={clsx(containerClassName, 'flex-1')}>
          <input
             value={value}
+            placeholder={placeholder}
             className={clsx(
                'p-2 text-white bg-gray-500 rounded-md border border-gray-400',
-               'outline-0 focus:border-sky-600',
+               'outline-0 focus:border-sky-600 w-full text-sm',
                className,
             )}
             onChange={(e) => {

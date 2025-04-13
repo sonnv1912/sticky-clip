@@ -1,6 +1,6 @@
 import { clipboard, ipcMain, nativeImage } from 'electron';
-import { clipboardEvent } from '../configs/constants';
-import { store } from '../main';
+import { clipboardEvent } from '../../configs/constants';
+import { store } from '../../main';
 
 ipcMain.handle(clipboardEvent.get, () => {
    const history = store.get('clipboardHistory', []);

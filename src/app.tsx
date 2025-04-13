@@ -8,11 +8,13 @@ import { List } from './components/ui/list';
 import { SettingModal } from './modals/setting-modal';
 import { ToastContainer } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
+import { useSearchStore } from './stores/search-store';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
    const [loading, setLoading] = useState(false);
    const [openSetting, setOpenSetting] = useState(false);
+   const { query } = useSearchStore();
 
    const fetchHistory = async () => {
       setLoading(true);
@@ -21,7 +23,7 @@ const App = () => {
 
       setLoading(false);
 
-      setHistory(data);
+      setHistory(data.filter((t) => t.value.toLowerCase().includes(query)));
    };
 
    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -33,7 +35,7 @@ const App = () => {
       return () => {
          window.removeEventListener('focus', fetchHistory);
       };
-   }, []);
+   }, [query]);
 
    return (
       <div className={clsx('bg-gray-800 text-white h-screen overflow-hidden')}>

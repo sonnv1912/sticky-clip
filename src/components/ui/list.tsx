@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
-import { images } from './image';
 import { colors } from '../../configs/theme/colors';
+import { images } from './image';
 
 type Props = {
    loading: boolean;
@@ -50,10 +50,9 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
                   // style={{ transform: `translateX(${x})` }}
                   whileHover={{
                      backgroundColor: colors.slate600,
-                     scale: 1.02,
                   }}
                   whileTap={{
-                     scale: 1,
+                     scale: 0.95,
                   }}
                   // onPanEnd={() => {
                   //    window.clipboard.removeItem(index);
@@ -69,7 +68,7 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
                >
                   {item.isImage && <img alt='' src={item.value} />}
 
-                  {!item.isImage && <p>{item.value}</p>}
+                  {!item.isImage && <pre>{item.value}</pre>}
                </motion.div>
             ))}
          </AnimatePresence>

@@ -10,7 +10,17 @@
       "module": "NodeNext",
       "moduleResolution": "nodenext",
       "resolveJsonModule": true,
-      "jsx": "react-jsx"
+      "jsx": "react-jsx",
+      "paths": {
+         "@components/*": ["./src/components/*"],
+         "@assets/*": ["./src/assets/*"],
+         "@configs/*": ["./src/assets/*"],
+         "@modals/*": ["./src/modals/*"],
+         "@schemas/*": ["./src/schemas/*"],
+         "#types/*": ["./src/types/*"],
+         "@stores/*": ["./src/stores/*"],
+         "@/*": ["./src/*"]
+      }
    },
    "include": ["src/**/*", "*.d.ts"]
 }

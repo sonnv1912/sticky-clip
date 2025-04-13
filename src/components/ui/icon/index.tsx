@@ -5,6 +5,7 @@ import { MaterialSymbolsCloseRounded } from './symbols/MaterialSymbolsCloseRound
 import { MaterialSymbolsDelete } from './symbols/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from './symbols/MaterialSymbolsSettingsRounded';
 import { colors } from '../../../configs/theme/colors';
+import { IconParkOutlineSearch } from './symbols/IconParkOutlineSearch';
 
 export const icons = {
    MaterialSymbolsDelete,
@@ -13,6 +14,7 @@ export const icons = {
    EosIconsBubbleLoading,
    FluentColorClipboard16,
    FluentColorClipboardTextEdit20,
+   IconParkOutlineSearch,
 };
 
 type Props = IconProps & {

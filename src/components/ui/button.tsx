@@ -67,7 +67,7 @@ export const Button = ({
       let result = 20;
 
       if (size === 'md') {
-         result = 28;
+         result = 24;
       }
 
       return result;
@@ -223,14 +223,13 @@ export const Button = ({
                ? {}
                : {
                     opacity: 0.8,
-                    scale: 1.05,
                  }
          }
          whileTap={
             disable
                ? {}
                : {
-                    scale: 1,
+                    opacity: 1,
                  }
          }
          className={clsx(

@@ -1,5 +1,5 @@
-import './events/app';
-import './events/clipboard';
+import './server/events/app';
+import './server/events/clipboard';
 
 import {
    BrowserWindow,
@@ -55,11 +55,11 @@ export const createWindow = () => {
       icon,
       width: windowWidth,
       height: windowHeight,
-      frame: !app.isPackaged,
       center: true,
       roundedCorners: true,
+      frame: !app.isPackaged,
       resizable: !app.isPackaged,
-      alwaysOnTop: true,
+      alwaysOnTop: app.isPackaged,
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },

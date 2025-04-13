@@ -1,49 +1,54 @@
-import { Icon } from '../ui/icon';
+import { useSearchStore } from '@stores/search-store';
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'motion/react';
+import { type ReactElement, useMemo } from 'react';
+import { HeaderBody } from './header/body';
+import { HeaderSearch } from './header/search';
 
-type Props = {
+export type HeaderProps = {
    fetchHistory: () => void;
    onClickSetting: () => void;
 };
 
-export const Header = ({ fetchHistory, onClickSetting }: Props) => {
-   return (
-      <div className='flex items-center justify-between fixed top-0 left-0 right-0 z-10 bg-gray-800 p-4'>
-         <div className='flex items-center gap-1'>
-            <Icon
-               name={
-                  window.app.isDev
-                     ? 'FluentColorClipboardTextEdit20'
-                     : 'FluentColorClipboard16'
+export const Header = ({ fetchHistory, onClickSetting }: HeaderProps) => {
+   const { mode, setSearchState } = useSearchStore();
+
+   const tabs = useMemo<Record<string, ReactElement>>(
+      () => ({
+         search: <HeaderSearch />,
+         header: (
+            <HeaderBody
+               fetchHistory={fetchHistory}
+               onClickSetting={onClickSetting}
+               onClickSearch={() =>
+                  setSearchState({
+                     mode: 'search',
+                  })
                }
             />
+         ),
+      }),
+      [fetchHistory, onClickSetting, setSearchState],
+   );
 
-            <p className='select-none font-bold text-sky-500'>StickyClip</p>
-         </div>
-
-         <div className='flex items-center gap-4'>
-            <div
-               className='cursor-pointer hover:opacity-80'
-               data-tooltip-id='tooltip'
-               data-tooltip-content='Setting'
-               onClick={onClickSetting}
+   return (
+      <div
+         className={clsx(
+            'fixed top-0 left-0 right-0 z-10 bg-gray-800 px-4 h-14',
+            'flex items-center w-full',
+         )}
+      >
+         <AnimatePresence initial={false} mode='wait'>
+            <motion.div
+               key={mode}
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               className='w-full'
             >
-               <Icon name='MaterialSymbolsSettingsRounded' />
-            </div>
-
-            <div
-               className='cursor-pointer hover:opacity-80'
-               data-tooltip-id='tooltip'
-               data-tooltip-content='Clear all'
-               data-tooltip-place='bottom-end'
-               onClick={() => {
-                  window.clipboard.clear();
-
-                  fetchHistory();
-               }}
-            >
-               <Icon name='MaterialSymbolsDelete' />
-            </div>
-         </div>
+               {tabs[mode]}
+            </motion.div>
+         </AnimatePresence>
       </div>
    );
 };
