@@ -17,9 +17,7 @@ export const Header = ({ fetchHistory, onClickSetting }: Props) => {
                }
             />
 
-            <p className='select-none font-[b-ibm-plex-mono] text-sky-500'>
-               StickyClip
-            </p>
+            <p className='select-none font-bold text-sky-500'>StickyClip</p>
          </div>
 
          <div className='flex items-center gap-4'>

@@ -55,10 +55,10 @@ export const createWindow = () => {
       icon,
       width: windowWidth,
       height: windowHeight,
-      frame: false,
+      frame: !app.isPackaged,
       center: true,
       roundedCorners: true,
-      resizable: false,
+      resizable: !app.isPackaged,
       alwaysOnTop: true,
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
@@ -84,8 +84,6 @@ export const createWindow = () => {
 
    if (!app.isPackaged) {
       window.webContents.openDevTools();
-      window.setAlwaysOnTop(false);
-      window.setResizable(true);
    }
 
    if (app.isPackaged) {

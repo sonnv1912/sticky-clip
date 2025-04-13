@@ -1,32 +1,39 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "ibm-plex-mono";
+  font-family: writer;
+  src: url(../fonts/writer/regular.woff2) format("woff2");
+  font-display: swap;
   font-weight: 400;
-  src: url(../fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf);
-}
-@font-face {
-  font-family: "semi-b-ibm-plex-mono";
-  font-weight: 500;
-  src: url(../fonts/ibm-plex-mono/IBMPlexMono-SemiBold.ttf);
-}
-@font-face {
-  font-family: "b-ibm-plex-mono";
-  src: url(../fonts/ibm-plex-mono/IBMPlexMono-Bold.ttf);
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "raleway";
-  src: url(../fonts/raleway/Raleway-Regular.ttf);
+  font-family: writer;
+  src: url(../fonts/writer/regular-italic.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
 }
 
 @font-face {
-  font-family: "eb-raleway";
-  src: url(../fonts/raleway/Raleway-ExtraBold.ttf);
+  font-family: writer;
+  src: url(../fonts/writer/bold.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: writer;
+  src: url(../fonts/writer/bold-italic.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: italic;
 }
 
 html {
-  font-family: "ibm-plex-mono", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --default-font-family: "writer";
 }
 
 ::-webkit-scrollbar {
