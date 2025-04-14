@@ -1,8 +1,9 @@
-import type { CSSProperties, PropsWithChildren } from 'react';
+import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
 import { Icon, type icons } from './icon';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
 import { colors } from '@configs/theme/colors';
+import { useAppStore } from '@stores/app-store';
 
 type Props = {
    content?: string;
@@ -20,7 +21,8 @@ type Props = {
       | 'black'
       | 'green'
       | 'blue'
-      | 'violet';
+      | 'violet'
+      | 'text';
    rounded?: boolean;
    loading?: boolean;
    disable?: boolean;
@@ -52,6 +54,8 @@ export const Button = ({
    visible = true,
    onClick,
 }: PropsWithChildren<Props>) => {
+   const { theme } = useAppStore();
+
    const buttonSize = (() => {
       let result = 40;
 
@@ -72,15 +76,16 @@ export const Button = ({
       return result;
    })();
 
-   const dynamicStyles = (() => {
+   const dynamicStyles = useMemo(() => {
       const white = colors.white;
       const black = colors.black;
-      const primary = colors.darkPrimary[500];
+      const primary = colors.primary[500];
       const gray = colors.gray[500];
       const green = colors.green[200];
       const textGreen = colors.green[800];
       const blue = colors.blue[600];
       const violet = colors.violet[500];
+      const textSchema = theme === 'dark' ? colors.paragraph : '#373f37';
 
       const button: CSSProperties = {
          height: buttonSize,
@@ -213,6 +218,22 @@ export const Button = ({
          }
       }
 
+      if (schema === 'text') {
+         button.backgroundColor = textSchema;
+
+         text.color = black;
+
+         if (variant === 'outline') {
+            button.borderColor = textSchema;
+
+            text.color = textSchema;
+         }
+
+         if (variant === 'transparent') {
+            text.color = textSchema;
+         }
+      }
+
       if (rounded) {
          button.borderRadius = 9999;
       }
@@ -232,7 +253,18 @@ export const Button = ({
          button: children ? {} : button,
          text,
       };
-   })();
+   }, [
+      buttonSize,
+      children,
+      content,
+      leftIcon,
+      rightIcon,
+      rounded,
+      schema,
+      size,
+      theme,
+      variant,
+   ]);
 
    const disable = _disable || loading;
 

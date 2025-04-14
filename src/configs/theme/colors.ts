@@ -24,7 +24,7 @@ export const colors = {
       '950': '#2a0273',
    },
 
-   darkPrimary: {
+   primary: {
       '50': '#f6f6f6',
       '100': '#e7e7e7',
       '200': '#d1d1d1',

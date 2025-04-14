@@ -1,6 +1,7 @@
 import { Button } from '@components/ui/button';
 import { Icon } from '../../ui/icon';
 import type { HeaderProps } from '.';
+import { useAppStore } from '@stores/app-store';
 
 type Props = HeaderProps & {
    onClickSearch: () => void;
@@ -11,6 +12,8 @@ export const HeaderBody = ({
    onClickSetting,
    onClickSearch,
 }: Props) => {
+   const { setAppState, theme } = useAppStore();
+
    return (
       <div className='flex items-center justify-between'>
          <div className='flex items-center gap-1'>
@@ -30,7 +33,7 @@ export const HeaderBody = ({
                size='md'
                leftIcon='IconParkOutlineSearch'
                variant='transparent'
-               schema='white'
+               schema='text'
                onClick={onClickSearch}
             />
 
@@ -38,7 +41,7 @@ export const HeaderBody = ({
                size='md'
                leftIcon='MaterialSymbolsSettingsRounded'
                variant='transparent'
-               schema='white'
+               schema='text'
                onClick={onClickSetting}
             />
 
@@ -46,11 +49,27 @@ export const HeaderBody = ({
                size='md'
                leftIcon='MaterialSymbolsDelete'
                variant='transparent'
-               schema='white'
+               schema='text'
                onClick={() => {
                   window.clipboard.clear();
 
                   fetchHistory();
+               }}
+            />
+
+            <Button
+               size='md'
+               leftIcon={
+                  theme === 'dark'
+                     ? 'MaterialSymbolsSunnyRounded'
+                     : 'MaterialSymbolsMoonStarsRounded'
+               }
+               variant='transparent'
+               schema='text'
+               onClick={() => {
+                  setAppState({
+                     theme: theme === 'dark' ? 'light' : 'dark',
+                  });
                }}
             />
          </div>

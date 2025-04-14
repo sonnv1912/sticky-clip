@@ -18,7 +18,7 @@ export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
          style={{
             height: `calc(100vh - ${HEADER_HEIGHT})`,
          }}
-         className={clsx('mt-14 flex flex-col gap-6 p-4')}
+         className={clsx('mt-14 flex flex-col gap-6 p-4 overflow-auto')}
       >
          <AnimatePresence mode='popLayout' initial={true}>
             {items.length === 0 && !loading && (

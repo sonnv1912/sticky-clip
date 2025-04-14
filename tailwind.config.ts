@@ -11,7 +11,7 @@ module.exports = {
          },
          colors,
          shadow: {
-            'shadow-5': '0 0 1px 5px rgba(22, 22, 22, 1)',
+            '5': '0 0 1px 5px rgba(22, 22, 22, 1)',
          },
       },
    },

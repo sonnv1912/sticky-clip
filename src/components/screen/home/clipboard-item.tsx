@@ -18,7 +18,7 @@ export const ClipboardItem = ({ data, onClick, onMarked }: Props) => {
          exit={{ opacity: 0 }}
          className={clsx(
             'p-4 bg-card rounded-2xl cursor-pointer break-all select-none text-sm text-paragraph',
-            'hover:shadow-shadow-5 transition-all duration-300 border border-box-border relative',
+            'hover:shadow-5 transition-all duration-300 border border-box-border relative z-1',
          )}
          // drag='x'
          // dragConstraints={{ left: 0, right: 0 }}
@@ -46,7 +46,7 @@ export const ClipboardItem = ({ data, onClick, onMarked }: Props) => {
             onClick={() => {
                onMarked();
             }}
-            className={clsx('absolute -top-2 -right-2', {
+            className={clsx('absolute -top-2 -right-2 z-10', {
                grayscale: !data.marked,
                'grayscale-0': data.marked,
             })}
