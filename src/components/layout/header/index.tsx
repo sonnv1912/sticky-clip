@@ -2,8 +2,9 @@ import { useSearchStore } from '@stores/search-store';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { type ReactElement, useMemo } from 'react';
-import { HeaderBody } from './header/body';
-import { HeaderSearch } from './header/search';
+import { HeaderBody } from './header-body';
+import { HeaderSearch } from './header-search';
+import { HEADER_HEIGHT } from '@configs/constants';
 
 export type HeaderProps = {
    fetchHistory: () => void;
@@ -34,9 +35,12 @@ export const Header = ({ fetchHistory, onClickSetting }: HeaderProps) => {
    return (
       <div
          className={clsx(
-            'fixed top-0 left-0 right-0 z-10 bg-gray-800 px-4 h-14',
+            'fixed top-0 left-0 right-0 z-10 bg-box px-4',
             'flex items-center w-full',
          )}
+         style={{
+            height: HEADER_HEIGHT,
+         }}
       >
          <AnimatePresence initial={false} mode='wait'>
             <motion.div

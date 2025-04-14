@@ -14,7 +14,7 @@
       "paths": {
          "@components/*": ["./src/components/*"],
          "@assets/*": ["./src/assets/*"],
-         "@configs/*": ["./src/assets/*"],
+         "@configs/*": ["./src/configs/*"],
          "@modals/*": ["./src/modals/*"],
          "@schemas/*": ["./src/schemas/*"],
          "#types/*": ["./src/types/*"],

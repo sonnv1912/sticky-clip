@@ -75,6 +75,7 @@ const SettingModalBody = ({ onSuccess }: Props) => {
          <div className='flex items-center justify-end mt-7'>
             <Button
                content='Save'
+               schema='blue'
                className='self-end'
                disable={!formState.isValid}
                onClick={onSubmit}

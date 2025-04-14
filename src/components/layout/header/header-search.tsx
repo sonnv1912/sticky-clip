@@ -16,6 +16,7 @@ export const HeaderSearch = () => {
 
          <Button
             leftIcon='MaterialSymbolsCloseRounded'
+            schema='violet'
             size='sm'
             onClick={() => {
                setSearchState({

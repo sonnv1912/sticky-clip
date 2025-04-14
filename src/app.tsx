@@ -38,7 +38,7 @@ const App = () => {
    }, [query]);
 
    return (
-      <div className={clsx('bg-gray-800 text-white h-screen overflow-hidden')}>
+      <div className={clsx('bg-box h-screen overflow-hidden')}>
          <Header
             fetchHistory={fetchHistory}
             onClickSetting={() => setOpenSetting(true)}

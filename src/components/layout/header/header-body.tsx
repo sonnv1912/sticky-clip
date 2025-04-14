@@ -1,6 +1,6 @@
 import { Button } from '@components/ui/button';
 import { Icon } from '../../ui/icon';
-import type { HeaderProps } from '../header';
+import type { HeaderProps } from '.';
 
 type Props = HeaderProps & {
    onClickSearch: () => void;
@@ -27,6 +27,7 @@ export const HeaderBody = ({
 
          <div className='flex items-center gap-4'>
             <Button
+               size='md'
                leftIcon='IconParkOutlineSearch'
                variant='transparent'
                schema='white'
@@ -34,6 +35,7 @@ export const HeaderBody = ({
             />
 
             <Button
+               size='md'
                leftIcon='MaterialSymbolsSettingsRounded'
                variant='transparent'
                schema='white'
@@ -41,6 +43,7 @@ export const HeaderBody = ({
             />
 
             <Button
+               size='md'
                leftIcon='MaterialSymbolsDelete'
                variant='transparent'
                schema='white'

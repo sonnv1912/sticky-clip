@@ -4,8 +4,8 @@ import { FluentColorClipboardTextEdit20 } from './symbols/FluentColorClipboardTe
 import { MaterialSymbolsCloseRounded } from './symbols/MaterialSymbolsCloseRounded';
 import { MaterialSymbolsDelete } from './symbols/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from './symbols/MaterialSymbolsSettingsRounded';
-import { colors } from '../../../configs/theme/colors';
 import { IconParkOutlineSearch } from './symbols/IconParkOutlineSearch';
+import colors from 'tailwindcss/colors';
 
 export const icons = {
    MaterialSymbolsDelete,

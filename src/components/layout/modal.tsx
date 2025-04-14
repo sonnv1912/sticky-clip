@@ -36,7 +36,7 @@ export const Modal = ({
                   animate={{ opacity: 1, translateY: 0 }}
                   exit={{ opacity: 0, translateY: '100%' }}
                   className={clsx(
-                     'bg-gray-800 rounded-xl p-4 flex-1 z-[60]',
+                     'bg-box rounded-xl p-4 flex-1 z-[60] text-paragraph',
                      className,
                   )}
                   onClick={(e) => e.stopPropagation()}

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
-import { colors } from '../../configs/theme/colors';
 import { images } from './image';
+import { HEADER_HEIGHT } from '@configs/constants';
 
 type Props = {
    loading: boolean;
@@ -15,17 +15,18 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
       <motion.div
          animate={{ scale: 1, opacity: 1 }}
          style={{
-            height: 'calc(100vh - 58px)',
+            height: `calc(100vh - ${HEADER_HEIGHT})`,
          }}
          className={clsx('mt-14 flex flex-col gap-6 p-4 overflow-auto')}
       >
-         <AnimatePresence mode='popLayout'>
+         <AnimatePresence mode='popLayout' initial={true}>
             {items.length === 0 && !loading && (
                <motion.img
                   alt=''
                   layout={true}
                   src={images.NoDataClipboard}
                   animate={{ opacity: 1 }}
+                  initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className='mx-auto mt-12'
                   style={{
@@ -40,17 +41,16 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
                   key={item.id}
                   layout={true}
                   animate={{ opacity: 1 }}
+                  initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className={clsx(
-                     'p-4 bg-gray-700 rounded-2xl cursor-pointer break-all select-none',
+                     'p-4 bg-card rounded-2xl cursor-pointer break-all select-none text-sm text-paragraph',
+                     'hover:shadow-shadow-5 transition-all duration-300 border border-box-border',
                   )}
                   // drag='x'
                   // dragConstraints={{ left: 0, right: 0 }}
                   // dragElastic={0.6}
                   // style={{ transform: `translateX(${x})` }}
-                  whileHover={{
-                     backgroundColor: colors.slate600,
-                  }}
                   whileTap={{
                      scale: 0.95,
                   }}

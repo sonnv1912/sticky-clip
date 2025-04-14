@@ -2,7 +2,7 @@ import type { CSSProperties, PropsWithChildren } from 'react';
 import { Icon, type icons } from './icon';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
-import { colors } from '../../configs/theme/colors';
+import { colors } from '@configs/theme/colors';
 
 type Props = {
    content?: string;
@@ -13,7 +13,14 @@ type Props = {
    rightIcon?: keyof typeof icons;
    iconSize?: number;
    size?: 'sm' | 'md' | 'lg';
-   schema?: 'primary' | 'gray' | 'white' | 'black' | 'green' | 'blue';
+   schema?:
+      | 'primary'
+      | 'gray'
+      | 'white'
+      | 'black'
+      | 'green'
+      | 'blue'
+      | 'violet';
    rounded?: boolean;
    loading?: boolean;
    disable?: boolean;
@@ -33,7 +40,7 @@ export const Button = ({
    //    badge,
    loading,
    loadingContent,
-   size = 'md',
+   size = 'sm',
    rounded = false,
    schema = 'primary',
    iconSize: _iconSize,
@@ -45,14 +52,6 @@ export const Button = ({
    visible = true,
    onClick,
 }: PropsWithChildren<Props>) => {
-   const primary = colors.gray900;
-   const white = colors.white;
-   const gray = colors.gray500;
-   const black = colors.gray950;
-   const green = colors.green200;
-   const textGreen = colors.green800;
-   const blue = colors.blue400;
-
    const buttonSize = (() => {
       let result = 40;
 
@@ -74,14 +73,23 @@ export const Button = ({
    })();
 
    const dynamicStyles = (() => {
+      const white = colors.white;
+      const black = colors.black;
+      const primary = colors.darkPrimary[500];
+      const gray = colors.gray[500];
+      const green = colors.green[200];
+      const textGreen = colors.green[800];
+      const blue = colors.blue[600];
+      const violet = colors.violet[500];
+
       const button: CSSProperties = {
          height: buttonSize,
          display: 'flex',
          alignItems: 'center',
          justifyContent: 'center',
          borderRadius: 8,
-         paddingLeft: 8,
-         paddingRight: 9,
+         paddingLeft: 16,
+         paddingRight: 16,
          borderWidth: 2,
          borderColor: 'transparent',
       };
@@ -121,7 +129,7 @@ export const Button = ({
          }
 
          if (variant === 'transparent') {
-            text.color = colors.text;
+            text.color = colors.paragraph;
          }
       }
 
@@ -186,6 +194,22 @@ export const Button = ({
 
          if (variant === 'transparent') {
             text.color = green;
+         }
+      }
+
+      if (schema === 'violet') {
+         button.backgroundColor = violet;
+
+         text.color = white;
+
+         if (variant === 'outline') {
+            button.borderColor = violet;
+
+            text.color = violet;
+         }
+
+         if (variant === 'transparent') {
+            text.color = violet;
          }
       }
 

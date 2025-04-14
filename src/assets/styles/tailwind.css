@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../../tailwind.config.ts";
 
 @font-face {
   font-family: writer;
@@ -32,27 +33,21 @@
   font-style: italic;
 }
 
-html {
-  --default-font-family: "writer";
-}
-
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: black;
+  @apply bg-black;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 10px;
+  @apply bg-gray-200 rounded-2xl;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2457a8;
-  cursor: pointer;
+  @apply bg-gray-200 cursor-pointer;
 }
 
 pre {

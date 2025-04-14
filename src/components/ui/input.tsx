@@ -38,8 +38,8 @@ export const Input = ({
             value={value}
             placeholder={placeholder}
             className={clsx(
-               'p-2 text-white bg-gray-500 rounded-md border border-gray-400',
-               'outline-0 focus:border-sky-600 w-full text-sm',
+               'px-2 text-white bg-card rounded-md',
+               'outline-box-border w-full text-sm h-10',
                className,
             )}
             onChange={(e) => {
