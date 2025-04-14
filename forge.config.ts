@@ -13,7 +13,7 @@ const config: ForgeConfig = {
       asar: true,
       icon: './src/assets/icons/FluentColorClipboard16.icns',
       name: 'StickyClip',
-      appVersion: '1.0.0',
+      appVersion: '2.0.0',
       buildVersion: '1',
       extraResource: ['./src/assets/icons/FluentColorClipboard16.png'],
       ignore: [
