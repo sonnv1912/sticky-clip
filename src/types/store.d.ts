@@ -7,6 +7,7 @@ interface ClipboardHistory {
    id: string;
    value: string;
    isImage: boolean;
+   marked: boolean;
 }
 
 interface StoreState {

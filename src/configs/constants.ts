@@ -13,6 +13,7 @@ export const clipboardEvent = {
    clear: 'clear-clipboard',
    copyItem: 'copy-clipboard-item',
    removeItem: 'remove-clipboard-item',
+   updateItem: 'update-clipboard-item',
 };
 
 export const DEFAULT_SETTING: Setting = {

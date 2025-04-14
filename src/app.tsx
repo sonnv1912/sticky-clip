@@ -1,10 +1,10 @@
 import './assets/styles/tailwind.css';
 
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Header } from './components/layout/header';
-import { List } from './components/ui/list';
+import { ListClipboard } from './components/screen/home/list-clipboard';
 import { SettingModal } from './modals/setting-modal';
 import { ToastContainer } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
@@ -16,17 +16,28 @@ const App = () => {
    const [openSetting, setOpenSetting] = useState(false);
    const { query } = useSearchStore();
 
-   const fetchHistory = async () => {
+   const fetchHistory = useCallback(async () => {
       setLoading(true);
 
       const data = await window.clipboard.get();
 
       setLoading(false);
 
-      setHistory(data.filter((t) => t.value.toLowerCase().includes(query)));
-   };
+      const filtered = data.filter((t) =>
+         t.value.toLowerCase().includes(query),
+      );
 
-   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+      const sorted = filtered.sort((a, b) => {
+         if (a.marked === b.marked) {
+            return 0;
+         }
+
+         return a.marked ? -1 : 1;
+      });
+
+      setHistory(sorted);
+   }, [query]);
+
    useEffect(() => {
       fetchHistory();
 
@@ -35,16 +46,20 @@ const App = () => {
       return () => {
          window.removeEventListener('focus', fetchHistory);
       };
-   }, [query]);
+   }, [fetchHistory]);
 
    return (
-      <div className={clsx('bg-box h-screen overflow-hidden')}>
+      <div className={clsx('bg-box h-screen overflow-auto')}>
          <Header
             fetchHistory={fetchHistory}
             onClickSetting={() => setOpenSetting(true)}
          />
 
-         <List fetchHistory={fetchHistory} items={history} loading={loading} />
+         <ListClipboard
+            fetchHistory={fetchHistory}
+            items={history}
+            loading={loading}
+         />
 
          <SettingModal
             open={openSetting}

@@ -1,5 +1,5 @@
-import './server/events/app';
-import './server/events/clipboard';
+import './server/events/app-event';
+import './server/events/clipboard-event';
 
 import {
    BrowserWindow,
@@ -131,6 +131,7 @@ const watchClipboard = () => {
             id: randomUUID(),
             value: text,
             isImage: false,
+            marked: false,
          });
 
          store.set('clipboardHistory', uniqBy(CLIPBOARD, 'value'));
@@ -147,6 +148,7 @@ const watchClipboard = () => {
             id: randomUUID(),
             value: image.toDataURL(),
             isImage: true,
+            marked: false,
          });
 
          store.set('clipboardHistory', uniqBy(CLIPBOARD, 'value'));

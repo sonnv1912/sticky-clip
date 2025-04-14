@@ -1,8 +1,9 @@
 interface ClipboardStore {
    get: () => Promise<ClipboardHistory[]>;
    clear: () => void;
-   removeItem: (index: ClipboardEventParams['removeItem']) => void;
-   copyItem: (index: ClipboardEventParams['copyItem']) => void;
+   removeItem: (payload: ClipboardEventParams['removeItem']) => void;
+   copyItem: (payload: ClipboardEventParams['copyItem']) => void;
+   updateItem: (payload: ClipboardEventParams['updateItem']) => void;
 }
 
 interface AppStore {

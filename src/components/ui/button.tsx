@@ -88,8 +88,8 @@ export const Button = ({
          alignItems: 'center',
          justifyContent: 'center',
          borderRadius: 8,
-         paddingLeft: 16,
-         paddingRight: 16,
+         paddingLeft: content ? 16 : 8,
+         paddingRight: content ? 16 : 8,
          borderWidth: 2,
          borderColor: 'transparent',
       };
@@ -256,15 +256,15 @@ export const Button = ({
                     opacity: 1,
                  }
          }
-         className={clsx(
-            'gap-8 relative overflow-hidden',
-            {
-               'cursor-pointer': !disable,
-               'cursor-not-allowed': disable,
-            },
-            className,
-         )}
-         onClick={onClick}
+         className={clsx('gap-8 overflow-hidden', className, {
+            'cursor-pointer': !disable,
+            'cursor-not-allowed': disable,
+         })}
+         onClick={(e) => {
+            e.stopPropagation();
+
+            onClick();
+         }}
       >
          {children && children}
 

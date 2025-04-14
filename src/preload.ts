@@ -10,6 +10,9 @@ contextBridge.exposeInMainWorld('clipboard', {
 
    removeItem: (payload: ClipboardEventParams['removeItem']) =>
       ipcRenderer.invoke(clipboardEvent.removeItem, payload),
+
+   updateItem: (payload: ClipboardEventParams['updateItem']) =>
+      ipcRenderer.invoke(clipboardEvent.updateItem, payload),
 });
 
 contextBridge.exposeInMainWorld('app', {

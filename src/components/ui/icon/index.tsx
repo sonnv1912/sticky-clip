@@ -6,6 +6,7 @@ import { MaterialSymbolsDelete } from './symbols/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from './symbols/MaterialSymbolsSettingsRounded';
 import { IconParkOutlineSearch } from './symbols/IconParkOutlineSearch';
 import colors from 'tailwindcss/colors';
+import { NotoStar } from './symbols/NotoStar';
 
 export const icons = {
    MaterialSymbolsDelete,
@@ -15,6 +16,7 @@ export const icons = {
    FluentColorClipboard16,
    FluentColorClipboardTextEdit20,
    IconParkOutlineSearch,
+   NotoStar,
 };
 
 type Props = IconProps & {

@@ -45,3 +45,17 @@ ipcMain.handle(
       }
    },
 );
+
+ipcMain.handle(
+   clipboardEvent.updateItem,
+   (_e, arg: ClipboardEventParams['updateItem']) => {
+      const history = store.get('clipboardHistory', []);
+      const foundIndex = history.findIndex((item) => item.id === arg.id);
+
+      if (foundIndex > -1) {
+         history[foundIndex] = arg;
+
+         store.set('clipboardHistory', history);
+      }
+   },
+);

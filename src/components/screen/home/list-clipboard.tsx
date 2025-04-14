@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
-import { images } from './image';
+import { images } from '../../ui/image';
 import { HEADER_HEIGHT } from '@configs/constants';
+import { ClipboardItem } from './clipboard-item';
 
 type Props = {
    loading: boolean;
@@ -10,14 +11,14 @@ type Props = {
    fetchHistory: () => void;
 };
 
-export const List = ({ loading, items, fetchHistory }: Props) => {
+export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
    return (
       <motion.div
          animate={{ scale: 1, opacity: 1 }}
          style={{
             height: `calc(100vh - ${HEADER_HEIGHT})`,
          }}
-         className={clsx('mt-14 flex flex-col gap-6 p-4 overflow-auto')}
+         className={clsx('mt-14 flex flex-col gap-6 p-4')}
       >
          <AnimatePresence mode='popLayout' initial={true}>
             {items.length === 0 && !loading && (
@@ -37,27 +38,9 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
             )}
 
             {items.map((item) => (
-               <motion.div
+               <ClipboardItem
                   key={item.id}
-                  layout={true}
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className={clsx(
-                     'p-4 bg-card rounded-2xl cursor-pointer break-all select-none text-sm text-paragraph',
-                     'hover:shadow-shadow-5 transition-all duration-300 border border-box-border',
-                  )}
-                  // drag='x'
-                  // dragConstraints={{ left: 0, right: 0 }}
-                  // dragElastic={0.6}
-                  // style={{ transform: `translateX(${x})` }}
-                  whileTap={{
-                     scale: 0.95,
-                  }}
-                  // onPanEnd={() => {
-                  //    window.clipboard.removeItem(index);
-                  //    fetchHistory();
-                  // }}
+                  data={item}
                   onClick={() => {
                      window.clipboard.copyItem(item);
 
@@ -65,11 +48,15 @@ export const List = ({ loading, items, fetchHistory }: Props) => {
 
                      toast.success('Copied to clipboard');
                   }}
-               >
-                  {item.isImage && <img alt='' src={item.value} />}
+                  onMarked={() => {
+                     window.clipboard.updateItem({
+                        ...item,
+                        marked: !item.marked,
+                     });
 
-                  {!item.isImage && <pre>{item.value}</pre>}
-               </motion.div>
+                     fetchHistory();
+                  }}
+               />
             ))}
          </AnimatePresence>
       </motion.div>
