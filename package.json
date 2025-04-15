@@ -1,8 +1,8 @@
 {
-   "name": "desktop",
-   "description": "StickyClip - Your clipboard manager",
+   "name": "sticky-clip",
+   "description": "Sticky Clip - Your clipboard manager",
    "main": ".vite/build/main.js",
-   "version": "2.0.0",
+   "version": "2.1.0",
    "license": "MIT",
    "private": true,
    "scripts": {

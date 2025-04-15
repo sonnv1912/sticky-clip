@@ -116,7 +116,7 @@ const createTrackIcon = () => {
       },
    ]);
 
-   tray.setToolTip('StickyClip');
+   tray.setToolTip('Sticky Clip');
    tray.setContextMenu(contextMenu);
 };
 

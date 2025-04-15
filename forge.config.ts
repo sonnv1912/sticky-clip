@@ -12,8 +12,8 @@ const config: ForgeConfig = {
    packagerConfig: {
       asar: true,
       icon: './src/assets/icons/FluentColorClipboard16.icns',
-      name: 'StickyClip',
-      appVersion: '2.0.0',
+      name: 'Sticky Clip',
+      appVersion: '2.1.0',
       buildVersion: '1',
       prune: true,
       extraResource: ['./src/assets/icons/FluentColorClipboard16.png'],
@@ -33,7 +33,7 @@ const config: ForgeConfig = {
       new MakerDMG({
          icon: './src/assets/icons/FluentColorClipboard16.icns',
          format: 'ULFO',
-         name: 'StickyClip',
+         name: 'Sticky Clip',
       }),
    ],
    plugins: [

@@ -25,7 +25,7 @@ export const HeaderBody = ({
                }
             />
 
-            <p className='select-none font-bold text-sky-500'>StickyClip</p>
+            <p className='select-none font-bold text-sky-500'>Sticky Clip</p>
          </div>
 
          <div className='flex items-center gap-4'>
