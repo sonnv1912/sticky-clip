@@ -1,4 +1,4 @@
-import './assets/styles/tailwind.css';
+import './assets/styles/main.css';
 
 import clsx from 'clsx';
 import { useCallback, useEffect, useState } from 'react';

@@ -9,6 +9,7 @@ export const colors = {
    boxBorder: 'rgba(66,66,66,1)',
    paragraph: '#fff',
    subParagraph: 'rgb(192, 192, 192)',
+   fade: 'rgba(0, 0, 0, 0.4)',
 
    violet: {
       '50': '#f4f1ff',

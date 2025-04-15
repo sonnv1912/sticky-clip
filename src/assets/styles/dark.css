@@ -1,0 +1,11 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-paragraph rounded-2xl;
+}

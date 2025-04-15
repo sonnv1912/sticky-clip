@@ -13,10 +13,10 @@ import {
    screen,
 } from 'electron';
 import Store from 'electron-store';
+import { uniqBy } from 'lodash';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
-import { appEvent, DEFAULT_SETTING } from './configs/constants';
-import { uniqBy } from 'lodash';
+import { DEFAULT_SETTING, appEvent } from './configs/constants';
 
 let lastClipboardText = '';
 let lastClipboardImage = '';
@@ -34,12 +34,14 @@ const icon = nativeImage.createFromPath(
 );
 
 const show = () => {
-   window.show();
    window.focus();
+   window.setOpacity(1);
+   window.moveTop();
 };
 
 const hide = () => {
-   window.hide();
+   window.setOpacity(0);
+   window.blur();
 };
 
 export const createWindow = () => {
@@ -59,7 +61,7 @@ export const createWindow = () => {
       roundedCorners: true,
       frame: !app.isPackaged,
       resizable: !app.isPackaged,
-      alwaysOnTop: app.isPackaged,
+      show: false,
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },
@@ -69,7 +71,10 @@ export const createWindow = () => {
       }
    });
 
-   app.dock.setIcon(icon);
+   window.once('ready-to-show', () => {
+      window.show();
+      show();
+   });
 
    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
       window.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
@@ -87,19 +92,21 @@ export const createWindow = () => {
    }
 
    if (app.isPackaged) {
-      app.dock.hide();
+      if (process.platform === 'darwin') {
+         app.setActivationPolicy('accessory');
+      }
    }
 };
 
 const createTrackIcon = () => {
    const tray = new Tray(icon.resize({ height: 20, width: 20 }));
-   const SETTING = store.get('setting', DEFAULT_SETTING);
 
    const contextMenu = Menu.buildFromTemplate([
       {
          label: 'Open',
-         click: show,
-         accelerator: SETTING.shortcut,
+         click: () => {
+            show();
+         },
       },
       {
          label: 'Quit',
@@ -156,16 +163,14 @@ const watchClipboard = () => {
    }, 1000);
 };
 
-const initEvent = () => {
+const registerShortcut = () => {
    const SETTING = store.get('setting', DEFAULT_SETTING);
 
-   ipcMain.handle(appEvent.hide, hide);
-
-   ipcMain.handle(appEvent.show, show);
-
    if (SETTING.shortcut) {
+      globalShortcut.unregisterAll();
+
       globalShortcut.register(SETTING.shortcut, () => {
-         if (window.isVisible()) {
+         if (window.getOpacity()) {
             hide();
 
             return;
@@ -174,6 +179,32 @@ const initEvent = () => {
          show();
       });
    }
+};
+
+const initEvent = () => {
+   registerShortcut();
+
+   ipcMain.handle(appEvent.hide, hide);
+
+   ipcMain.handle(appEvent.show, show);
+
+   ipcMain.handle(appEvent.updateSetting, (_e, arg: Setting) => {
+      const CLIPBOARD = store.get('clipboardHistory');
+      const SETTING = store.get('setting');
+
+      store.set('setting', {
+         ...SETTING,
+         ...arg,
+      });
+
+      if (arg.shortcut !== SETTING.shortcut) {
+         registerShortcut();
+      }
+
+      if (CLIPBOARD.length > arg.maxItem) {
+         store.set('clipboardHistory', CLIPBOARD.slice(0, arg.maxItem));
+      }
+   });
 };
 
 app.on('quit', () => {

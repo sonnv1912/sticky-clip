@@ -1,0 +1,49 @@
+.light {
+  --paragraph: #373f37;
+  --box: #f6f6f6;
+  --card: #ffffff;
+  --background: #eeeeee;
+  --box-border: rgba(240, 240, 240, 1);
+  --shadow-5: 0 0 1px 5px rgba(222, 222, 222, 1);
+}
+
+.light .text-paragraph {
+  color: var(--paragraph);
+}
+
+.light .bg-background {
+  background-color: var(--background);
+}
+
+.light .bg-box {
+  background-color: var(--box);
+}
+
+.light .bg-card {
+  background-color: var(--card);
+}
+
+.light .border-box-border {
+  border-color: var(--box-border);
+}
+
+.light .hover\:shadow-5:hover {
+  box-shadow: var(--shadow-5);
+}
+
+.light .outline-box-border {
+  outline-color: var(--box-border);
+}
+
+.light ::-webkit-scrollbar-track {
+  background-color: var(--background);
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background-color: var(--paragraph);
+  border-radius: 16px;
+}
+
+.light .placeholder\:text-paragraph::placeholder {
+  color: var(--paragraph);
+}

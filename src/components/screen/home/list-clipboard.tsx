@@ -1,14 +1,28 @@
+import { HEADER_HEIGHT } from '@configs/constants';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'react-toastify';
-import { images } from '../../ui/image';
-import { HEADER_HEIGHT } from '@configs/constants';
 import { ClipboardItem } from './clipboard-item';
 
 type Props = {
    loading: boolean;
    items: ClipboardHistory[];
    fetchHistory: () => void;
+};
+
+const emptyClipboardMessages = [
+   'Oops! Your clipboard is as empty as my weekend plans. 😅',
+   'Clipboard says: Nothing to paste here, buddy! 🤖',
+   'Looks like your clipboard went on vacation. 🏖️',
+   "No copy, no paste — that's the rule! 📋❌",
+   'Clipboard is feeling empty... just like my coffee cup! ☕😜',
+   'Nothing here! Try copying something first. 📋👈',
+   'Your clipboard is emptier than my fridge. 🧊😂',
+];
+
+const getRandomEmptyClipboardMessage = () => {
+   const index = Math.floor(Math.random() * emptyClipboardMessages.length);
+   return emptyClipboardMessages[index];
 };
 
 export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
@@ -22,19 +36,9 @@ export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
       >
          <AnimatePresence mode='popLayout' initial={true}>
             {items.length === 0 && !loading && (
-               <motion.img
-                  alt=''
-                  layout={true}
-                  src={images.NoDataClipboard}
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className='mx-auto mt-12'
-                  style={{
-                     width: 170,
-                     height: 200,
-                  }}
-               />
+               <code className='p-10 text-center text-paragraph'>
+                  {getRandomEmptyClipboardMessage()}
+               </code>
             )}
 
             {items.map((item) => (

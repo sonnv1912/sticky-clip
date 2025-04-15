@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "./dark.css";
+@import "./light.css";
+
 @config "../../../tailwind.config.ts";
 
 @font-face {
@@ -37,49 +40,4 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   text-align: justify;
-}
-
-.light .text-paragraph {
-  color: #373f37;
-}
-
-.light .bg-background {
-  background-color: #eeeeee;
-}
-
-.light .bg-box {
-  background-color: #f6f6f6;
-}
-
-.light .bg-card {
-  background-color: #ffffff;
-}
-
-.light .border-box-border {
-  border-color: rgba(240, 240, 240, 1);
-}
-
-.light .hover\:shadow-5:hover {
-  box-shadow: 0 0 1px 5px rgba(222, 222, 222, 1);
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-.dark ::-webkit-scrollbar-track {
-  @apply bg-background;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 rounded-2xl;
-}
-
-.light ::-webkit-scrollbar-track {
-  background-color: #f9f9f9;
-}
-
-.light ::-webkit-scrollbar-thumb {
-  background-color: #777777;
-  border-radius: 16px;
 }

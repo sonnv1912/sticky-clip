@@ -15,15 +15,8 @@ const config: ForgeConfig = {
       name: 'StickyClip',
       appVersion: '2.0.0',
       buildVersion: '1',
+      prune: true,
       extraResource: ['./src/assets/icons/FluentColorClipboard16.png'],
-      ignore: [
-         /\/tests?/,
-         /\/docs?/,
-         /\.map$/,
-         /\/\.git/,
-         /\/node_modules\/.*(\/test|\/__tests__)/,
-         /\/\.vscode/,
-      ],
    },
    rebuildConfig: {},
    makers: [
