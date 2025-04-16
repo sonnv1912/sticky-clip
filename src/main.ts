@@ -34,14 +34,11 @@ const icon = nativeImage.createFromPath(
 );
 
 const show = () => {
-   window.focus();
-   window.setOpacity(1);
-   window.moveTop();
+   window.show();
 };
 
 const hide = () => {
-   window.setOpacity(0);
-   window.blur();
+   window.hide();
 };
 
 export const createWindow = () => {
@@ -62,6 +59,7 @@ export const createWindow = () => {
       frame: !app.isPackaged,
       resizable: !app.isPackaged,
       show: false,
+      backgroundColor: '#232323',
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },
@@ -72,7 +70,6 @@ export const createWindow = () => {
    });
 
    window.once('ready-to-show', () => {
-      window.show();
       show();
    });
 
@@ -91,10 +88,8 @@ export const createWindow = () => {
       window.webContents.openDevTools();
    }
 
-   if (app.isPackaged) {
-      if (process.platform === 'darwin') {
-         app.setActivationPolicy('accessory');
-      }
+   if (process.platform === 'darwin') {
+      app.setActivationPolicy('accessory');
    }
 };
 
@@ -170,7 +165,7 @@ const registerShortcut = () => {
       globalShortcut.unregisterAll();
 
       globalShortcut.register(SETTING.shortcut, () => {
-         if (window.getOpacity()) {
+         if (window.isVisible()) {
             hide();
 
             return;

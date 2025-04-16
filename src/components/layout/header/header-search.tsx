@@ -12,7 +12,11 @@ export const HeaderSearch = () => {
 
    return (
       <div className='flex items-center gap-2'>
-         <Input placeholder='Type something' onChange={debounceCallback} />
+         <Input
+            placeholder='Type something'
+            className='outline-none'
+            onChange={debounceCallback}
+         />
 
          <Button
             leftIcon='MaterialSymbolsCloseRounded'

@@ -38,7 +38,7 @@ export const Input = ({
             value={value}
             placeholder={placeholder}
             className={clsx(
-               'px-2 text-white bg-card rounded-md',
+               'px-2 text-paragraph bg-card rounded-md',
                'outline-box-border w-full text-sm h-10 placeholder:text-paragraph',
                className,
             )}

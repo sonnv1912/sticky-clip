@@ -1,6 +1,13 @@
-import { HEADER_HEIGHT } from '@configs/constants';
+import {
+   HEADER_HEIGHT,
+   emptyClipboardMessages,
+   emptyIdleSearchMessages,
+   emptySearchMessages,
+} from '@configs/constants';
+import { useSearchStore } from '@stores/search-store';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
+import { useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { ClipboardItem } from './clipboard-item';
 
@@ -10,34 +17,42 @@ type Props = {
    fetchHistory: () => void;
 };
 
-const emptyClipboardMessages = [
-   'Oops! Your clipboard is as empty as my weekend plans. 😅',
-   'Clipboard says: Nothing to paste here, buddy! 🤖',
-   'Looks like your clipboard went on vacation. 🏖️',
-   "No copy, no paste — that's the rule! 📋❌",
-   'Clipboard is feeling empty... just like my coffee cup! ☕😜',
-   'Nothing here! Try copying something first. 📋👈',
-   'Your clipboard is emptier than my fridge. 🧊😂',
-];
-
-const getRandomEmptyClipboardMessage = () => {
-   const index = Math.floor(Math.random() * emptyClipboardMessages.length);
-   return emptyClipboardMessages[index];
-};
-
 export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
+   const { mode, query } = useSearchStore();
+
+   const emptyMessage = useCallback(() => {
+      const index = Math.floor(Math.random() * emptyClipboardMessages.length);
+
+      return emptyClipboardMessages[index];
+   }, []);
+
+   const emptySearchMessage = useCallback(() => {
+      if (!query) {
+         const index = Math.floor(
+            Math.random() * emptyIdleSearchMessages.length,
+         );
+         return emptyIdleSearchMessages[index];
+      }
+
+      const index = Math.floor(Math.random() * emptySearchMessages.length);
+
+      return emptySearchMessages[index];
+   }, [query]);
+
    return (
       <motion.div
          animate={{ scale: 1, opacity: 1 }}
          style={{
             height: `calc(100vh - ${HEADER_HEIGHT})`,
          }}
-         className={clsx('mt-14 flex flex-col gap-6 p-4 overflow-auto')}
+         className={clsx(
+            'mt-14 flex flex-col gap-6 p-4 overflow-auto relative',
+         )}
       >
          <AnimatePresence mode='popLayout' initial={true}>
             {items.length === 0 && !loading && (
-               <code className='p-10 text-center text-paragraph'>
-                  {getRandomEmptyClipboardMessage()}
+               <code className='text-center text-paragraph absolute top-14 left-10 right-10'>
+                  {mode === 'header' ? emptyMessage() : emptySearchMessage()}
                </code>
             )}
 
