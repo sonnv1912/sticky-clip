@@ -14,6 +14,9 @@ export const HeaderBody = ({
 }: Props) => {
    const { setAppState, theme } = useAppStore();
 
+   // Fast, Friendly, Easy to use
+   // Your clipboard manager
+   // Sticky Clip
    return (
       <div className='flex items-center justify-between'>
          <div className='flex items-center gap-1'>

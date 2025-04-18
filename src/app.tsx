@@ -13,31 +13,28 @@ import { useAppStore } from '@stores/app-store';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
-   const [loading, setLoading] = useState(false);
    const [openSetting, setOpenSetting] = useState(false);
    const { query } = useSearchStore();
    const { theme } = useAppStore();
 
    const fetchHistory = useCallback(async () => {
-      setLoading(true);
+      let result = await window.clipboard.get();
 
-      const data = await window.clipboard.get();
+      if (query) {
+         result = result.filter((t) => t.value.toLowerCase().includes(query));
+      }
 
-      setLoading(false);
+      if (result.some((t) => t.marked)) {
+         result = result.sort((a, b) => {
+            if (a.marked === b.marked) {
+               return 0;
+            }
 
-      const filtered = data.filter((t) =>
-         t.value.toLowerCase().includes(query),
-      );
+            return a.marked ? -1 : 1;
+         });
+      }
 
-      const sorted = filtered.sort((a, b) => {
-         if (a.marked === b.marked) {
-            return 0;
-         }
-
-         return a.marked ? -1 : 1;
-      });
-
-      setHistory(sorted);
+      setHistory(result);
    }, [query]);
 
    useEffect(() => {
@@ -58,11 +55,7 @@ const App = () => {
                onClickSetting={() => setOpenSetting(true)}
             />
 
-            <ListClipboard
-               fetchHistory={fetchHistory}
-               items={history}
-               loading={loading}
-            />
+            <ListClipboard fetchHistory={fetchHistory} items={history} />
 
             <SettingModal
                open={openSetting}

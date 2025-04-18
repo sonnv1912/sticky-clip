@@ -1,39 +1,18 @@
 import { Button } from '@components/ui/button';
 import clsx from 'clsx';
-import { motion } from 'motion/react';
 
 type Props = {
    data: ClipboardHistory;
-   onClick: () => void;
    onMarked: () => void;
 };
 
-export const ClipboardItem = ({ data, onClick, onMarked }: Props) => {
+export const ClipboardItem = ({ data, onMarked }: Props) => {
    return (
-      <motion.div
-         key={data.id}
-         layout={true}
-         animate={{ opacity: 1 }}
-         initial={{ opacity: 1 }}
-         exit={{ opacity: 0 }}
+      <div
          className={clsx(
-            'p-4 bg-card rounded-2xl cursor-pointer break-all select-none text-sm text-paragraph',
+            'p-3 bg-card rounded-xl cursor-pointer break-all select-none text-sm text-paragraph',
             'hover:shadow-5 transition-all duration-300 border border-box-border relative z-1',
          )}
-         // drag='x'
-         // dragConstraints={{ left: 0, right: 0 }}
-         // dragElastic={0.6}
-         // style={{ transform: `translateX(${x})` }}
-         whileTap={{
-            scale: 0.95,
-         }}
-         // onPanEnd={() => {
-         //    window.clipboard.removeItem(index);
-         //    fetchHistory();
-         // }}
-         onClick={() => {
-            onClick();
-         }}
       >
          {data.isImage && <img alt='' src={data.value} />}
 
@@ -51,6 +30,6 @@ export const ClipboardItem = ({ data, onClick, onMarked }: Props) => {
                'grayscale-0': data.marked,
             })}
          />
-      </motion.div>
+      </div>
    );
 };

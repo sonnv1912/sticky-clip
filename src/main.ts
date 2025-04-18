@@ -43,8 +43,8 @@ const hide = () => {
 
 export const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-   const windowWidth = app.isPackaged ? 600 : 1200;
-   const windowHeight = height;
+   const windowWidth = app.isPackaged ? 550 : 1200;
+   const windowHeight = app.isPackaged ? 550 : height;
    const x = Math.round((width - windowWidth) / 2);
    const y = height - windowHeight;
 
@@ -54,10 +54,10 @@ export const createWindow = () => {
       icon,
       width: windowWidth,
       height: windowHeight,
+      resizable: !app.isPackaged,
       center: true,
       roundedCorners: true,
-      frame: !app.isPackaged,
-      resizable: !app.isPackaged,
+      frame: false,
       show: false,
       backgroundColor: '#232323',
       webPreferences: {

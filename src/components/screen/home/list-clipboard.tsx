@@ -12,12 +12,11 @@ import { toast } from 'react-toastify';
 import { ClipboardItem } from './clipboard-item';
 
 type Props = {
-   loading: boolean;
    items: ClipboardHistory[];
    fetchHistory: () => void;
 };
 
-export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
+export const ListClipboard = ({ items, fetchHistory }: Props) => {
    const { mode, query } = useSearchStore();
 
    const emptyMessage = useCallback(() => {
@@ -50,16 +49,30 @@ export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
          )}
       >
          <AnimatePresence mode='popLayout' initial={true}>
-            {items.length === 0 && !loading && (
+            {items.length === 0 && (
                <code className='text-center text-paragraph absolute top-14 left-10 right-10'>
                   {mode === 'header' ? emptyMessage() : emptySearchMessage()}
                </code>
             )}
 
             {items.map((item) => (
-               <ClipboardItem
+               <motion.div
                   key={item.id}
-                  data={item}
+                  layout={true}
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  // drag='x'
+                  // dragConstraints={{ left: 0, right: 0 }}
+                  // dragElastic={0.6}
+                  // style={{ transform: `translateX(${x})` }}
+                  whileTap={{
+                     scale: 0.95,
+                  }}
+                  // onPanEnd={() => {
+                  //    window.clipboard.removeItem(index);
+                  //    fetchHistory();
+                  // }}
                   onClick={() => {
                      window.clipboard.copyItem(item);
 
@@ -67,15 +80,20 @@ export const ListClipboard = ({ loading, items, fetchHistory }: Props) => {
 
                      toast.success('Copied to clipboard');
                   }}
-                  onMarked={() => {
-                     window.clipboard.updateItem({
-                        ...item,
-                        marked: !item.marked,
-                     });
+               >
+                  <ClipboardItem
+                     key={item.id}
+                     data={item}
+                     onMarked={() => {
+                        window.clipboard.updateItem({
+                           ...item,
+                           marked: !item.marked,
+                        });
 
-                     fetchHistory();
-                  }}
-               />
+                        fetchHistory();
+                     }}
+                  />
+               </motion.div>
             ))}
          </AnimatePresence>
       </motion.div>
