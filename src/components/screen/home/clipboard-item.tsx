@@ -14,7 +14,9 @@ export const ClipboardItem = ({ data, onMarked }: Props) => {
             'hover:shadow-5 transition-all duration-300 border border-box-border relative z-1',
          )}
       >
-         {data.isImage && <img alt='' src={data.value} />}
+         {data.isImage && (
+            <img alt='' src={data.value} className='rounded-xl mx-auto' />
+         )}
 
          {!data.isImage && <pre>{data.value}</pre>}
 

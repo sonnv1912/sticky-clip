@@ -7,9 +7,10 @@ import {
 import { useSearchStore } from '@stores/search-store';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { ClipboardItem } from './clipboard-item';
+import { Toast } from '@components/ui/toast';
 
 type Props = {
    items: ClipboardHistory[];
@@ -18,6 +19,7 @@ type Props = {
 
 export const ListClipboard = ({ items, fetchHistory }: Props) => {
    const { mode, query } = useSearchStore();
+   const listRef = useRef<HTMLDivElement>(null);
 
    const emptyMessage = useCallback(() => {
       const index = Math.floor(Math.random() * emptyClipboardMessages.length);
@@ -38,11 +40,27 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
       return emptySearchMessages[index];
    }, [query]);
 
+   useEffect(() => {
+      const scrollToTop = () => {
+         listRef.current.scrollTo({
+            top: 0,
+         });
+      };
+
+      window.addEventListener('focus', scrollToTop);
+
+      return () => {
+         window.removeEventListener('focus', scrollToTop);
+      };
+   }, []);
+
    return (
       <motion.div
+         ref={listRef}
          animate={{ scale: 1, opacity: 1 }}
          style={{
             height: `calc(100vh - ${HEADER_HEIGHT})`,
+            scrollbarGutter: 'stable',
          }}
          className={clsx(
             'mt-14 flex flex-col gap-6 p-4 overflow-auto relative',
@@ -78,7 +96,9 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
 
                      fetchHistory();
 
-                     toast.success('Copied to clipboard');
+                     toast(
+                        <Toast message='Copied to clipboard' type='success' />,
+                     );
                   }}
                >
                   <ClipboardItem

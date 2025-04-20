@@ -69,8 +69,21 @@ const App = () => {
 
             <ToastContainer
                position='bottom-center'
-               autoClose={1000}
+               autoClose={500}
                newestOnTop={true}
+               closeButton={false}
+               pauseOnFocusLoss={false}
+               hideProgressBar={true}
+               pauseOnHover={false}
+               draggable={false}
+               closeOnClick={true}
+               toastStyle={{
+                  width: 'fit-content',
+                  padding: 0,
+                  height: 'fit-content',
+                  minHeight: 'fit-content',
+                  backgroundColor: 'transparent',
+               }}
             />
 
             <Tooltip
@@ -85,4 +98,5 @@ const App = () => {
 };
 
 const root = createRoot(document.body);
+
 root.render(<App />);

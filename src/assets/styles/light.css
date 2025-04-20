@@ -5,6 +5,7 @@
   --background: #eeeeee;
   --box-border: rgba(240, 240, 240, 1);
   --shadow-5: 0 0 1px 5px rgba(222, 222, 222, 1);
+  --shadow-blur-10: 0 0 10px 0px rgba(22, 22, 22, 0.3);
 }
 
 .light .text-paragraph {
@@ -29,6 +30,10 @@
 
 .light .hover\:shadow-5:hover {
   box-shadow: var(--shadow-5);
+}
+
+.light .shadow-blur-10 {
+  box-shadow: var(--shadow-blur-10);
 }
 
 .light .outline-box-border {
