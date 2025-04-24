@@ -14,8 +14,8 @@ export const TextPair = ({
    className,
 }: PropsWithChildren<Props>) => {
    return (
-      <div className={clsx('flex items-center justify-between', className)}>
-         <p className={clsx('min-w-40', labelClassName)}>{label}</p>
+      <div className={clsx('flex items-center', className)}>
+         <p className={clsx('min-w-40 text-sm', labelClassName)}>{label}</p>
 
          {children}
       </div>

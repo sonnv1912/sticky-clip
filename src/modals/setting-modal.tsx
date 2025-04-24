@@ -46,7 +46,6 @@ const SettingModalBody = ({ onSuccess }: Props) => {
                   render={({ field, fieldState }) => (
                      <Input
                         className='text-right'
-                        containerClassName='text-right'
                         value={field.value}
                         errMsg={fieldState.error?.message}
                         onChange={(value) => field.onChange(Number(value))}
@@ -62,7 +61,6 @@ const SettingModalBody = ({ onSuccess }: Props) => {
                   render={({ field, fieldState }) => (
                      <Input
                         className='text-right'
-                        containerClassName='text-right'
                         value={field.value}
                         errMsg={fieldState.error?.message}
                         onChange={field.onChange}

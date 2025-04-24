@@ -18,7 +18,9 @@ type ErrorMessageProps = {
 export const ErrorMessage = ({ errMsg, className }: ErrorMessageProps) => {
    return (
       errMsg && (
-         <p className={clsx('text-sm text-red-500', className)}>{errMsg}</p>
+         <p className={clsx('text-xs text-red-500 mt-1', className)}>
+            {errMsg}
+         </p>
       )
    );
 };

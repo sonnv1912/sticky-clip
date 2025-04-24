@@ -6,10 +6,11 @@ import { createRoot } from 'react-dom/client';
 import { Header } from './components/layout/header';
 import { ListClipboard } from './components/screen/home/list-clipboard';
 import { SettingModal } from './modals/setting-modal';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
 import { useSearchStore } from './stores/search-store';
 import { useAppStore } from '@stores/app-store';
+import { Toast } from '@components/ui/toast';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
@@ -64,6 +65,13 @@ const App = () => {
                   fetchHistory();
 
                   setOpenSetting(false);
+
+                  toast(
+                     <Toast
+                        message='Your settings have worked.'
+                        type='success'
+                     />,
+                  );
                }}
             />
 

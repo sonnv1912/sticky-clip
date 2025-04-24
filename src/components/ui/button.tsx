@@ -56,7 +56,7 @@ export const Button = ({
 }: PropsWithChildren<Props>) => {
    const { theme } = useAppStore();
 
-   const buttonSize = (() => {
+   const buttonSize = useMemo(() => {
       let result = 40;
 
       if (size === 'md') {
@@ -64,13 +64,23 @@ export const Button = ({
       }
 
       return result;
-   })();
+   }, [size]);
 
    const iconSize = (() => {
       let result = 20;
 
       if (size === 'md') {
          result = 24;
+      }
+
+      return result;
+   })();
+
+   const fontSize = (() => {
+      let result = 14;
+
+      if (size === 'md') {
+         result = 16;
       }
 
       return result;
@@ -101,8 +111,7 @@ export const Button = ({
 
       const text: CSSProperties = {
          flex: leftIcon || rightIcon ? 1 : undefined,
-         fontSize: size,
-         fontFamily: '600',
+         fontSize,
          textAlign: leftIcon || rightIcon ? undefined : 'center',
       };
 
@@ -264,6 +273,7 @@ export const Button = ({
       size,
       theme,
       variant,
+      fontSize,
    ]);
 
    const disable = _disable || loading;
@@ -271,7 +281,7 @@ export const Button = ({
    return (
       <motion.div
          style={{
-            opacity: visible ? 1 : 0,
+            opacity: disable ? 0.8 : visible ? 1 : 0,
             ...dynamicStyles.button,
          }}
          whileHover={
@@ -295,7 +305,9 @@ export const Button = ({
          onClick={(e) => {
             e.stopPropagation();
 
-            onClick();
+            if (!disable) {
+               onClick();
+            }
          }}
       >
          {children && children}
@@ -337,10 +349,6 @@ export const Button = ({
                   />
                )}
             </>
-         )}
-
-         {disable && (
-            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/40' />
          )}
       </motion.div>
    );
