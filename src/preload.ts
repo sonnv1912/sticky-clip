@@ -24,4 +24,6 @@ contextBridge.exposeInMainWorld('app', {
 
    updateSetting: (data: Setting) =>
       ipcRenderer.invoke(appEvent.updateSetting, data),
+
+   onHide: (callback: () => void) => ipcRenderer.on('on-hide', callback),
 });

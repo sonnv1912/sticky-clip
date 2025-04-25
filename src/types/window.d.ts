@@ -11,7 +11,7 @@ interface AppStore {
 
    exit: () => void;
    hide: () => void;
-
    setting: () => Promise<Setting>;
    updateSetting: (payload: Partial<Setting>) => void;
+   onHide: (payload: () => void) => void;
 }

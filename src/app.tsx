@@ -48,6 +48,18 @@ const App = () => {
       };
    }, [fetchHistory]);
 
+   useEffect(() => {
+      const event = toast.onChange((item) => {
+         if (item.status === 'added') {
+            window.app.onHide(() => {
+               toast.dismiss(item.id);
+            });
+         }
+      });
+
+      return () => event();
+   }, []);
+
    return (
       <div className={theme}>
          <div className={clsx('bg-box h-screen overflow-hidden')}>
@@ -77,7 +89,7 @@ const App = () => {
 
             <ToastContainer
                position='bottom-center'
-               autoClose={500}
+               autoClose={1500}
                newestOnTop={true}
                closeButton={false}
                pauseOnFocusLoss={false}

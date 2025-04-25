@@ -63,14 +63,6 @@ export const createWindow = () => {
       webPreferences: {
          preload: path.join(__dirname, 'preload.js'),
       },
-   }).on('blur', () => {
-      if (app.isPackaged) {
-         hide();
-      }
-   });
-
-   window.once('ready-to-show', () => {
-      show();
    });
 
    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
@@ -198,6 +190,18 @@ const initEvent = () => {
 
       if (CLIPBOARD.length > arg.maxItem) {
          store.set('clipboardHistory', CLIPBOARD.slice(0, arg.maxItem));
+      }
+   });
+
+   window.on('ready-to-show', () => {
+      show();
+   });
+
+   window.on('blur', () => {
+      window.webContents.send('on-hide');
+
+      if (app.isPackaged) {
+         hide();
       }
    });
 };
