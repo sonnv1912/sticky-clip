@@ -156,7 +156,7 @@ const registerShortcut = () => {
    if (SETTING.shortcut) {
       globalShortcut.unregisterAll();
 
-      globalShortcut.register(SETTING.shortcut, () => {
+      globalShortcut.register(SETTING.shortcut.replaceAll(' ', ''), () => {
          if (window.isVisible()) {
             hide();
 

@@ -7,6 +7,7 @@ import { TextPair } from '../components/ui/text-pair';
 import { settingSchema } from '../schemas/setting-schema';
 import { Modal } from '../components/layout/modal';
 import { DEFAULT_SETTING } from '../configs/constants';
+import { InputKeyboard } from '@components/ui/input-keyboard';
 
 type Props = {
    open: boolean;
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const SettingModalBody = ({ onSuccess }: Props) => {
-   const { control, reset, formState, handleSubmit } = useForm({
+   const { control, reset, handleSubmit } = useForm({
       resolver: zodResolver(settingSchema),
       defaultValues: DEFAULT_SETTING,
    });
@@ -59,7 +60,7 @@ const SettingModalBody = ({ onSuccess }: Props) => {
                   control={control}
                   name='shortcut'
                   render={({ field, fieldState }) => (
-                     <Input
+                     <InputKeyboard
                         className='text-right'
                         value={field.value}
                         errMsg={fieldState.error?.message}
@@ -75,7 +76,6 @@ const SettingModalBody = ({ onSuccess }: Props) => {
                content='Save'
                schema='blue'
                className='self-end'
-               disable={!formState.isValid}
                onClick={onSubmit}
             />
          </div>

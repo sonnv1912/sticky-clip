@@ -1,6 +1,7 @@
 import clsx from 'clsx';
+import type { KeyboardEvent } from 'react';
 
-type Props = {
+export type InputProps = {
    value?: string | number;
    containerClassName?: string;
    className?: string;
@@ -8,6 +9,7 @@ type Props = {
    errMsg?: string;
    placeholder?: string;
    onChange?: (value: string) => void;
+   onKeyDown?: (value: KeyboardEvent<HTMLInputElement>) => void;
 };
 
 type ErrorMessageProps = {
@@ -32,13 +34,16 @@ export const Input = ({
    className,
    errMsg,
    placeholder,
+
+   onKeyDown,
    onChange,
-}: Props) => {
+}: InputProps) => {
    return (
       <div className={clsx(containerClassName, 'flex-1')}>
          <input
             value={value}
             placeholder={placeholder}
+            onKeyDown={onKeyDown}
             className={clsx(
                'px-2 text-paragraph bg-card rounded-md',
                'outline-box-border w-full text-sm h-10 placeholder:text-paragraph',

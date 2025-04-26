@@ -20,7 +20,8 @@
          "#types/*": ["./src/types/*"],
          "@stores/*": ["./src/stores/*"],
          "@/*": ["./src/*"]
-      }
+      },
+      "types": ["./node_modules/user-agent-data-types"]
    },
    "include": ["src/**/*", "*.d.ts"]
 }
