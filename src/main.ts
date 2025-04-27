@@ -17,6 +17,7 @@ import { uniqBy } from 'lodash';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { DEFAULT_SETTING, appEvent } from './configs/constants';
+import { updateElectronApp } from 'update-electron-app';
 
 let lastClipboardText = '';
 let lastClipboardImage = '';
@@ -41,7 +42,7 @@ const hide = () => {
    window.hide();
 };
 
-export const createWindow = () => {
+const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
    const windowWidth = app.isPackaged ? 550 : 550;
    const windowHeight = app.isPackaged ? 550 : height;
@@ -215,3 +216,5 @@ app.whenReady()
    .then(createTrackIcon)
    .then(watchClipboard)
    .then(initEvent);
+
+updateElectronApp();
