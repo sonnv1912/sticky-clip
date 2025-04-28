@@ -15,7 +15,7 @@ export const Modal = ({
    onHide,
 }: PropsWithChildren<Props>) => {
    return (
-      <AnimatePresence initial={true} mode='popLayout'>
+      <AnimatePresence>
          {open && (
             <motion.div
                key='modal-background'
