@@ -20,7 +20,7 @@ export const Modal = ({
             <motion.div
                key='modal-background'
                className={clsx(
-                  'fixed top-0 left-0 right-0 bottom-0 z-50 p-8 bg-[var(--fade)]',
+                  'fixed top-0 left-0 right-0 bottom-0 z-50 p-8 bg-fade',
                   'flex items-center justify-center',
                )}
                initial={{ opacity: 0, scale: 1 }}
@@ -36,7 +36,7 @@ export const Modal = ({
                   animate={{ opacity: 1, translateY: 0 }}
                   exit={{ opacity: 0, translateY: '100%' }}
                   className={clsx(
-                     'bg-[var(--box)] border border-[var(--box-border)] rounded-xl p-4 flex-1 z-[60] text-[var(--paragraph)]',
+                     'bg-box border border-box-border rounded-xl p-4 flex-1 z-[60] text-paragraph',
                      className,
                   )}
                   onClick={(e) => e.stopPropagation()}

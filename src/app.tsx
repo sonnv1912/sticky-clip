@@ -63,7 +63,7 @@ const App = () => {
    return (
       <>
          <div className={theme}>
-            <div className={clsx('bg-[var(--box)] h-screen overflow-hidden')}>
+            <div className={clsx('bg-box h-screen overflow-hidden')}>
                <Header
                   fetchHistory={fetchHistory}
                   onClickSetting={() => setOpenSetting(true)}
