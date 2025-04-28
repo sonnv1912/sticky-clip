@@ -1,8 +1,10 @@
+import { defaultTheme } from '@configs/constants';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 type State = {
-   theme: 'dark' | 'light';
+   theme: string;
+   themeCollection: Record<string, Record<string, string>>;
 };
 
 type Action = {
@@ -13,6 +15,7 @@ export const useAppStore = create<State & Action>()(
    persist(
       (set) => ({
          theme: 'dark',
+         themeCollection: defaultTheme,
          setAppState(payload) {
             set((prev) => ({
                ...prev,

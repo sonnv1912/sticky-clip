@@ -1,4 +1,3 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
 import { colors } from './src/configs/theme/colors';
 
 /** @type {import('tailwindcss').Config} */
@@ -7,9 +6,6 @@ module.exports = {
    dark: 'class',
    theme: {
       extend: {
-         fontFamily: {
-            sans: ['writer', ...defaultTheme.fontFamily.sans],
-         },
          colors: {
             ...colors,
             background: 'var(--background)',

@@ -16,7 +16,7 @@ const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
    const [openSetting, setOpenSetting] = useState(false);
    const { query } = useSearchStore();
-   const { theme } = useAppStore();
+   const { theme, themeCollection } = useAppStore();
 
    const fetchHistory = useCallback(async () => {
       let result = await window.clipboard.get();
@@ -60,62 +60,67 @@ const App = () => {
       return () => event();
    }, []);
 
+   useEffect(() => {
+      const themeValue = themeCollection[theme];
+
+      for (const key of Object.keys(themeValue)) {
+         document.documentElement.style.setProperty(key, themeValue[key]);
+      }
+   }, [theme, themeCollection]);
+
+   if (!document.documentElement.style[0]) {
+      return null;
+   }
+
    return (
-      <>
-         <div className={theme}>
-            <div className={clsx('bg-box h-screen overflow-hidden')}>
-               <Header
-                  fetchHistory={fetchHistory}
-                  onClickSetting={() => setOpenSetting(true)}
-               />
+      <div className={clsx('bg-box h-screen overflow-hidden')}>
+         <Header
+            fetchHistory={fetchHistory}
+            onClickSetting={() => setOpenSetting(true)}
+         />
 
-               <ListClipboard fetchHistory={fetchHistory} items={history} />
+         <ListClipboard fetchHistory={fetchHistory} items={history} />
 
-               <SettingModal
-                  open={openSetting}
-                  onHide={() => setOpenSetting(false)}
-                  onSuccess={() => {
-                     fetchHistory();
+         <SettingModal
+            open={openSetting}
+            onHide={() => setOpenSetting(false)}
+            onSuccess={() => {
+               fetchHistory();
 
-                     setOpenSetting(false);
+               setOpenSetting(false);
 
-                     toast(
-                        <Toast
-                           message='Your settings have worked.'
-                           type='success'
-                        />,
-                     );
-                  }}
-               />
+               toast(
+                  <Toast message='Your settings have worked.' type='success' />,
+               );
+            }}
+         />
 
-               <ToastContainer
-                  position='bottom-center'
-                  autoClose={1500}
-                  newestOnTop={true}
-                  closeButton={false}
-                  pauseOnFocusLoss={false}
-                  hideProgressBar={true}
-                  pauseOnHover={false}
-                  draggable={false}
-                  closeOnClick={true}
-                  toastStyle={{
-                     width: 'fit-content',
-                     padding: 0,
-                     height: 'fit-content',
-                     minHeight: 'fit-content',
-                     backgroundColor: 'transparent',
-                  }}
-               />
+         <ToastContainer
+            position='bottom-center'
+            autoClose={1500}
+            newestOnTop={true}
+            closeButton={false}
+            pauseOnFocusLoss={false}
+            hideProgressBar={true}
+            pauseOnHover={false}
+            draggable={false}
+            closeOnClick={true}
+            toastStyle={{
+               width: 'fit-content',
+               padding: 0,
+               height: 'fit-content',
+               minHeight: 'fit-content',
+               backgroundColor: 'transparent',
+            }}
+         />
 
-               <Tooltip
-                  id='tooltip'
-                  style={{
-                     zIndex: 90,
-                  }}
-               />
-            </div>
-         </div>
-      </>
+         <Tooltip
+            id='tooltip'
+            style={{
+               zIndex: 90,
+            }}
+         />
+      </div>
    );
 };
 

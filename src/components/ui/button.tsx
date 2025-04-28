@@ -1,9 +1,8 @@
-import { useMemo, type CSSProperties, type PropsWithChildren } from 'react';
-import { Icon, type icons } from './icon';
+import { colors } from '@configs/theme/colors';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
-import { colors } from '@configs/theme/colors';
-import { useAppStore } from '@stores/app-store';
+import { type CSSProperties, type PropsWithChildren, useMemo } from 'react';
+import { Icon, type icons } from './icon';
 
 type Props = {
    content?: string;
@@ -54,8 +53,6 @@ export const Button = ({
    visible = true,
    onClick,
 }: PropsWithChildren<Props>) => {
-   const { theme } = useAppStore();
-
    const buttonSize = useMemo(() => {
       let result = 40;
 
@@ -95,7 +92,8 @@ export const Button = ({
       const textGreen = colors.green[800];
       const blue = colors.blue[600];
       const violet = colors.violet[500];
-      const textSchema = theme === 'dark' ? colors.paragraph : '#373f37';
+      const textColor = `var(${document.documentElement.style[4]})`;
+      const textSchema = textColor;
 
       const button: CSSProperties = {
          height: buttonSize,
@@ -143,7 +141,7 @@ export const Button = ({
          }
 
          if (variant === 'transparent') {
-            text.color = colors.paragraph;
+            text.color = textColor;
          }
       }
 
@@ -271,7 +269,6 @@ export const Button = ({
       rounded,
       schema,
       size,
-      theme,
       variant,
       fontSize,
    ]);
