@@ -5,10 +5,12 @@ import { MaterialSymbolsCloseRounded } from './symbols/MaterialSymbolsCloseRound
 import { MaterialSymbolsDelete } from './symbols/MaterialSymbolsDelete';
 import { MaterialSymbolsSettingsRounded } from './symbols/MaterialSymbolsSettingsRounded';
 import { IconParkOutlineSearch } from './symbols/IconParkOutlineSearch';
-import colors from 'tailwindcss/colors';
 import { NotoStar } from './symbols/NotoStar';
 import { MaterialSymbolsSunnyRounded } from './symbols/MaterialSymbolsSunnyRounded';
 import { MaterialSymbolsMoonStarsRounded } from './symbols/MaterialSymbolsMoonStarsRounded';
+import { IcSharpColorLens } from './symbols/IcSharpColorLens';
+import { colors } from '@configs/theme/colors';
+import { FluentColorLightbulbFilament24 } from './symbols/FluentColorLightbulbFilament24';
 
 export const icons = {
    MaterialSymbolsDelete,
@@ -21,6 +23,8 @@ export const icons = {
    MaterialSymbolsSunnyRounded,
    NotoStar,
    MaterialSymbolsMoonStarsRounded,
+   IcSharpColorLens,
+   FluentColorLightbulbFilament24,
 };
 
 type Props = IconProps & {

@@ -66,6 +66,7 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
             'mt-14 flex flex-col gap-6 p-4 overflow-auto relative',
          )}
       >
+         {' '}
          <AnimatePresence mode='popLayout' initial={true}>
             {items.length === 0 && (
                <code className='text-center text-paragraph absolute top-14 left-10 right-10'>

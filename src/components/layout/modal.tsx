@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import type { PropsWithChildren } from 'react';
+import { createPortal } from 'react-dom';
 
 type Props = {
    open?: boolean;
@@ -15,36 +16,40 @@ export const Modal = ({
    onHide,
 }: PropsWithChildren<Props>) => {
    return (
-      <AnimatePresence>
-         {open && (
+      open &&
+      createPortal(
+         <motion.div
+            key='modal-background'
+            className={clsx(
+               'fixed left-0 right-0 top-0 bottom-0 z-50  bg-fade',
+               'flex items-center justify-center px-8',
+            )}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1 }}
+            onClick={() => {
+               onHide?.();
+            }}
+         >
             <motion.div
-               key='modal-background'
+               key='modal'
+               initial={{ opacity: 0, translateY: '100%' }}
+               animate={{ opacity: 1, translateY: 0 }}
+               exit={{ opacity: 0, translateY: '100%' }}
                className={clsx(
-                  'fixed top-0 left-0 right-0 bottom-0 z-50 p-8 bg-fade',
-                  'flex items-center justify-center',
+                  'bg-box border border-box-border rounded-xl p-4 flex-1 z-[60] text-paragraph',
+                  'overflow-auto',
+                  className,
                )}
-               initial={{ opacity: 0, scale: 1 }}
-               animate={{ opacity: 1, scale: 1 }}
-               exit={{ opacity: 0, scale: 1 }}
-               onClick={() => {
-                  onHide?.();
+               style={{
+                  maxHeight: '90vh',
                }}
+               onClick={(e) => e.stopPropagation()}
             >
-               <motion.div
-                  key='modal'
-                  initial={{ opacity: 0, translateY: '100%' }}
-                  animate={{ opacity: 1, translateY: 0 }}
-                  exit={{ opacity: 0, translateY: '100%' }}
-                  className={clsx(
-                     'bg-box border border-box-border rounded-xl p-4 flex-1 z-[60] text-paragraph',
-                     className,
-                  )}
-                  onClick={(e) => e.stopPropagation()}
-               >
-                  {children}
-               </motion.div>
+               {children}
             </motion.div>
-         )}
-      </AnimatePresence>
+         </motion.div>,
+         document.getElementById('root'),
+      )
    );
 };

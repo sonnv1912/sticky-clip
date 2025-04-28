@@ -13,6 +13,7 @@ module.exports = {
             card: 'var(--card)',
             fade: 'var(--fade)',
             paragraph: 'var(--paragraph)',
+            subParagraph: 'var(--sub-paragraph)',
             boxBorder: 'var(--box-border)',
          },
          boxShadow: {

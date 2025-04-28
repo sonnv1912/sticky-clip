@@ -11,6 +11,7 @@ type Props = {
    string?: string;
    leftIcon?: keyof typeof icons;
    rightIcon?: keyof typeof icons;
+   rightIconClassname?: string;
    iconSize?: number;
    size?: 'sm' | 'md' | 'lg';
    schema?:
@@ -30,6 +31,8 @@ type Props = {
    loadingContent?: string;
    iconColor?: string;
    visible?: boolean;
+   dataTooltipIid?: string;
+
    onClick?: () => void;
 };
 
@@ -39,6 +42,7 @@ export const Button = ({
    className,
    contentClassName,
    //    badge,
+   rightIconClassname,
    loading,
    loadingContent,
    size = 'sm',
@@ -51,6 +55,8 @@ export const Button = ({
    rightIcon,
    disable: _disable,
    visible = true,
+   dataTooltipIid,
+
    onClick,
 }: PropsWithChildren<Props>) => {
    const buttonSize = useMemo(() => {
@@ -277,6 +283,7 @@ export const Button = ({
 
    return (
       <motion.div
+         data-tooltip-id={dataTooltipIid}
          style={{
             opacity: disable ? 0.8 : visible ? 1 : 0,
             ...dynamicStyles.button,
@@ -303,7 +310,7 @@ export const Button = ({
             e.stopPropagation();
 
             if (!disable) {
-               onClick();
+               onClick?.();
             }
          }}
       >
@@ -339,11 +346,15 @@ export const Button = ({
                )}
 
                {rightIcon && (
-                  <Icon
-                     name={rightIcon}
-                     size={_iconSize || iconSize}
-                     color={iconColor || dynamicStyles.text.color?.toString()}
-                  />
+                  <div className={rightIconClassname}>
+                     <Icon
+                        name={rightIcon}
+                        size={_iconSize || iconSize}
+                        color={
+                           iconColor || dynamicStyles.text.color?.toString()
+                        }
+                     />
+                  </div>
                )}
             </>
          )}

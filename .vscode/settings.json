@@ -9,5 +9,13 @@
    "[javascript]": {
       "editor.defaultFormatter": "biomejs.biome"
    },
-   "cSpell.words": ["asar", "icns", "nodenext", "oklch", "raleway", "ULFO"]
+   "cSpell.words": [
+      "asar",
+      "icns",
+      "mnnfp",
+      "nodenext",
+      "oklch",
+      "raleway",
+      "ULFO"
+   ]
 }

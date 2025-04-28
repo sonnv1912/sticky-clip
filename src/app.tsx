@@ -1,16 +1,16 @@
 import './assets/styles/main.css';
 
+import { Toast } from '@components/ui/toast';
+import { useAppStore } from '@stores/app-store';
 import clsx from 'clsx';
 import { useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { ToastContainer, toast } from 'react-toastify';
+import { Tooltip } from 'react-tooltip';
 import { Header } from './components/layout/header';
 import { ListClipboard } from './components/screen/home/list-clipboard';
 import { SettingModal } from './modals/setting-modal';
-import { toast, ToastContainer } from 'react-toastify';
-import { Tooltip } from 'react-tooltip';
 import { useSearchStore } from './stores/search-store';
-import { useAppStore } from '@stores/app-store';
-import { Toast } from '@components/ui/toast';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);

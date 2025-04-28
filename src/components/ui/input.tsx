@@ -46,7 +46,7 @@ export const Input = ({
             onKeyDown={onKeyDown}
             className={clsx(
                'px-2 text-paragraph bg-card rounded-md',
-               'outline-box-border w-full text-sm h-10 placeholder:text-paragraph',
+               'outline-box-border w-full text-sm h-10 placeholder:text-sub-paragraph',
                className,
             )}
             onChange={(e) => {
