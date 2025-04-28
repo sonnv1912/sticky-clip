@@ -41,3 +41,15 @@ pre {
   word-wrap: break-word;
   text-align: justify;
 }
+
+:root {
+  --black: #161616;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 16px;
+}

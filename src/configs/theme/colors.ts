@@ -2,14 +2,6 @@ import tailwindColors from 'tailwindcss/colors';
 
 export const colors = {
    ...tailwindColors,
-   black: '#161616',
-   background: '#1e1e1e',
-   box: '#272727',
-   card: '#303030',
-   boxBorder: 'rgba(66,66,66,1)',
-   paragraph: '#fff',
-   subParagraph: 'rgb(192, 192, 192)',
-   fade: 'rgba(0, 0, 0, 0.4)',
 
    violet: {
       '50': '#f4f1ff',

@@ -10,8 +10,8 @@ export const ClipboardItem = ({ data, onMarked }: Props) => {
    return (
       <div
          className={clsx(
-            'p-3 bg-card rounded-xl cursor-pointer break-all select-none text-sm text-paragraph',
-            'hover:shadow-5 transition-all duration-300 border border-box-border relative z-1',
+            'p-3 bg-[var(--card)] rounded-xl cursor-pointer break-all select-none text-sm text-[var(--paragraph)]',
+            'hover:shadow-[var(--shadow-5)] transition-all duration-300 border border-[var(--box-border)] relative z-1',
          )}
       >
          {data.isImage && (

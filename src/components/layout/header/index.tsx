@@ -35,8 +35,8 @@ export const Header = ({ fetchHistory, onClickSetting }: HeaderProps) => {
    return (
       <div
          className={clsx(
-            'fixed top-0 left-0 right-0 z-10 bg-card backdrop-blur-sm px-4',
-            'flex items-center w-full border-b-2 border-box-border',
+            'fixed top-0 left-0 right-0 z-10 bg-[var(--card)] backdrop-blur-sm px-4',
+            'flex items-center w-full border-b-2 border-[var(--box-border)]',
          )}
          style={{
             height: HEADER_HEIGHT,

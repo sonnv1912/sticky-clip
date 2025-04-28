@@ -15,7 +15,8 @@ export const Toast = ({ message, type = 'default' }: Props) => {
       success: 'bg-green-500 text-white',
       error: 'bg-red-500 text-white',
       warning: 'bg-yellow-500 text-white',
-      default: 'bg-card shadow-blur-10 text-paragraph',
+      default:
+         'bg-[var(--card)] shadow-[var(--shadow-blur-10)] text-[var(--paragraph)]',
    };
 
    return (

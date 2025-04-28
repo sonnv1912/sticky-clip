@@ -11,10 +11,6 @@ module.exports = {
             sans: ['writer', ...defaultTheme.fontFamily.sans],
          },
          colors,
-         shadow: {
-            '5': '0 0 1px 5px rgba(22, 22, 22, 1)',
-            'blur-10': '0 0 10px 0px rgba(255, 255, 255, 0.1)',
-         },
       },
    },
    plugins: [],
