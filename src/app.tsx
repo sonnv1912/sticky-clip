@@ -61,59 +61,61 @@ const App = () => {
    }, []);
 
    return (
-      <div className={theme}>
-         <div className={clsx('bg-[var(--box)] h-screen overflow-hidden')}>
-            <Header
-               fetchHistory={fetchHistory}
-               onClickSetting={() => setOpenSetting(true)}
-            />
+      <>
+         <div className={theme}>
+            <div className={clsx('bg-[var(--box)] h-screen overflow-hidden')}>
+               <Header
+                  fetchHistory={fetchHistory}
+                  onClickSetting={() => setOpenSetting(true)}
+               />
 
-            <ListClipboard fetchHistory={fetchHistory} items={history} />
+               <ListClipboard fetchHistory={fetchHistory} items={history} />
 
-            <SettingModal
-               open={openSetting}
-               onHide={() => setOpenSetting(false)}
-               onSuccess={() => {
-                  fetchHistory();
+               <SettingModal
+                  open={openSetting}
+                  onHide={() => setOpenSetting(false)}
+                  onSuccess={() => {
+                     fetchHistory();
 
-                  setOpenSetting(false);
+                     setOpenSetting(false);
 
-                  toast(
-                     <Toast
-                        message='Your settings have worked.'
-                        type='success'
-                     />,
-                  );
-               }}
-            />
+                     toast(
+                        <Toast
+                           message='Your settings have worked.'
+                           type='success'
+                        />,
+                     );
+                  }}
+               />
 
-            <ToastContainer
-               position='bottom-center'
-               autoClose={1500}
-               newestOnTop={true}
-               closeButton={false}
-               pauseOnFocusLoss={false}
-               hideProgressBar={true}
-               pauseOnHover={false}
-               draggable={false}
-               closeOnClick={true}
-               toastStyle={{
-                  width: 'fit-content',
-                  padding: 0,
-                  height: 'fit-content',
-                  minHeight: 'fit-content',
-                  backgroundColor: 'transparent',
-               }}
-            />
+               <ToastContainer
+                  position='bottom-center'
+                  autoClose={1500}
+                  newestOnTop={true}
+                  closeButton={false}
+                  pauseOnFocusLoss={false}
+                  hideProgressBar={true}
+                  pauseOnHover={false}
+                  draggable={false}
+                  closeOnClick={true}
+                  toastStyle={{
+                     width: 'fit-content',
+                     padding: 0,
+                     height: 'fit-content',
+                     minHeight: 'fit-content',
+                     backgroundColor: 'transparent',
+                  }}
+               />
 
-            <Tooltip
-               id='tooltip'
-               style={{
-                  zIndex: 90,
-               }}
-            />
+               <Tooltip
+                  id='tooltip'
+                  style={{
+                     zIndex: 90,
+                  }}
+               />
+            </div>
          </div>
-      </div>
+      </>
    );
 };
 
