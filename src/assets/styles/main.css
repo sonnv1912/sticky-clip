@@ -63,3 +63,15 @@ pre {
   pointer-events: initial !important;
   box-shadow: var(--shadow-blur-10);
 }
+
+.react-colorful__hue,
+.react-colorful__alpha {
+  height: 16px !important;
+}
+
+.react-colorful__hue-pointer,
+.react-colorful__alpha-pointer,
+.react-colorful__pointer {
+  width: 16px !important;
+  height: 16px !important;
+}

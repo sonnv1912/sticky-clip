@@ -25,7 +25,7 @@ export const Modal = ({
                'fixed left-0 right-0 top-0 bottom-0 z-50 bg-fade',
                'flex items-center justify-center px-8',
             )}
-            onClick={() => {
+            onClick={(e) => {
                onHide?.();
             }}
          >
@@ -38,7 +38,6 @@ export const Modal = ({
                style={{
                   maxHeight: '90vh',
                }}
-               onClick={(e) => e.stopPropagation()}
             >
                {children}
             </div>

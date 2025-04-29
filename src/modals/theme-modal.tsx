@@ -17,6 +17,17 @@ export const ThemeModal = ({ open, onHide }: Props) => {
    const { themeCollection, setAppState } = useAppStore();
 
    const { control, handleSubmit, reset } = useForm({
+      defaultValues: {
+         name: '',
+         'box-border': '',
+         'shadow-blur-10': '',
+         'sub-paragraph': '',
+         background: '',
+         box: '',
+         card: '',
+         fade: '',
+         paragraph: '',
+      },
       resolver: zodResolver(
          z.object({
             name: z
