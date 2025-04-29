@@ -9,4 +9,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 30
+    assignees:
+      - sonnv1912
+    reviewers:
+      - sonnv1912
