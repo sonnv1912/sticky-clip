@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { KeyboardEvent } from 'react';
+import { useRef, type KeyboardEvent } from 'react';
 
 export type InputProps = {
    value?: string | number;
@@ -8,6 +8,8 @@ export type InputProps = {
    errClassName?: string;
    errMsg?: string;
    placeholder?: string;
+   type?: 'text' | 'color';
+
    onChange?: (value: string) => void;
    onKeyDown?: (value: KeyboardEvent<HTMLInputElement>) => void;
 };
@@ -34,27 +36,56 @@ export const Input = ({
    className,
    errMsg,
    placeholder,
+   type,
 
    onKeyDown,
    onChange,
 }: InputProps) => {
-   return (
-      <div className={clsx(containerClassName, 'flex-1')}>
-         <input
-            value={value}
-            placeholder={placeholder}
-            onKeyDown={onKeyDown}
-            className={clsx(
-               'px-2 text-paragraph bg-card rounded-md',
-               'outline-box-border w-full text-sm h-10 placeholder:text-sub-paragraph',
-               className,
-            )}
-            onChange={(e) => {
-               const target = e.target as HTMLInputElement;
+   const inputRef = useRef<HTMLInputElement>(null);
 
-               onChange?.(target.value);
-            }}
-         />
+   return (
+      <div className='flex-1 w-full'>
+         <div
+            className={clsx(
+               'bg-card flex items-center rounded-md h-10 text-sm text-paragraph',
+               'gap-2',
+               containerClassName,
+            )}
+         >
+            <input
+               ref={inputRef}
+               type={type}
+               value={value}
+               placeholder={placeholder}
+               onKeyDown={onKeyDown}
+               className={clsx(
+                  'outline-box-border placeholder:text-sub-paragraph px-2 h-full',
+                  {
+                     'rounded-lg w-14': type === 'color',
+                     'flex-1': type !== 'color',
+                  },
+                  className,
+               )}
+               onChange={(e) => {
+                  const target = e.target as HTMLInputElement;
+
+                  onChange?.(target.value);
+               }}
+            />
+
+            {type === 'color' && (
+               <div
+                  className={clsx('flex-1', {
+                     'text-sub-paragraph': !value,
+                  })}
+                  onClick={() => {
+                     inputRef.current.click();
+                  }}
+               >
+                  {value || placeholder}
+               </div>
+            )}
+         </div>
 
          <ErrorMessage errMsg={errMsg} className={errClassName} />
       </div>

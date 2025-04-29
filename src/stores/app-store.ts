@@ -4,7 +4,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 type State = {
    theme: string;
-   themeCollection: Record<string, Record<string, string>>;
+   themeCollection: Theme;
 };
 
 type Action = {

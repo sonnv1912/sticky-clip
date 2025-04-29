@@ -12,6 +12,7 @@ type Props = {
    leftIcon?: keyof typeof icons;
    rightIcon?: keyof typeof icons;
    rightIconClassname?: string;
+   leftIconClassname?: string;
    iconSize?: number;
    size?: 'sm' | 'md' | 'lg';
    schema?:
@@ -43,6 +44,7 @@ export const Button = ({
    contentClassName,
    //    badge,
    rightIconClassname,
+   leftIconClassname,
    loading,
    loadingContent,
    size = 'sm',
@@ -59,6 +61,8 @@ export const Button = ({
 
    onClick,
 }: PropsWithChildren<Props>) => {
+   const textColor = `var(${document.documentElement.style[4]})`;
+
    const buttonSize = useMemo(() => {
       let result = 40;
 
@@ -98,14 +102,12 @@ export const Button = ({
       const textGreen = colors.green[800];
       const blue = colors.blue[600];
       const violet = colors.violet[500];
-      const textColor = `var(${document.documentElement.style[4]})`;
       const textSchema = textColor;
 
       const button: CSSProperties = {
          height: buttonSize,
          display: 'flex',
          alignItems: 'center',
-         justifyContent: 'center',
          borderRadius: 8,
          paddingLeft: content ? 16 : 8,
          paddingRight: content ? 16 : 8,
@@ -114,9 +116,9 @@ export const Button = ({
       };
 
       const text: CSSProperties = {
-         flex: leftIcon || rightIcon ? 1 : undefined,
+         flex: 1,
          fontSize,
-         textAlign: leftIcon || rightIcon ? undefined : 'center',
+         textAlign: leftIcon || rightIcon ? 'left' : 'center',
       };
 
       if (schema === 'primary') {
@@ -277,6 +279,7 @@ export const Button = ({
       size,
       variant,
       fontSize,
+      textColor,
    ]);
 
    const disable = _disable || loading;
@@ -302,7 +305,7 @@ export const Button = ({
                     opacity: 1,
                  }
          }
-         className={clsx('gap-8 overflow-hidden', className, {
+         className={clsx('gap-1 overflow-hidden', className, {
             'cursor-pointer': !disable,
             'cursor-not-allowed': disable,
          })}
@@ -332,11 +335,15 @@ export const Button = ({
                )}
 
                {leftIcon && !loading && (
-                  <Icon
-                     name={leftIcon}
-                     size={_iconSize || iconSize}
-                     color={iconColor || dynamicStyles.text.color?.toString()}
-                  />
+                  <div className={leftIconClassname}>
+                     <Icon
+                        name={leftIcon}
+                        size={_iconSize || iconSize}
+                        color={
+                           iconColor || dynamicStyles.text.color?.toString()
+                        }
+                     />
+                  </div>
                )}
 
                {content && (

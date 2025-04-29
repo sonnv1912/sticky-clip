@@ -48,7 +48,8 @@
          },
          "performance": {
             "noReExportAll": "off",
-            "noBarrelFile": "off"
+            "noBarrelFile": "off",
+            "noDelete": "off"
          },
          "suspicious": {
             "noReactSpecificProps": "off"

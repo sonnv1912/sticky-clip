@@ -85,7 +85,7 @@ const SettingModalBody = ({ onSuccess }: Props) => {
 
 export const SettingModal = (props: Props) => {
    return (
-      <Modal onHide={props.onHide} open={props.open}>
+      <Modal onHide={props.onHide} open={props.open} name='setting-modal'>
          <SettingModalBody {...props} />
       </Modal>
    );

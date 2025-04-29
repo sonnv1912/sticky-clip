@@ -54,11 +54,12 @@ pre {
 }
 
 .styles-module_tooltip__mnnfp {
-  background-color: var(--box) !important;
+  background-color: var(--background) !important;
   opacity: 1 !important;
   border: 1px solid var(--box-border) !important;
   border-radius: 12px !important;
   padding: 12px !important;
   z-index: 20 !important;
   pointer-events: initial !important;
+  box-shadow: var(--shadow-blur-10);
 }

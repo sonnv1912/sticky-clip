@@ -17,7 +17,6 @@ module.exports = {
             boxBorder: 'var(--box-border)',
          },
          boxShadow: {
-            '5': 'var(--shadow-5)',
             'blur-10': 'var(--shadow-blur-10)',
          },
       },

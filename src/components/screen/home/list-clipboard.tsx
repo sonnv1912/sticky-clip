@@ -97,9 +97,7 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
 
                      fetchHistory();
 
-                     toast(
-                        <Toast message='Copied to clipboard' type='success' />,
-                     );
+                     toast(<Toast message='Copied to clipboard' />);
                   }}
                >
                   <ClipboardItem

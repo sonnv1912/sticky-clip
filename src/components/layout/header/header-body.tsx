@@ -69,7 +69,12 @@ export const HeaderBody = ({
                   }}
                />
 
-               <Tooltip id='select-theme' place='bottom-end' clickable={true}>
+               <Tooltip
+                  id='select-theme'
+                  place='bottom-end'
+                  // isOpen={true}
+                  clickable={true}
+               >
                   <SelectTheme
                      onAdd={() => {
                         setShowModal(true);
@@ -79,7 +84,7 @@ export const HeaderBody = ({
             </div>
          </div>
 
-         <ThemeModal open={showModal} />
+         <ThemeModal open={showModal} onHide={() => setShowModal(false)} />
       </>
    );
 };

@@ -64,7 +64,10 @@ const App = () => {
       const themeValue = themeCollection[theme];
 
       for (const key of Object.keys(themeValue)) {
-         document.documentElement.style.setProperty(key, themeValue[key]);
+         document.documentElement.style.setProperty(
+            `--${key}`,
+            themeValue[key as keyof ThemeValue],
+         );
       }
    }, [theme, themeCollection]);
 
@@ -73,7 +76,7 @@ const App = () => {
    }
 
    return (
-      <div className={clsx('bg-box h-screen overflow-hidden')}>
+      <div className={clsx('bg-background h-screen overflow-hidden')}>
          <Header
             fetchHistory={fetchHistory}
             onClickSetting={() => setOpenSetting(true)}
@@ -111,6 +114,7 @@ const App = () => {
                height: 'fit-content',
                minHeight: 'fit-content',
                backgroundColor: 'transparent',
+               bottom: 24,
             }}
          />
 
