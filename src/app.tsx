@@ -92,9 +92,7 @@ const App = () => {
 
                setOpenSetting(false);
 
-               toast(
-                  <Toast message='Your settings have worked.' type='success' />,
-               );
+               toast(<Toast message='Your settings have worked' />);
             }}
          />
 

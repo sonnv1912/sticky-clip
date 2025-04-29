@@ -1,11 +1,14 @@
 import { Modal } from '@components/layout/modal';
 import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
+import { TextPair } from '@components/ui/text-pair';
+import { Toast } from '@components/ui/toast';
 import { defaultTheme } from '@configs/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAppStore } from '@stores/app-store';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import z from 'zod';
 
 type Props = {
@@ -13,21 +16,23 @@ type Props = {
    onHide?: () => void;
 };
 
+const defaultForm: ThemeValue & { name: string } = {
+   name: window.app.isDev ? 'test' : '',
+   'box-border': window.app.isDev ? '#fff' : '',
+   'shadow-blur-10': window.app.isDev ? '#fff' : '',
+   'sub-paragraph': window.app.isDev ? '#fff' : '',
+   background: window.app.isDev ? '#fff' : '',
+   box: window.app.isDev ? '#fff' : '',
+   card: window.app.isDev ? '#fff' : '',
+   fade: window.app.isDev ? '#fff' : '',
+   paragraph: window.app.isDev ? '#fff' : '',
+};
+
 export const ThemeModal = ({ open, onHide }: Props) => {
    const { themeCollection, setAppState } = useAppStore();
 
    const { control, handleSubmit, reset } = useForm({
-      defaultValues: {
-         name: '',
-         'box-border': '',
-         'shadow-blur-10': '',
-         'sub-paragraph': '',
-         background: '',
-         box: '',
-         card: '',
-         fade: '',
-         paragraph: '',
-      },
+      defaultValues: defaultForm,
       resolver: zodResolver(
          z.object({
             name: z
@@ -62,21 +67,13 @@ export const ThemeModal = ({ open, onHide }: Props) => {
          },
       });
 
+      toast(<Toast message='Your theme has added' />);
+
       onHide?.();
    });
 
    useEffect(() => {
-      reset({
-         name: '',
-         'box-border': '',
-         'shadow-blur-10': '',
-         'sub-paragraph': '',
-         background: '',
-         box: '',
-         card: '',
-         fade: '',
-         paragraph: '',
-      });
+      reset(defaultForm);
    }, [reset]);
 
    return (
@@ -90,12 +87,13 @@ export const ThemeModal = ({ open, onHide }: Props) => {
             control={control}
             name='name'
             render={({ field, fieldState }) => (
-               <Input
-                  placeholder='Theme name'
-                  value={field.value}
-                  errMsg={fieldState.error?.message}
-                  onChange={field.onChange}
-               />
+               <TextPair label='name'>
+                  <Input
+                     value={field.value}
+                     errMsg={fieldState.error?.message}
+                     onChange={field.onChange}
+                  />
+               </TextPair>
             )}
          />
 
@@ -105,18 +103,28 @@ export const ThemeModal = ({ open, onHide }: Props) => {
                control={control}
                name={key as keyof ThemeValue}
                render={({ field, fieldState }) => (
-                  <Input
-                     placeholder={key}
-                     type='color'
-                     value={field.value}
-                     errMsg={fieldState.error?.message}
-                     onChange={field.onChange}
-                  />
+                  <TextPair label={key}>
+                     <Input
+                        type='color'
+                        value={field.value}
+                        errMsg={fieldState.error?.message}
+                        onChange={field.onChange}
+                     />
+                  </TextPair>
                )}
             />
          ))}
 
-         <Button content='Save' className='mt-4' onClick={onSubmit} />
+         <div className='flex items-center mt-4 gap-4'>
+            <Button className='flex-1' content='Cancel' onClick={onHide} />
+
+            <Button
+               className='flex-1'
+               content='Save'
+               schema='blue'
+               onClick={onSubmit}
+            />
+         </div>
       </Modal>
    );
 };

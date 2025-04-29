@@ -15,7 +15,7 @@ type Props = {
    onSuccess: () => void;
 };
 
-const SettingModalBody = ({ onSuccess }: Props) => {
+const SettingModalBody = ({ onSuccess, onHide }: Props) => {
    const { control, reset, handleSubmit } = useForm({
       resolver: zodResolver(settingSchema),
       defaultValues: DEFAULT_SETTING,
@@ -71,11 +71,13 @@ const SettingModalBody = ({ onSuccess }: Props) => {
             </TextPair>
          </div>
 
-         <div className='flex items-center justify-end mt-7'>
+         <div className='flex items-center justify-end mt-7 gap-4'>
+            <Button content='Cancel' className='flex-1' onClick={onHide} />
+
             <Button
                content='Save'
                schema='blue'
-               className='self-end'
+               className='flex-1'
                onClick={onSubmit}
             />
          </div>
