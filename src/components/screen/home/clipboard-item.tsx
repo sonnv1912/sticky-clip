@@ -1,17 +1,24 @@
 import { Button } from '@components/ui/button';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
    data: ClipboardHistory;
+   active?: boolean;
    onMarked: () => void;
 };
 
-export const ClipboardItem = ({ data, onMarked }: Props) => {
+export const ClipboardItem = ({ data, active, onMarked }: Props) => {
    return (
       <div
-         className={clsx(
-            'p-3 bg-card rounded-xl cursor-pointer break-all select-none text-sm text-paragraph',
-            'hover:shadow-blur-10 transition-all duration-300 border border-box-border relative z-1',
+         className={twMerge(
+            clsx(
+               'p-3 bg-card rounded-xl cursor-pointer break-all select-none text-sm text-paragraph',
+               'hover:shadow-blur-10  transition-all duration-300 border border-box-border relative z-1',
+               {
+                  'shadow-blur-10': active,
+               },
+            ),
          )}
       >
          {data.isImage && (

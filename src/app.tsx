@@ -11,6 +11,7 @@ import { Header } from './components/layout/header';
 import { ListClipboard } from './components/screen/home/list-clipboard';
 import { SettingModal } from './modals/setting-modal';
 import { useSearchStore } from './stores/search-store';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
@@ -70,6 +71,10 @@ const App = () => {
          );
       }
    }, [theme, themeCollection]);
+
+   useHotkeys('esc', () => {
+      window.app.hide();
+   });
 
    if (!document.documentElement.style[0]) {
       return null;

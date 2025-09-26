@@ -14,13 +14,14 @@ export const HeaderSearch = () => {
       <div className='flex items-center gap-2'>
          <Input
             placeholder='Type something'
-            className='outline-none'
+            containerClassName='focus-within:border-0 px-0 pr-2'
+            autoFocus={true}
             onChange={debounceCallback}
          />
 
          <Button
             leftIcon='MaterialSymbolsCloseRounded'
-            schema='violet'
+            schema='blue'
             size='sm'
             onClick={() => {
                setSearchState({

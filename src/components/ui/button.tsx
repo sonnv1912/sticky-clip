@@ -100,7 +100,7 @@ export const Button = ({
       const gray = colors.gray[500];
       const green = colors.green[200];
       const textGreen = colors.green[800];
-      const blue = colors.blue[600];
+      const blue = '#00a0ed';
       const violet = colors.violet[500];
       const textSchema = textColor;
 

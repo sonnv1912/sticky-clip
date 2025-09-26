@@ -17,7 +17,6 @@ import { uniqBy } from 'lodash';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { DEFAULT_SETTING, appEvent } from './configs/constants';
-import { updateElectronApp } from 'update-electron-app';
 
 let lastClipboardText = '';
 let lastClipboardImage = '';
@@ -58,7 +57,7 @@ const createWindow = () => {
       height: windowHeight,
       resizable: !app.isPackaged,
       roundedCorners: true,
-      frame: false,
+      frame: !app.isPackaged,
       show: false,
       backgroundColor: '#232323',
       webPreferences: {
@@ -81,7 +80,7 @@ const createWindow = () => {
       window.webContents.openDevTools();
    }
 
-   if (process.platform === 'darwin') {
+   if (process.platform === 'darwin' && app.isPackaged) {
       app.setActivationPolicy('accessory');
    }
 };
@@ -216,5 +215,3 @@ app.whenReady()
    .then(createTrackIcon)
    .then(watchClipboard)
    .then(initEvent);
-
-updateElectronApp();

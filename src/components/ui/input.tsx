@@ -2,6 +2,7 @@ import { useClickOutside } from '@/hooks/use-click-outside';
 import clsx from 'clsx';
 import { useRef, useState, type KeyboardEvent } from 'react';
 import { RgbaColorPicker } from 'react-colorful';
+import { twMerge } from 'tailwind-merge';
 
 export type InputProps = {
    value?: string | number;
@@ -11,6 +12,7 @@ export type InputProps = {
    errMsg?: string;
    placeholder?: string;
    type?: 'text' | 'color';
+   autoFocus?: boolean;
 
    onChange?: (value: string) => void;
    onKeyDown?: (value: KeyboardEvent<HTMLInputElement>) => void;
@@ -39,6 +41,7 @@ export const Input = ({
    errMsg,
    placeholder,
    type,
+   autoFocus,
 
    onKeyDown,
    onChange,
@@ -54,10 +57,12 @@ export const Input = ({
    return (
       <div className='flex-1 w-full'>
          <div
-            className={clsx(
-               'bg-card flex items-center rounded-md h-10 text-sm text-paragraph px-2',
-               'gap-2 relative border border-transparent focus-within:border-box-border',
-               containerClassName,
+            className={twMerge(
+               clsx(
+                  'bg-card flex items-center rounded-md h-10 text-sm text-paragraph px-2',
+                  'gap-2 relative border border-transparent focus-within:border-box-border',
+                  containerClassName,
+               ),
             )}
          >
             {type === 'color' && (
@@ -73,8 +78,10 @@ export const Input = ({
                value={value}
                placeholder={placeholder}
                onKeyDown={onKeyDown}
+               // biome-ignore lint/a11y/noAutofocus: <explanation>
+               autoFocus={autoFocus}
                className={clsx(
-                  'placeholder:text-sub-paragraph px-2 h-full flex-1 outline-none',
+                  'placeholder:text-sub-paragraph h-full flex-1 outline-none',
                   className,
                )}
                onFocus={() => {
