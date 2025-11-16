@@ -45,7 +45,7 @@ const hide = () => {
 const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
    const windowWidth = app.isPackaged ? 550 : 550;
-   const windowHeight = app.isPackaged ? 550 : height;
+   const windowHeight = app.isPackaged ? 550 : 700;
    const x = Math.round((width - windowWidth) / 2);
    const y = height - windowHeight;
 
