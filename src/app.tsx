@@ -18,6 +18,7 @@ const App = () => {
    const [openSetting, setOpenSetting] = useState(false);
    const { query } = useSearchStore();
    const { theme, themeCollection } = useAppStore();
+   const setSearchState = useSearchStore((state) => state.setSearchState);
 
    const fetchHistory = useCallback(async () => {
       let result = await window.clipboard.get();
@@ -64,6 +65,14 @@ const App = () => {
 
    useHotkeys('esc', () => {
       window.app.hide();
+   });
+
+   useHotkeys('*', (e) => {
+      if (e.key === '/') {
+         setSearchState({
+            mode: 'search',
+         });
+      }
    });
 
    if (!document.documentElement.style[0]) {

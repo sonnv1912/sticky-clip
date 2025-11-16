@@ -16,6 +16,14 @@ export const HeaderSearch = () => {
             placeholder='Type something'
             containerClassName='focus-within:border-0 px-0 pr-2'
             autoFocus={true}
+            onKeyDown={(e) => {
+               if (e.key === 'Escape') {
+                  setSearchState({
+                     mode: 'header',
+                     query: '',
+                  });
+               }
+            }}
             onChange={debounceCallback}
          />
 
