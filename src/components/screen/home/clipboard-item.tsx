@@ -5,10 +5,9 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
    data: ClipboardHistory;
    active?: boolean;
-   onMarked: () => void;
 };
 
-export const ClipboardItem = ({ data, active, onMarked }: Props) => {
+export const ClipboardItem = ({ data, active }: Props) => {
    return (
       <div
          className={twMerge(
@@ -31,9 +30,6 @@ export const ClipboardItem = ({ data, active, onMarked }: Props) => {
             variant='transparent'
             leftIcon='NotoStar'
             iconSize={16}
-            onClick={() => {
-               onMarked();
-            }}
             className={clsx('absolute -top-2 -right-2 z-10', {
                grayscale: !data.marked,
                'grayscale-0': data.marked,

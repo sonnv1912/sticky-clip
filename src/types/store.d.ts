@@ -13,4 +13,6 @@ interface ClipboardHistory {
 interface StoreState {
    clipboardHistory: ClipboardHistory[];
    setting: Setting;
+   lastClipboardImage?: string;
+   lastClipboardText?: string;
 }

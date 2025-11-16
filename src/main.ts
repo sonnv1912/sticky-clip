@@ -17,6 +17,7 @@ import { uniqBy } from 'lodash';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { DEFAULT_SETTING, appEvent } from './configs/constants';
+import { sortByMarked } from './utils/common';
 
 let lastClipboardText = '';
 let lastClipboardImage = '';
@@ -109,54 +110,60 @@ const createTrackIcon = () => {
 
 const watchClipboard = () => {
    setInterval(() => {
-      const SETTING = store.get('setting', DEFAULT_SETTING);
-      const CLIPBOARD = store.get('clipboardHistory', []);
+      const setting = store.get('setting', DEFAULT_SETTING);
+      const clipboardHistory = store.get('clipboardHistory', []);
       const text = clipboard.readText();
       const image = clipboard.readImage();
 
       if (text && text !== lastClipboardText) {
          lastClipboardText = text;
 
-         if (CLIPBOARD.length === SETTING.maxItem) {
-            CLIPBOARD.pop();
+         if (clipboardHistory.length === setting.maxItem) {
+            clipboardHistory.pop();
          }
 
-         CLIPBOARD.unshift({
+         clipboardHistory.unshift({
             id: randomUUID(),
             value: text,
             isImage: false,
             marked: false,
          });
 
-         store.set('clipboardHistory', uniqBy(CLIPBOARD, 'value'));
+         store.set(
+            'clipboardHistory',
+            uniqBy(sortByMarked(clipboardHistory), 'value'),
+         );
       }
 
       if (!image.isEmpty() && image.toDataURL() !== lastClipboardImage) {
          lastClipboardImage = image.toDataURL();
 
-         if (CLIPBOARD.length === SETTING.maxItem) {
-            CLIPBOARD.pop();
+         if (clipboardHistory.length === setting.maxItem) {
+            clipboardHistory.pop();
          }
 
-         CLIPBOARD.unshift({
+         clipboardHistory.unshift({
             id: randomUUID(),
             value: image.toDataURL(),
             isImage: true,
             marked: false,
          });
 
-         store.set('clipboardHistory', uniqBy(CLIPBOARD, 'value'));
+         store.set(
+            'clipboardHistory',
+            uniqBy(sortByMarked(clipboardHistory), 'value'),
+         );
       }
    }, 1000);
 };
 
 const registerShortcut = () => {
-   const SETTING = store.get('setting', DEFAULT_SETTING);
+   const setting = store.get('setting', DEFAULT_SETTING);
 
-   if (SETTING.shortcut) {
+   if (setting.shortcut) {
       globalShortcut.unregisterAll();
 
-      globalShortcut.register(SETTING.shortcut.replaceAll(' ', ''), () => {
+      globalShortcut.register(setting.shortcut.replaceAll(' ', ''), () => {
          if (window.isVisible()) {
             hide();
 
@@ -176,20 +183,20 @@ const initEvent = () => {
    ipcMain.handle(appEvent.show, show);
 
    ipcMain.handle(appEvent.updateSetting, (_e, arg: Setting) => {
-      const CLIPBOARD = store.get('clipboardHistory');
-      const SETTING = store.get('setting');
+      const clipboardHistory = store.get('clipboardHistory');
+      const setting = store.get('setting');
 
       store.set('setting', {
-         ...SETTING,
+         ...setting,
          ...arg,
       });
 
-      if (arg.shortcut !== SETTING.shortcut) {
+      if (arg.shortcut !== setting.shortcut) {
          registerShortcut();
       }
 
-      if (CLIPBOARD.length > arg.maxItem) {
-         store.set('clipboardHistory', CLIPBOARD.slice(0, arg.maxItem));
+      if (clipboardHistory.length > arg.maxItem) {
+         store.set('clipboardHistory', clipboardHistory.slice(0, arg.maxItem));
       }
    });
 

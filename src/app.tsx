@@ -26,16 +26,6 @@ const App = () => {
          result = result.filter((t) => t.value.toLowerCase().includes(query));
       }
 
-      if (result.some((t) => t.marked)) {
-         result = result.sort((a, b) => {
-            if (a.marked === b.marked) {
-               return 0;
-            }
-
-            return a.marked ? -1 : 1;
-         });
-      }
-
       setHistory(result);
    }, [query]);
 
