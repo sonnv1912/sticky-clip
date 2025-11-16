@@ -1,11 +1,13 @@
 import { clipboard, ipcMain, nativeImage } from 'electron';
 import { clipboardEvent } from '../../configs/constants';
 import { store } from '../../main';
+import { sortByMarked } from '@/utils/common';
+import { unionBy } from 'lodash';
 
 ipcMain.handle(clipboardEvent.get, () => {
-   const history = store.get('clipboardHistory', []);
+   const clipboardHistory = store.get('clipboardHistory', []);
 
-   return history;
+   return clipboardHistory;
 });
 
 ipcMain.handle(clipboardEvent.clear, () => {
@@ -15,33 +17,44 @@ ipcMain.handle(clipboardEvent.clear, () => {
 ipcMain.handle(
    clipboardEvent.copyItem,
    (_e, arg: ClipboardEventParams['copyItem']) => {
-      const history = store.get('clipboardHistory', []);
-      const foundIndex = history.findIndex((item) => item.id === arg.id);
+      const clipboardHistory = store.get('clipboardHistory', []);
+      const foundIndex = clipboardHistory.findIndex(
+         (item) => item.id === arg.id,
+      );
+      const originalItem = clipboardHistory[foundIndex];
 
       if (arg.isImage) {
          const image = nativeImage.createFromDataURL(arg.value);
 
          clipboard.writeImage(image);
+         store.set('lastClipboardImage', image.toDataURL());
       } else {
          clipboard.writeText(arg.value);
+         store.set('lastClipboardText', arg.value);
       }
 
-      history.splice(foundIndex, 1);
-      history.unshift(arg);
+      clipboardHistory.splice(foundIndex, 1);
 
-      store.set('clipboardHistory', history);
+      // Preserve the original item's marked state
+      const updatedItem = { ...arg, marked: originalItem?.marked || false };
+      clipboardHistory.unshift(updatedItem);
+
+      store.set(
+         'clipboardHistory',
+         unionBy(sortByMarked(clipboardHistory), 'value'),
+      );
    },
 );
 
 ipcMain.handle(
    clipboardEvent.removeItem,
    (_e, arg: ClipboardEventParams['removeItem']) => {
-      const history = store.get('clipboardHistory', []);
+      const clipboardHistory = store.get('clipboardHistory', []);
 
-      if (history.length > 0) {
-         history.splice(arg, 1);
+      if (clipboardHistory.length >= 0) {
+         clipboardHistory.splice(arg, 1);
 
-         store.set('clipboardHistory', history);
+         store.set('clipboardHistory', clipboardHistory);
       }
    },
 );
@@ -49,13 +62,15 @@ ipcMain.handle(
 ipcMain.handle(
    clipboardEvent.updateItem,
    (_e, arg: ClipboardEventParams['updateItem']) => {
-      const history = store.get('clipboardHistory', []);
-      const foundIndex = history.findIndex((item) => item.id === arg.id);
+      const clipboardHistory = store.get('clipboardHistory', []);
+      const foundIndex = clipboardHistory.findIndex(
+         (item) => item.id === arg.id,
+      );
 
       if (foundIndex > -1) {
-         history[foundIndex] = arg;
+         clipboardHistory[foundIndex] = arg;
 
-         store.set('clipboardHistory', history);
+         store.set('clipboardHistory', sortByMarked(clipboardHistory));
       }
    },
 );
