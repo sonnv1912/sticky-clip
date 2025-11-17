@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-const SWIPE_THRESHOLD = 150;
+const SWIPE_THRESHOLD = 50;
 
 type Props = {
    data: ClipboardHistory;
@@ -15,7 +15,7 @@ type Props = {
    onSwipeRight: (index: number) => void;
    isDragging: boolean;
    onDragStart: (index: number) => void;
-   onDragStateChange: (index: number, state: 'left' | 'right' | null) => void;
+   onDragStateChange?: (index: number, state: 'left' | 'right' | null) => void;
    onSwipeEnd: (index: number, offset: { x: number; y: number }) => void;
 };
 
@@ -42,13 +42,13 @@ export const ClipboardItem = ({
       _: unknown,
       info: { offset: { x: number; y: number } },
    ) => {
-      if (Math.abs(info.offset.x) > 30) {
+      if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {
          const newDragState = info.offset.x > 0 ? 'right' : 'left';
          setDragState(newDragState);
-         onDragStateChange(index, newDragState);
+         onDragStateChange?.(index, newDragState);
       } else {
          setDragState(null);
-         onDragStateChange(index, null);
+         onDragStateChange?.(index, null);
       }
    };
 
@@ -57,7 +57,7 @@ export const ClipboardItem = ({
       info: { offset: { x: number; y: number } },
    ) => {
       setDragState(null);
-      onDragStateChange(index, null);
+      onDragStateChange?.(index, null);
       onSwipeEnd(index, { x: info.offset.x, y: info.offset.y });
 
       if (Math.abs(info.offset.x) < SWIPE_THRESHOLD) {
@@ -93,9 +93,9 @@ export const ClipboardItem = ({
          onDrag={handleDrag}
          onDragEnd={handleDragEnd}
          onTap={handleTap}
-         className={'relative'}
+         className={'pt-6'}
       >
-         <div className={clsx('pt-4')}>
+         <div className={clsx(' relative')}>
             <div
                className={twMerge(
                   clsx(
@@ -115,17 +115,17 @@ export const ClipboardItem = ({
                )}
 
                {!data.isImage && <pre>{data.value}</pre>}
-
-               <Button
-                  variant='transparent'
-                  leftIcon='NotoStar'
-                  iconSize={16}
-                  className={clsx('absolute -top-2 -right-2 z-10', {
-                     grayscale: !data.marked,
-                     'grayscale-0': data.marked,
-                  })}
-               />
             </div>
+
+            <Button
+               variant='transparent'
+               leftIcon='NotoStar'
+               iconSize={16}
+               className={clsx('absolute -top-2 -right-2 z-10', {
+                  grayscale: !data.marked,
+                  'grayscale-0': data.marked,
+               })}
+            />
          </div>
       </motion.div>
    );

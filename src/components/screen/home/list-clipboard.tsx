@@ -48,10 +48,6 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
       setIsDragging((prev) => ({ ...prev, [index]: true }));
    };
 
-   const handleDragStateChange = (_: number, __: 'left' | 'right' | null) => {
-      // Handled internally in ClipboardItem component
-   };
-
    const handleSwipeEnd = (
       index: number,
       _offset: { x: number; y: number },
@@ -178,7 +174,8 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
          setSelected(items.length - 1);
 
          itemRefs.current[items.length - 1].scrollIntoView({
-            block: 'end',
+            block: 'start',
+            behavior: 'smooth',
          });
       }
    });
@@ -201,7 +198,7 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
             'mt-14 flex flex-col px-4 overflow-y-auto overflow-x-hidden relative',
          )}
       >
-         <AnimatePresence mode='popLayout' initial={true}>
+         <AnimatePresence mode='sync' initial={true}>
             {items.length === 0 && (
                <code className='text-center text-paragraph absolute top-14 left-10 right-10'>
                   {mode === 'header' ? emptyMessage() : emptySearchMessage()}
@@ -227,7 +224,6 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
                      onSwipeRight={handleSwipeRight}
                      isDragging={isDragging[index] || false}
                      onDragStart={handleDragStart}
-                     onDragStateChange={handleDragStateChange}
                      onSwipeEnd={handleSwipeEnd}
                   />
                </div>
