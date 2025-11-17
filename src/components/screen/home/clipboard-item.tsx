@@ -100,7 +100,7 @@ export const ClipboardItem = ({
                className={twMerge(
                   clsx(
                      'p-3 rounded-xl bg-card cursor-pointer break-all select-none text-sm transition-colors  text-paragraph',
-                     'hover:shadow-blur-10  transition-all duration-300 border border-box-border relative z-1',
+                     'hover:shadow-blur-10 max-h-40 transition-all duration-300 border border-box-border relative z-1',
                      {
                         'shadow-blur-10': active,
                         'bg-gray-500': data.marked && dragState === 'right',
