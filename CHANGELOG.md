@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [2.4.1] - 2025-11-17
+
+### Fixed
+- **Clipboard item height** - Added max-height limit to prevent excessive expansion and maintain consistent UI layout
+
 ## [2.4.0] - 2025-11-17
 
 ### Added
