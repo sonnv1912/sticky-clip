@@ -1,6 +1,7 @@
 interface Setting {
    maxItem: number;
    shortcut: string;
+   openAtStartup: boolean;
 }
 
 interface ClipboardHistory {

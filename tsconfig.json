@@ -6,7 +6,6 @@
       "esModuleInterop": true,
       "noImplicitAny": true,
       "sourceMap": true,
-      "outDir": "dist",
       "module": "esnext",
       "moduleResolution": "bundler",
       "resolveJsonModule": true,

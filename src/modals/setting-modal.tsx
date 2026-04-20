@@ -8,6 +8,7 @@ import { settingSchema } from '../schemas/setting-schema';
 import { Modal } from '../components/layout/modal';
 import { DEFAULT_SETTING } from '../configs/constants';
 import { InputKeyboard } from '@components/ui/input-keyboard';
+import { Checkbox } from '../components/ui/checkbox';
 
 type Props = {
    open: boolean;
@@ -64,6 +65,19 @@ const SettingModalBody = ({ onSuccess, onHide }: Props) => {
                         className='text-right'
                         value={field.value}
                         errMsg={fieldState.error?.message}
+                        onChange={field.onChange}
+                     />
+                  )}
+               />
+            </TextPair>
+
+            <TextPair label='Open at startup'>
+               <Controller
+                  control={control}
+                  name='openAtStartup'
+                  render={({ field }) => (
+                     <Checkbox
+                        checked={field.value}
                         onChange={field.onChange}
                      />
                   )}

@@ -19,6 +19,7 @@ export const clipboardEvent = {
 export const DEFAULT_SETTING: Setting = {
    maxItem: 10,
    shortcut: '',
+   openAtStartup: false,
 };
 
 export const emptyClipboardMessages = [
@@ -52,7 +53,7 @@ export const defaultTheme: Theme = {
       background: '#272727',
       box: '#272727',
       card: '#303030',
-      fade: 'rgba(255, 255, 255, 0.4)',
+      fade: 'rgba(110, 110, 110, 0.4)',
       paragraph: '#fff',
       'sub-paragraph': '#71717a',
       'box-border': 'rgba(66, 66, 66, 1)',
