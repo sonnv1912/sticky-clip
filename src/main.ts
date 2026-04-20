@@ -23,6 +23,9 @@ import { sortByMarked } from './utils/common';
 const autoLauncher = new AutoLaunch({
    name: 'Sticky Clip',
    isHidden: false,
+   mac: {
+      useLaunchAgent: true,
+   },
 });
 
 let lastClipboardText = '';
@@ -214,11 +217,6 @@ const initEvent = () => {
 
       if (arg.openAtStartup !== setting.openAtStartup) {
          await setLoginItemSettings();
-
-         app.relaunch();
-         app.exit();
-
-         return;
       }
 
       if (clipboardHistory.length > arg.maxItem) {
