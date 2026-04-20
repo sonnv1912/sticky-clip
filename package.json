@@ -2,7 +2,7 @@
    "name": "sticky-clip",
    "description": "Sticky Clip - Your clipboard manager",
    "main": ".vite/build/main.js",
-   "version": "2.4.1",
+   "version": "2.5.0",
    "license": "MIT",
    "private": true,
    "scripts": {
@@ -21,6 +21,7 @@
    "dependencies": {
       "@hookform/resolvers": "^5.0.1",
       "@tailwindcss/vite": "^4.0.15",
+      "auto-launch": "^5.0.6",
       "clsx": "^2.1.1",
       "electron-squirrel-startup": "^1.0.1",
       "electron-store": "^10.0.1",
@@ -52,6 +53,7 @@
       "@electron-forge/plugin-fuses": "^7.7.0",
       "@electron-forge/plugin-vite": "^7.7.0",
       "@electron/fuses": "^1.8.0",
+      "@types/auto-launch": "^5.0.5",
       "@types/electron-squirrel-startup": "^1.0.2",
       "@types/lodash": "^4.17.16",
       "@types/react": "^19.0.10",

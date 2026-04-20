@@ -7,15 +7,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ToastContainer, toast } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
+import { useHotkeys } from 'react-hotkeys-hook';
 import { Header } from './components/layout/header';
 import { ListClipboard } from './components/screen/home/list-clipboard';
 import { SettingModal } from './modals/setting-modal';
+import { ViewModal } from './modals/view-modal';
 import { useSearchStore } from './stores/search-store';
-import { useHotkeys } from 'react-hotkeys-hook';
 
 const App = () => {
    const [history, setHistory] = useState<ClipboardHistory[]>([]);
    const [openSetting, setOpenSetting] = useState(false);
+   const [viewItem, setViewItem] = useState<ClipboardHistory>();
    const { query } = useSearchStore();
    const { theme, themeCollection } = useAppStore();
    const setSearchState = useSearchStore((state) => state.setSearchState);
@@ -75,6 +77,10 @@ const App = () => {
       }
    });
 
+   const handleContextMenu = (item: ClipboardHistory) => {
+      setViewItem(item);
+   };
+
    if (!document.documentElement.style[0]) {
       return null;
    }
@@ -86,7 +92,11 @@ const App = () => {
             onClickSetting={() => setOpenSetting(true)}
          />
 
-         <ListClipboard fetchHistory={fetchHistory} items={history} />
+         <ListClipboard
+            fetchHistory={fetchHistory}
+            items={history}
+            onContextMenu={handleContextMenu}
+         />
 
          <SettingModal
             open={openSetting}
@@ -98,6 +108,12 @@ const App = () => {
 
                toast(<Toast message='Your settings have worked' />);
             }}
+         />
+
+         <ViewModal
+            open={!!viewItem}
+            item={viewItem}
+            onHide={() => setViewItem(undefined)}
          />
 
          <ToastContainer

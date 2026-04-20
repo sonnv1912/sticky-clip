@@ -17,6 +17,7 @@ type Props = {
    onDragStart: (index: number) => void;
    onDragStateChange?: (index: number, state: 'left' | 'right' | null) => void;
    onSwipeEnd: (index: number, offset: { x: number; y: number }) => void;
+   onContextMenu?: (item: ClipboardHistory) => void;
 };
 
 export const ClipboardItem = ({
@@ -30,6 +31,7 @@ export const ClipboardItem = ({
    onDragStart,
    onDragStateChange,
    onSwipeEnd,
+   onContextMenu,
 }: Props) => {
    const [dragState, setDragState] = useState<'left' | 'right' | null>(null);
 
@@ -77,6 +79,11 @@ export const ClipboardItem = ({
       }
    };
 
+   const handleContextMenu = (e: { preventDefault: () => void }) => {
+      e.preventDefault();
+      onContextMenu?.(data);
+   };
+
    return (
       <motion.div
          layout={true}
@@ -95,12 +102,12 @@ export const ClipboardItem = ({
          onTap={handleTap}
          className={'pt-6'}
       >
-         <div className={clsx(' relative')}>
+         <div className={clsx(' relative')} onContextMenu={handleContextMenu}>
             <div
                className={twMerge(
                   clsx(
                      'p-3 rounded-xl bg-card cursor-pointer break-all select-none text-sm transition-colors  text-paragraph',
-                     'hover:shadow-blur-10 max-h-40 overflow-hidden transition-all duration-300 border border-box-border relative z-1',
+                     'hover:shadow-blur-10 max-h-40 overflow-hidden transition-all duration-300 border relative z-1',
                      {
                         'shadow-blur-10': active,
                         'bg-gray-500': data.marked && dragState === 'right',
@@ -109,6 +116,9 @@ export const ClipboardItem = ({
                      },
                   ),
                )}
+               style={{
+                  borderColor: 'var(--box-border)',
+               }}
             >
                {data.isImage && (
                   <img alt='' src={data.value} className='rounded-xl mx-auto' />

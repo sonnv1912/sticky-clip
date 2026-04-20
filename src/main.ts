@@ -1,6 +1,7 @@
 import './server/events/app-event';
 import './server/events/clipboard-event';
 
+import AutoLaunch from 'auto-launch';
 import {
    BrowserWindow,
    Menu,
@@ -18,6 +19,11 @@ import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { DEFAULT_SETTING, appEvent } from './configs/constants';
 import { sortByMarked } from './utils/common';
+
+const autoLauncher = new AutoLaunch({
+   name: 'Sticky Clip',
+   isHidden: false,
+});
 
 let lastClipboardText = '';
 let lastClipboardImage = '';
@@ -44,7 +50,7 @@ const hide = () => {
 
 const createWindow = () => {
    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-   const windowWidth = app.isPackaged ? 550 : 550;
+   const windowWidth = app.isPackaged ? 550 : width / 2;
    const windowHeight = app.isPackaged ? 700 : height;
    const x = Math.round((width - windowWidth) / 2);
    const y = height - windowHeight;
@@ -175,14 +181,25 @@ const registerShortcut = () => {
    }
 };
 
+const setLoginItemSettings = async () => {
+   const setting = store.get('setting', DEFAULT_SETTING);
+
+   if (setting.openAtStartup) {
+      await autoLauncher.enable();
+   } else {
+      await autoLauncher.disable();
+   }
+};
+
 const initEvent = () => {
    registerShortcut();
+   setLoginItemSettings();
 
    ipcMain.handle(appEvent.hide, hide);
 
    ipcMain.handle(appEvent.show, show);
 
-   ipcMain.handle(appEvent.updateSetting, (_e, arg: Setting) => {
+   ipcMain.handle(appEvent.updateSetting, async (_e, arg: Setting) => {
       const clipboardHistory = store.get('clipboardHistory');
       const setting = store.get('setting');
 
@@ -193,6 +210,15 @@ const initEvent = () => {
 
       if (arg.shortcut !== setting.shortcut) {
          registerShortcut();
+      }
+
+      if (arg.openAtStartup !== setting.openAtStartup) {
+         await setLoginItemSettings();
+
+         app.relaunch();
+         app.exit();
+
+         return;
       }
 
       if (clipboardHistory.length > arg.maxItem) {

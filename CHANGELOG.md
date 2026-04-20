@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [2.5.0] - 2026-04-20
+
+### Added
+- **Auto-launch on startup** - Integrated auto-launch package for reliable cross-platform startup functionality
+- **Full content view modal** - Right-click on clipboard items to view complete content in a dedicated modal
+
+### Fixed
+
 ## [2.4.1] - 2025-11-17
 
 ### Fixed

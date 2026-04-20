@@ -16,9 +16,10 @@ import { ClipboardItem } from './clipboard-item';
 type Props = {
    items: ClipboardHistory[];
    fetchHistory: () => void;
+   onContextMenu?: (item: ClipboardHistory) => void;
 };
 
-export const ListClipboard = ({ items, fetchHistory }: Props) => {
+export const ListClipboard = ({ items, fetchHistory, onContextMenu }: Props) => {
    const { mode, query } = useSearchStore();
    const listRef = useRef<HTMLDivElement>(null);
    const itemRefs = useRef<HTMLDivElement[]>([]);
@@ -95,14 +96,14 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
 
       setSelected(0);
 
-      listRef.current.scroll({
+      listRef.current?.scroll({
          top: 0,
       });
    };
 
    useEffect(() => {
       const scrollToTop = () => {
-         listRef.current.scrollTo({
+         listRef.current?.scrollTo({
             top: 0,
          });
       };
@@ -209,7 +210,9 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
                <div
                   key={item.id}
                   ref={(ref) => {
-                     itemRefs.current[index] = ref;
+                     if (ref) {
+                        itemRefs.current[index] = ref;
+                     }
                   }}
                   className={clsx({
                      'pb-4': index === items.length - 1,
@@ -225,6 +228,7 @@ export const ListClipboard = ({ items, fetchHistory }: Props) => {
                      isDragging={isDragging[index] || false}
                      onDragStart={handleDragStart}
                      onSwipeEnd={handleSwipeEnd}
+                     onContextMenu={onContextMenu}
                   />
                </div>
             ))}
