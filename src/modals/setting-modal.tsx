@@ -89,7 +89,7 @@ const SettingModalBody = ({ onSuccess, onHide }: Props) => {
             <Button content='Cancel' className='flex-1' onClick={onHide} />
 
             <Button
-               content='Save'
+               content='Save & reload'
                schema='blue'
                className='flex-1'
                onClick={onSubmit}

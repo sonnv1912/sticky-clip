@@ -90,3 +90,12 @@ typings/
 
 # Electron-Forge
 out/
+
+bin
+
+build
+
+build_swift
+
+# Native module build artifacts
+public/libSwiftCode.a
