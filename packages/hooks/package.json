@@ -1,0 +1,35 @@
+{
+   "name": "@packages/hooks",
+   "license": "MIT",
+   "version": "1.0.0",
+   "type": "module",
+   "exports": {
+      "./query": {
+         "types": "./src/query/index.ts",
+         "import": "./src/query/index.ts",
+         "require": "./dist/query/index.js"
+      },
+      "./shared": {
+         "types": "./src/shared/index.ts",
+         "import": "./src/shared/index.ts",
+         "require": "./dist/shared/index.js"
+      }
+   },
+   "scripts": {
+      "dev": "tsup --watch",
+      "build_package": "tsup"
+   },
+   "dependencies": {
+      "@packages/configs": "*",
+      "@packages/utils": "*",
+      "@packages/assets": "*",
+      "@packages/types": "*"
+   },
+   "devDependencies": {
+      "tsup": "^8.5.0"
+   },
+   "peerDependencies": {
+      "react-i18next": "*",
+      "@tanstack/react-query": "*"
+   }
+}

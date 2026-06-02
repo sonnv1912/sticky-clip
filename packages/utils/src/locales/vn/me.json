@@ -1,0 +1,68 @@
+{
+   "name": "Ngô Văn Sơn",
+   "shortDesc": "Một <span class='font-bold rounded-md' style='background: #3b82f6; padding: 4px 8px'>Lập trình viên React Native</span> với 2 năm kinh nghiệm chuyên về React Native và Expo. Đam mê xây dựng các ứng dụng web và di động có hiệu suất cao, thân thiện với người dùng. Thành thạo JavaScript, TypeScript và các công cụ front-end hiện đại. Cam kết viết mã sạch, dễ bảo trì và có khả năng mở rộng.",
+   "experiences": {
+      "kochan": {
+         "app_description": "Kochan là một nền tảng thương mại điện tử độc đáo dành cho cộng đồng Aerobic, kết hợp giữa mua sắm trực tuyến và kết nối cộng đồng. Các tính năng chính bao gồm cơ hội tiếp thị liên kết và tạo dựng mối quan hệ cộng đồng, cho phép người dùng chia sẻ sở thích và tham gia sự kiện.",
+         "responsibilities": {
+            "fcm": {
+               "label": "Cấu hình Thông báo với Firebase Cloud Messaging",
+               "content": "Thiết lập và quản lý việc gửi và nhận thông báo, đảm bảo người dùng luôn cập nhật các thông tin quan trọng trong ứng dụng."
+            },
+            "collaborated": {
+               "label": "Hợp tác với Chủ sở hữu Sản phẩm",
+               "content": "Tham gia thảo luận với Chủ sở hữu Sản phẩm để giải quyết các giới hạn và thách thức của dự án, tìm ra giải pháp để nâng cao chức năng sản phẩm và trải nghiệm người dùng."
+            },
+            "env": {
+               "label": "Cấu hình Môi trường Đa nền tảng",
+               "content": "Thiết lập các cấu hình cho nhiều môi trường để tối ưu hóa quá trình kiểm thử và triển khai."
+            },
+            "music": {
+               "label": "Quản lý Phát nhạc và Sự kiện",
+               "content": "Giám sát danh sách phát nhạc và điều khiển các chức năng âm thanh như phát, tạm dừng và lặp lại, đảm bảo trải nghiệm nghe nhạc mượt mà."
+            },
+            "debug": {
+               "label": "Gỡ lỗi và Khắc phục sự cố",
+               "content": "Xác định và sửa lỗi, cải thiện độ ổn định và chức năng của ứng dụng."
+            },
+            "design": {
+               "label": "Hợp tác Thiết kế",
+               "content": "Làm việc chặt chẽ với nhà thiết kế để xem xét và thảo luận về các yếu tố thiết kế, đưa ra ý kiến về các lựa chọn thiết kế tối ưu phù hợp với mục tiêu dự án."
+            },
+            "otp": {
+               "label": "Triển khai Xác nhận OTP bằng Mã gốc",
+               "content": "Phát triển chức năng gốc để gửi tin nhắn xác nhận OTP cho người dùng, nâng cao tính bảo mật và xác thực người dùng trong ứng dụng."
+            },
+            "automated": {
+               "label": "Tự động hóa phát hành bản thử nghiệm với Fastlane",
+               "content": "Viết script Fastlane để tự động phát hành phiên bản thử nghiệm, đảm bảo việc cập nhật đến tester nhanh chóng và giảm bớt khối lượng công việc thủ công."
+            }
+         }
+      },
+      "kolel": {
+         "app_description": "Ứng dụng Kolel cung cấp thư viện video lớn nhất về các bài học Torah, Halacha, đạo đức và quan điểm từ các giáo sĩ, giảng viên và tổ chức hàng đầu tại Israel và trên toàn thế giới. Ứng dụng cho phép: Cập nhật video mới nhất; Theo dõi giáo sĩ và tổ chức yêu thích; Trải nghiệm xem video nhanh, tiện lợi, thân thiện với người dùng; Tìm kiếm video theo chủ đề phổ biến (Đức tin và Niềm tin, Thành công và Kinh doanh, Kabbalah và Huyền bí, v.v.); Bình luận và chia sẻ video; Truy cập nhanh các video đã xem trước đó để tiếp tục theo dõi. Mục đích duy nhất của ứng dụng là truyền bá kiến thức Torah và mang lại lợi ích cho cộng đồng.",
+         "responsibilities": {
+            "maintain": {
+               "label": "Bảo trì và Hỗ trợ Ứng dụng",
+               "content": "Duy trì và hỗ trợ các ứng dụng di động sử dụng React Native để nâng cao trải nghiệm người dùng."
+            },
+            "release": {
+               "label": "Gỡ lỗi và phát hành ứng dụng",
+               "content": "Phát hành ứng dụng trên Google Play Console và Apple Store Connect."
+            },
+            "sentry": {
+               "label": "Theo dõi lỗi và khắc phục sự cố",
+               "content": "Giám sát lỗi bằng Sentry và sửa lỗi để cải thiện tính ổn định của ứng dụng."
+            }
+         }
+      }
+   },
+   "education": {
+      "huit": {
+         "label": "Trường Đại học Công Thương TP.HCM",
+         "time": "Tháng 9/2020 - Tháng 5/2024",
+         "content": "Cử nhân Công nghệ Thông tin",
+         "level": "Khá"
+      }
+   }
+}

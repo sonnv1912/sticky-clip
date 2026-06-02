@@ -1,0 +1,21 @@
+{
+   "change": "Change",
+   "description": "Description",
+   "month": {
+      "may": "May",
+      "nov": "Nov",
+      "feb": "Feb",
+      "apr": "Apr"
+   },
+   "phone": "Phone",
+   "current": "Current",
+   "coming_soon": "Coming Soon",
+
+   "action": {
+      "view_less": "View less",
+      "view_more": "View more",
+      "download": "Download",
+      "download_for_mac": "Download for MacOS",
+      "download_for_win": "Download for Window"
+   }
+}

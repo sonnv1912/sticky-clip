@@ -1,0 +1,10 @@
+{
+   "compilerOptions": {
+      "outDir": "dist",
+      "declaration": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true
+   },
+   "include": ["src", "assets.d.ts"],
+   "exclude": ["node_modules", "dist"]
+}

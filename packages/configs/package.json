@@ -1,0 +1,41 @@
+{
+   "name": "@packages/configs",
+   "license": "MIT",
+   "version": "1.0.0",
+   "exports": {
+      "./constants": {
+         "types": "./src/constants.ts",
+         "import": "./src/constants.ts",
+         "require": "./dist/constants.js"
+      },
+      "./env": {
+         "types": "./src/env.ts",
+         "import": "./src/env.ts",
+         "require": "./dist/env.js"
+      },
+      "./query-key": {
+         "types": "./src/query-key.ts",
+         "import": "./src/query-key.ts",
+         "require": "./dist/query-key.js"
+      },
+      "./theme": {
+         "types": "./src/theme.ts",
+         "import": "./src/theme.ts",
+         "require": "./dist/theme.js"
+      }
+   },
+   "scripts": {
+      "dev": "tsup --watch",
+      "build_package": "tsup"
+   },
+   "dependencies": {
+      "@packages/assets": "*"
+   },
+   "devDependencies": {
+      "tsup": "^8.5.0"
+   },
+   "peerDependencies": {
+      "tailwindcss": "*",
+      "user-agent-data-types": "*"
+   }
+}

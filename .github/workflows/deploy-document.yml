@@ -1,0 +1,39 @@
+name: Deploy Document to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.3.0
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+          cmd: install
+
+      - name: Build document
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+          cmd: build:document
+
+      - name: Deploy document to gh-pages
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./apps/document/dist

@@ -1,64 +1,25 @@
 {
-   "name": "sticky-clip",
-   "description": "Sticky Clip - Your clipboard manager",
-   "main": ".vite/build/main.js",
-   "version": "2.5.0",
+   "name": "sticky-clip-workspace",
    "license": "MIT",
+   "private": true,
    "scripts": {
-      "dev": "electron-forge start",
-      "prebuild": "rm -rf out",
-      "build": "electron-forge make"
-   },
-   "author": {
-      "name": "sonnv1912",
-      "email": "sonnv1912@gmail.com"
-   },
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/sonnv1912/sticky-clip.git"
-   },
-   "dependencies": {
-      "@hookform/resolvers": "^5.0.1",
-      "@tailwindcss/vite": "^4.0.15",
-      "clsx": "^2.1.1",
-      "electron-squirrel-startup": "^1.0.1",
-      "electron-store": "^10.0.1",
-      "lodash": "^4.17.21",
-      "motion": "^12.7.4",
-      "react": "^19.0.0",
-      "react-colorful": "^5.6.1",
-      "react-dom": "^19.0.0",
-      "react-hook-form": "^7.56.0",
-      "react-hotkeys-hook": "^5.1.0",
-      "react-toastify": "^11.0.5",
-      "react-tooltip": "^5.28.0",
-      "tailwind-merge": "^3.3.1",
-      "tailwindcss": "^4.0.15",
-      "use-debounce": "^10.0.4",
-      "uuid": "^11.1.0",
-      "zod": "^3.24.3",
-      "zustand": "^5.0.3"
+      "dev": "turbo run dev",
+      "dev:app": "yarn workspace sticky-clip dev",
+      "dev:document": "yarn workspace sticky-clip-document dev",
+      "build": "turbo run build",
+      "build:app": "yarn workspace sticky-clip build",
+      "build:document": "yarn workspace sticky-clip-document build",
+      "deploy:document": "yarn build:document && gh-pages -d ./apps/document/dist",
+      "preview:document": "yarn workspace sticky-clip-document preview"
    },
    "devDependencies": {
-      "@biomejs/biome": "1.9.4",
-      "@electron-forge/cli": "^7.7.0",
-      "@electron-forge/maker-deb": "^7.7.0",
-      "@electron-forge/maker-dmg": "^7.7.0",
-      "@electron-forge/maker-rpm": "^7.7.0",
-      "@electron-forge/maker-squirrel": "^7.7.0",
-      "@electron-forge/maker-zip": "^7.7.0",
-      "@electron-forge/plugin-auto-unpack-natives": "^7.11.1",
-      "@electron-forge/plugin-fuses": "^7.7.0",
-      "@electron-forge/plugin-vite": "^7.7.0",
-      "@electron/fuses": "^1.8.0",
-      "@types/electron-squirrel-startup": "^1.0.2",
-      "@types/lodash": "^4.17.16",
-      "@types/react": "^19.0.10",
-      "@types/react-dom": "^19.0.4",
-      "electron": "35.2.0",
-      "ts-node": "^10.9.2",
-      "typescript": "~5.8.3",
-      "user-agent-data-types": "^0.4.2",
-      "vite": "^6.3.2"
-   }
+      "gh-pages": "^6.2.0",
+      "turbo": "^2.5.5",
+      "typescript": "5.8.3"
+   },
+   "engines": {
+      "node": ">=20"
+   },
+   "packageManager": "yarn@1.22.22",
+   "workspaces": ["apps/*", "packages/*"]
 }

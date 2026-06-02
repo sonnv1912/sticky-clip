@@ -1,0 +1,9 @@
+{
+   "compilerOptions": {
+      "moduleResolution": "nodenext",
+      "module": "NodeNext",
+      "types": ["user-agent-data-types"]
+   },
+   "include": ["src"],
+   "exclude": ["node_module", "dist"]
+}

@@ -1,0 +1,21 @@
+{
+   "change": "Thay đổi",
+   "description": "Mô tả",
+   "month": {
+      "may": "Thg 05",
+      "nov": "Thg 11",
+      "feb": "Thg 02",
+      "apr": "Thg 04"
+   },
+   "phone": "Điện thoại",
+   "current": "Hiện tại",
+   "coming_soon": "Sắp ra mắt",
+
+   "action": {
+      "view_less": "Xem ít hơn",
+      "view_more": "Xem nhiều hơn",
+      "download": "Tải xuống",
+      "download_for_mac": "Tải xuống cho MacOS",
+      "download_for_win": "Tải xuống cho Window"
+   }
+}

@@ -1,0 +1,31 @@
+{
+   "name": "@packages/components",
+   "license": "MIT",
+   "version": "1.0.0",
+   "exports": {
+      "./ui": {
+         "types": "./src/ui/index.ts",
+         "import": "./src/ui/index.ts",
+         "require": "./dist/ui/index.js"
+      }
+   },
+   "scripts": {
+      "dev": "tsup --watch",
+      "build_package": "tsup"
+   },
+   "dependencies": {
+      "@packages/assets": "*",
+      "@packages/configs": "*",
+      "@packages/utils": "*",
+      "@packages/types": "*"
+   },
+   "devDependencies": {
+      "tsup": "^8.5.0"
+   },
+   "peerDependencies": {
+      "react": "*",
+      "react-dom": "*",
+      "@types/react": "*",
+      "@types/react-dom": "*"
+   }
+}

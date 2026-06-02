@@ -1,0 +1,94 @@
+@import "@packages/assets/styles/main.css";
+@import "tailwindcss";
+
+@font-face {
+  font-family: writer;
+  src: url("@packages/assets/fonts/writer/regular.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: writer;
+  src: url("@packages/assets/fonts/writer/regular-italic.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: writer;
+  src: url("@packages/assets/fonts/writer/bold.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: writer;
+  src: url("@packages/assets/fonts/writer/bold-italic.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: italic;
+}
+
+@theme {
+  --font-sans: writer, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-black: #0b0c0d;
+
+  --color-woodsmoke-50: #f6f6f6;
+  --color-woodsmoke-100: #e7e7e7;
+  --color-woodsmoke-200: #d1d1d1;
+  --color-woodsmoke-300: #b0b0b0;
+  --color-woodsmoke-400: #888888;
+  --color-woodsmoke-500: #6d6d6d;
+  --color-woodsmoke-600: #5d5d5d;
+  --color-woodsmoke-700: #4f4f4f;
+  --color-woodsmoke-800: #454545;
+  --color-woodsmoke-900: #3d3d3d;
+  --color-woodsmoke-950: #1b1b1b;
+
+  --color-stickyclip-50: #f1f9fe;
+  --color-stickyclip-100: #e1f3fd;
+  --color-stickyclip-200: #bde6fa;
+  --color-stickyclip-300: #82d3f7;
+  --color-stickyclip-400: #40bdf0;
+  --color-stickyclip-500: #25b0e9;
+  --color-stickyclip-600: #0a86bf;
+  --color-stickyclip-700: #096a9b;
+  --color-stickyclip-800: #0c5a80;
+  --color-stickyclip-900: #104b6a;
+  --color-stickyclip-950: #0b2f46;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #25b0e9;
+}
+
+::selection {
+  color: white;
+  background: #25b0e9;
+}

@@ -1,0 +1,49 @@
+{
+   "portfolio": {
+      "title": "Portfolio - Ngô Văn Sơn",
+
+      "me": {
+         "my_cv": "MY CV",
+         "worked_with": "Đã làm việc với"
+      },
+
+      "skills": {
+         "title": "Kỹ năng"
+      },
+
+      "projects": {
+         "title": "Dự án",
+         "company": "Công ty",
+         "responsibility": "Trách nhiệm",
+         "technologies": "Công nghệ",
+         "team_size": "Quy mô nhóm"
+      },
+
+      "contact": {
+         "title": "Liên hệ"
+      },
+
+      "degrees": {
+         "title": "Bằng cấp",
+         "graduation_level": "Trình độ tốt nghiệp"
+      },
+
+      "products": {
+         "title": "Sản phẩm"
+      }
+   },
+
+   "sticky_clip": {
+      "title": "Sticky Clip - Trình quản lý clipboard của bạn",
+
+      "home": {
+         "product_short_description": "Trình quản lý clipboard của bạn",
+         "product_description": "Một công cụ giúp quản lý lịch sử clipboard của bạn. Nhanh chóng, thân thiện.",
+         "teams": "Đội ngũ",
+         "changelog": "Nhật ký thay đổi",
+         "back_to_product": "Về trang sản phẩm",
+         "take_shortcut": "Dùng phím tắt, đừng đi đường vòng.",
+         "one_interface": "Một giao diện, mọi thao tác bạn cần."
+      }
+   }
+}

@@ -1,0 +1,26 @@
+{
+   "name": "@packages/types",
+   "license": "MIT",
+   "version": "1.0.0",
+   "exports": {
+      "./data": {
+         "types": "./src/data/index.ts",
+         "import": "./src/data/index.ts",
+         "require": "./dist/data/index.js"
+      },
+      "./shared": {
+         "types": "./src/shared/index.ts",
+         "import": "./src/shared/index.ts",
+         "require": "./dist/shared/index.js"
+      }
+   },
+   "scripts": {
+      "dev": "tsup --watch",
+      "build_package": "tsup"
+   },
+   "dependencies": {},
+   "devDependencies": {
+      "tsup": "^8.5.0"
+   },
+   "peerDependencies": {}
+}

@@ -1,0 +1,38 @@
+{
+   "name": "@packages/assets",
+   "license": "MIT",
+   "version": "1.0.0",
+   "private": true,
+   "exports": {
+      "./icons": {
+         "types": "./src/icons/index.ts",
+         "import": "./src/icons/index.ts",
+         "require": "./dist/icons/index.js"
+      },
+      "./images": {
+         "types": "./src/images/index.ts",
+         "import": "./src/images/index.ts",
+         "require": "./dist/images/index.js"
+      },
+      "./styles/*": {
+         "import": "./src/styles/*",
+         "require": "./dist/styles/*"
+      },
+      "./fonts/*": {
+         "import": "./src/fonts/*",
+         "require": "./dist/fonts/*"
+      },
+      "./videos": {
+         "import": "./src/videos/index.ts",
+         "require": "./dist/videos/index.js"
+      }
+   },
+   "scripts": {
+      "dev": "tsup --watch",
+      "build_package": "tsup"
+   },
+   "dependencies": {},
+   "devDependencies": {
+      "tsup": "^8.5.0"
+   }
+}
