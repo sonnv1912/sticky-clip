@@ -18,7 +18,7 @@
       "url": "https://github.com/sonnv1912/sticky-clip.git"
    },
    "dependencies": {
-      "@hookform/resolvers": "^5.0.1",
+      "@hookform/resolvers": "^5.4.0",
       "@tailwindcss/vite": "^4.0.15",
       "clsx": "^2.1.1",
       "electron-squirrel-startup": "^1.0.1",
